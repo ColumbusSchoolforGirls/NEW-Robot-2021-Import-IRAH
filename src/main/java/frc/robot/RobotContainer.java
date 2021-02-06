@@ -30,6 +30,7 @@ import frc.robot.commands.LiftManual;
 import frc.robot.commands.Shooting;
 import frc.robot.commands.TankDrive;
 import frc.robot.commands.UnwindLift;
+import frc.robot.commands.VisionTracking;
 import frc.robot.commands.FlapManual;
 import frc.robot.commands.FullSpeedAhead;
 import frc.robot.commands.DeployHook;
@@ -40,6 +41,7 @@ import frc.robot.subsystems.Flap;
 import frc.robot.subsystems.Hook;
 import frc.robot.subsystems.HookPneumatic;
 import frc.robot.subsystems.Lift;
+import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.RelayCompressor;
 
 
@@ -75,6 +77,7 @@ public class RobotContainer {
   //public ControlSpinner controlSpinner = new ControlSpinner();
   private final RelayCompressor relayCompressor = new RelayCompressor();
   private final HookPneumatic hookPneumatic = new HookPneumatic();
+  private final Limelight limeLight = new Limelight();
 
   public final TankDrive TankDrive = new TankDrive(driveTrain);
   public final ConveyorManual ConveyorManual = new ConveyorManual(0, conveyorMotors, false);
@@ -86,6 +89,7 @@ public class RobotContainer {
   private final UnwindLift UnwindLift = new UnwindLift(lift, 0);
   private final FullSpeedAhead FullSpeedAhead = new FullSpeedAhead(driveTrain);
   private final DeployHook DeployHook = new DeployHook(hookPneumatic, false);
+  private final VisionTracking VisionTracking = new VisionTracking(limeLight);
   
 
 
@@ -140,6 +144,9 @@ public class RobotContainer {
     
     //initializes deploy hook
     hookPneumatic.setDefaultCommand(DeployHook);
+
+    //initializes vision tracking
+    limeLight.setDefaultCommand(VisionTracking);
 
     
     SmartDashboard.putData("Auto mode", m_chooser);
