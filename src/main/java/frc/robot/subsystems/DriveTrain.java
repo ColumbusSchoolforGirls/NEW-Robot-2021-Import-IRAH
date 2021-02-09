@@ -63,16 +63,37 @@ public class DriveTrain extends SubsystemBase {
   
     
     public DriveTrain() {
-      right_front.setIdleMode(IdleMode.kBrake);
-      left_front.setIdleMode(IdleMode.kBrake);
-      right_back.setIdleMode(IdleMode.kBrake);
-      left_back.setIdleMode(IdleMode.kBrake);
+      //right_front.setIdleMode(IdleMode.kBrake);
+      //left_front.setIdleMode(IdleMode.kBrake);
+      //right_back.setIdleMode(IdleMode.kBrake);
+      //left_back.setIdleMode(IdleMode.kBrake);
 
       //gyro.setFusedHeading(0);
       resetEncoders();
       //gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
     
     }
+  public setAuto () {
+    right_front.setIdleMode(IdleMode.kBrake);
+    left_front.setIdleMode(IdleMode.kBrake);
+    right_back.setIdleMode(IdleMode.kBrake);
+    left_back.setIdleMode(IdleMode.kBrake);
+
+    //gyro.setFusedHeading(0);
+    resetEncoders();
+    //gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
+  }
+
+  public setTeleop(){
+    right_front.setIdleMode(IdleMode.kCoast);
+    left_front.setIdleMode(IdleMode.kCoast);
+    right_back.setIdleMode(IdleMode.kCoast);
+    left_back.setIdleMode(IdleMode.kCoast);
+
+    //gyro.setFusedHeading(0);
+    resetEncoders();
+    //gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
+  }
    
     // sets wheelspeeds of motors 
   public void Wheelspeed(double rightspeed, double leftspeed){

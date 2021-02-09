@@ -35,7 +35,8 @@ public class TankDrive extends CommandBase {
   @Override
   public void initialize() {
     // sets wheelspeed to 0 when the robot turns on
-    m_drivetrain.Wheelspeed(0, 0);
+    //m_drivetrain.Wheelspeed(0.0005, 0.0005);
+    m_drivetrain.setTeleop();
 
   }
 
@@ -45,7 +46,7 @@ public class TankDrive extends CommandBase {
     // sets wheelspeed when joysticks are moved forward/backward/up/down
     if (Math.abs(RobotContainer.driveCont.getRawAxis(5)) <= Global.DEADZONE
         && Math.abs(RobotContainer.driveCont.getRawAxis(1)) <= Global.DEADZONE) {
-      m_drivetrain.Wheelspeed(0, 0);
+      m_drivetrain.Wheelspeed(0.0005, 0.0005);
     } else if (Math.abs(RobotContainer.driveCont.getRawAxis(5)) <= Global.DEADZONE
         && Math.abs(RobotContainer.driveCont.getRawAxis(1)) > Global.DEADZONE) {
       m_drivetrain.Wheelspeed(0, 0.5*RobotContainer.driveCont.getRawAxis(1));
@@ -68,7 +69,7 @@ public class TankDrive extends CommandBase {
   @Override
 public void end(boolean interrupted) {
     //sets wheelspeed to 0 when the robot is turned off
-    m_drivetrain.Wheelspeed(0,0);
+    m_drivetrain.Wheelspeed(0.0005,0.0005);
     interrupted = false;
   }
 
