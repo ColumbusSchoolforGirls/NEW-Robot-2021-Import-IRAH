@@ -73,7 +73,7 @@ public class DriveTrain extends SubsystemBase {
       //gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
     
     }
-  public setAuto () {
+  public void setAuto() {
     right_front.setIdleMode(IdleMode.kBrake);
     left_front.setIdleMode(IdleMode.kBrake);
     right_back.setIdleMode(IdleMode.kBrake);
@@ -84,7 +84,7 @@ public class DriveTrain extends SubsystemBase {
     //gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
   }
 
-  public setTeleop(){
+  public void setTeleop(){
     right_front.setIdleMode(IdleMode.kCoast);
     left_front.setIdleMode(IdleMode.kCoast);
     right_back.setIdleMode(IdleMode.kCoast);
