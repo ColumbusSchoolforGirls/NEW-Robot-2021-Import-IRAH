@@ -20,16 +20,61 @@ public class barrels extends SequentialCommandGroup {
     // addCommands(new FooCommand(), new BarCommand());
    
     m_drivetrain.setAuto();
-    
+
     addCommands(
+
+    //first forward is segment a
 
       new straightforward(ticks.calculateTicks(150), m_drivetrain),
       new ResetGyro(m_drivetrain),
-      new Turn(90, m_drivetrain),
+      new Turn(-90, m_drivetrain),
 
-      new straightforward(ticks.calculateTicks(), m_drivetrain),
+      new straightforward(ticks.calculateTicks(37.5), m_drivetrain),
+      new ResetGyro(m_drivetrain),
+      new Turn(-90, m_drivetrain),
+
+      new straightforward(ticks.calculateTicks(37.5), m_drivetrain),
+      new ResetGyro(m_drivetrain),
+      new Turn(-90, m_drivetrain),
+
+      new straightforward(ticks.calculateTicks(37.5), m_drivetrain),
+      new ResetGyro(m_drivetrain),
+      new Turn(-70, m_drivetrain),
+
+    //big forward is segment b
+    
+
+      new straightforward(ticks.calculateTicks(/* big forward*/ ), m_drivetrain),
+      new ResetGyro(m_drivetrain),
+      new Turn(70, m_drivetrain),
+
+      new straightforward(ticks.calculateTicks(37.5), m_drivetrain),
       new ResetGyro(m_drivetrain),
       new Turn(90, m_drivetrain),
+
+      new straightforward(ticks.calculateTicks(37.5), m_drivetrain),
+      new ResetGyro(m_drivetrain),
+      new Turn(90, m_drivetrain),
+
+      new straightforward(ticks.calculateTicks(37.5), m_drivetrain),
+      new ResetGyro(m_drivetrain),
+      new Turn(45, m_drivetrain),
+
+    //medium forward is segment c
+    
+
+      new straightforward(ticks.calculateTicks(/* medium forward*/ ), m_drivetrain),
+      new ResetGyro(m_drivetrain),
+      new Turn(135, m_drivetrain),
+
+      new straightforward(ticks.calculateTicks(37.5), m_drivetrain),
+      new ResetGyro(m_drivetrain),
+      new Turn(90, m_drivetrain),
+
+    //big big forward is segment d
+    
+      new straightforward(ticks.calculateTicks(/*big big forward*/, m_drivetrain),
+     
     );
   }
 }
