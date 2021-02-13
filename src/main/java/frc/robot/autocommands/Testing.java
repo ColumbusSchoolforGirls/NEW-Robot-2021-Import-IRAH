@@ -34,10 +34,10 @@ public class Testing extends SequentialCommandGroup {
     m_conveyormotors = conveyormotors;
     addRequirements(m_drivetrain);
     addCommands(
-      new straightforward(65, m_drivetrain).withTimeout(3),
-      new FlapManual(m_flap, false, true),
-      new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
-      new straightforward(-10, m_drivetrain)
+      new straightforward(65, m_drivetrain).withTimeout(3)
+      //new FlapManual(m_flap, false, true),
+      //new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
+      //new straightforward(-10, m_drivetrain)
     );
   }
 }

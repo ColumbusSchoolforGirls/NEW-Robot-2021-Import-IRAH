@@ -46,7 +46,7 @@ public class Global {
     public static final double TURNANGLE_IZONE = 10;
 
     //PID Values for Track
-    public static final double TRACK_P = 1;
+    public static final double TRACK_P = 0;
     public static final double TRACK_I = 0;
     public static final double TRACK_D = 0;
     public static final int DRIVE_TRACK_TOLERANCE = 0;
