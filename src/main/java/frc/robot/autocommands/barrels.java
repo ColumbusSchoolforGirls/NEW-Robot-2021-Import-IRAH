@@ -45,7 +45,7 @@ public class barrels extends SequentialCommandGroup {
     //big forward is segment b
     
 
-      new straightforward(ticks.calculateTicks(/* big forward*/ ), m_drivetrain),
+      //new straightforward(ticks.calculateTicks(/* big forward*/ ), m_drivetrain),
       new ResetGyro(m_drivetrain),
       new Turn(70, m_drivetrain),
 
