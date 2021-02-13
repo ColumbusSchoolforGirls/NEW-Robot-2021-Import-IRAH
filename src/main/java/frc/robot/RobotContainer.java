@@ -30,7 +30,6 @@ import frc.robot.commands.LiftManual;
 import frc.robot.commands.Shooting;
 import frc.robot.commands.TankDrive;
 import frc.robot.commands.UnwindLift;
-import frc.robot.commands.VisionTracking;
 import frc.robot.commands.FlapManual;
 import frc.robot.commands.FullSpeedAhead;
 import frc.robot.commands.DeployHook;
@@ -89,7 +88,6 @@ public class RobotContainer {
   private final UnwindLift UnwindLift = new UnwindLift(lift, 0);
   private final FullSpeedAhead FullSpeedAhead = new FullSpeedAhead(driveTrain);
   private final DeployHook DeployHook = new DeployHook(hookPneumatic, false);
-  private final VisionTracking VisionTracking = new VisionTracking(limeLight);
   
 
 
@@ -145,9 +143,7 @@ public class RobotContainer {
     //initializes deploy hook
     hookPneumatic.setDefaultCommand(DeployHook);
 
-    //initializes vision tracking
-    limeLight.setDefaultCommand(VisionTracking);
-
+    
     
     SmartDashboard.putData("Auto mode", m_chooser);
     m_chooser.setDefaultOption("Nothing", new NothingTest());
