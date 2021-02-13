@@ -18,7 +18,9 @@ import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.autocommands.GTFO;
 import frc.robot.autocommands.NothingTest;
+import frc.robot.autocommands.Slalom;
 import frc.robot.autocommands.Testing;
+import frc.robot.autocommands.barrels;
 import frc.robot.autocommands.firstPlanAutoMiddle;
 import frc.robot.autocommands.leftStartAutoMiddle;
 import frc.robot.autocommands.middleStartAutoMiddle;
@@ -77,6 +79,7 @@ public class RobotContainer {
   private final RelayCompressor relayCompressor = new RelayCompressor();
   private final HookPneumatic hookPneumatic = new HookPneumatic();
   private final Limelight limeLight = new Limelight();
+  private final ticks ticks = new ticks(0);
 
   public final TankDrive TankDrive = new TankDrive(driveTrain);
   public final ConveyorManual ConveyorManual = new ConveyorManual(0, conveyorMotors, false);
@@ -154,7 +157,8 @@ public class RobotContainer {
     
     m_chooser.addOption("Test",new Testing(driveTrain, flap, conveyorMotors));
     
-
+    m_chooser.addOption("Barrels",new barrels(ticks, driveTrain));
+    m_chooser.addOption("Slalom", new Slalom(ticks, driveTrain));
 
     
   

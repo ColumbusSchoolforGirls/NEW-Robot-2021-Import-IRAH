@@ -17,11 +17,11 @@ public class Slalom extends SequentialCommandGroup {
   private DriveTrain m_drivetrain;
   private ticks m_ticks;
 
-  public Slalom(DriveTrain drivetrain) {
+  public Slalom(ticks ticks, DriveTrain drivetrain) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     m_drivetrain = drivetrain;
-
+    m_ticks = ticks;
     m_drivetrain.setAuto();
 
     addCommands(
