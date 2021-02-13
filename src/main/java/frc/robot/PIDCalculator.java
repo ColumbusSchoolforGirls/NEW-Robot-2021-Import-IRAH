@@ -42,6 +42,7 @@ public class PIDCalculator {
        
         if (Math.abs(error) <= IZone) {
             runningSum = runningSum + error * (Timer.getFPGATimestamp() - lastTime);
+            //RIEMAN SUM!!!!!
         } else {
             runningSum = 0;
         }
@@ -55,5 +56,7 @@ public class PIDCalculator {
 
         return output;
     }
+
+    
 
 }
