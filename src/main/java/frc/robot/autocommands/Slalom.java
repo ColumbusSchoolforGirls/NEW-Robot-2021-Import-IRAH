@@ -5,6 +5,9 @@
 package frc.robot.autocommands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.ticks;
+import frc.robot.commands.ResetGyro;
+import frc.robot.subsystems.DriveTrain;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -12,8 +15,9 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 public class Slalom extends SequentialCommandGroup {
   /** Creates a new Slalom. */
   private DriveTrain m_drivetrain;
+  private ticks m_ticks;
 
-  public Slalom(Drivetrain drivetrain) {
+  public Slalom(DriveTrain drivetrain) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     m_drivetrain = drivetrain;
@@ -22,51 +26,51 @@ public class Slalom extends SequentialCommandGroup {
 
     addCommands(
       //leaving start
-      new straightforward(ticks.calculateTicks(24), m_drivetrain),
+      new straightforward(m_ticks.calculateTicks(24), m_drivetrain),
       new ResetGyro(m_drivetrain),
 
       new Turn(55, m_drivetrain),
-      new straightforward(ticks.calculateTicks(62), m_drivetrain),
+      new straightforward(m_ticks.calculateTicks(62), m_drivetrain),
       new ResetGyro(m_drivetrain),
       new Turn(-55, m_drivetrain),
 
       //big forward A 
-      new straightforward(ticks.calculateTicks(120), m_drivetrain),
+      new straightforward(m_ticks.calculateTicks(120), m_drivetrain),
 
       new ResetGyro(m_drivetrain),
       new Turn(-55, m_drivetrain),
-      new straightforward(ticks.calculateTicks(62), m_drivetrain),
+      new straightforward(m_ticks.calculateTicks(62), m_drivetrain),
       new ResetGyro(m_drivetrain),
       new Turn(55, m_drivetrain),
 
       //--> /\
-      new straightforward(ticks.calculateTicks(60), m_drivetrain),
+      new straightforward(m_ticks.calculateTicks(60), m_drivetrain),
       new ResetGyro(m_drivetrain),
       new Turn(90, m_drivetrain),
 
       //  /\  <
-      new straightforward(ticks.calculateTicks(60), m_drivetrain),
+      new straightforward(m_ticks.calculateTicks(60), m_drivetrain),
       new ResetGyro(m_drivetrain),
       new Turn(90, m_drivetrain),
 
       // <-- 
-      new straightforward(ticks.calculateTicks(60), m_drivetrain),
+      new straightforward(m_ticks.calculateTicks(60), m_drivetrain),
       new ResetGyro(m_drivetrain),
 
       //prepare for big forward B
       new Turn(55, m_drivetrain),
-      new straightforward(ticks.calculateTicks(62), m_drivetrain),
+      new straightforward(m_ticks.calculateTicks(62), m_drivetrain),
       new Turn(-55, m_drivetrain),
 
       //big forward B (return)
-      new straightforward(ticks.calculateTicks(120), m_drivetrain),
+      new straightforward(m_ticks.calculateTicks(120), m_drivetrain),
 
       new Turn(-55, m_drivetrain),
-      new straightforward(ticks.calculateTicks(62), m_drivetrain),
+      new straightforward(m_ticks.calculateTicks(62), m_drivetrain),
 
       //finish
       new Turn(55, m_drivetrain),
-      new straightforward(ticks.calculateTicks(24), m_drivetrain),
+      new straightforward(m_ticks.calculateTicks(24), m_drivetrain)
     );
   }
 }

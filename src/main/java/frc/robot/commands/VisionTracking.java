@@ -11,7 +11,6 @@ import frc.robot.subsystems.Limelight;
 public class VisionTracking extends CommandBase {
   /** Creates a new VisionTracking. */
   private final Limelight m_limelight;
-  
   public VisionTracking(Limelight limelight) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_limelight = limelight;
