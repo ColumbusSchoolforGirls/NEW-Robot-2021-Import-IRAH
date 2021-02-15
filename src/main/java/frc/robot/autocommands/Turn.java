@@ -34,13 +34,13 @@ public class Turn extends CommandBase {
   @Override
   public void initialize() {
     //setTimeout(m_timeout);
-    //m_drivetrain.resetGyro();
+    m_drivetrain.resetGyro();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //angleError = angle - m_drivetrain.getFacingAngle();
+    angleError = angle - m_drivetrain.getFacingAngle();
     double angleOutput = anglePID.getOutput(angleError);
 
     SmartDashboard.putNumber("Angle Output", angleOutput);

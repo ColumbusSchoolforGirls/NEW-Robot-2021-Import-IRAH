@@ -48,7 +48,7 @@ public class DriveTrain extends SubsystemBase {
 
   
 
- // public PigeonIMU gyro = new PigeonIMU(ControlSpinner.getTalon());
+  public static PigeonIMU gyro = new PigeonIMU(ConveyorMotors.getTalon());
 
   public static AnalogInput sonar = new AnalogInput(0);
   
@@ -68,9 +68,9 @@ public class DriveTrain extends SubsystemBase {
       //right_back.setIdleMode(IdleMode.kBrake);
       //left_back.setIdleMode(IdleMode.kBrake);
 
-      //gyro.setFusedHeading(0);
+      gyro.setFusedHeading(0);
       resetEncoders();
-      //gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
+      gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
     
     }
   public void setAuto() {
@@ -79,9 +79,9 @@ public class DriveTrain extends SubsystemBase {
     right_back.setIdleMode(IdleMode.kBrake);
     left_back.setIdleMode(IdleMode.kBrake);
 
-    //gyro.setFusedHeading(0);
+    gyro.setFusedHeading(0);
     resetEncoders();
-    //gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
+    gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
   }
 
   public void setTeleop(){
@@ -90,9 +90,9 @@ public class DriveTrain extends SubsystemBase {
     right_back.setIdleMode(IdleMode.kCoast);
     left_back.setIdleMode(IdleMode.kCoast);
 
-    //gyro.setFusedHeading(0);
+    gyro.setFusedHeading(0);
     resetEncoders();
-    //gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
+    gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
   }
    
     // sets wheelspeeds of motors 
@@ -117,10 +117,10 @@ public class DriveTrain extends SubsystemBase {
 
   }
   
-  /*public double getFacingAngle(){
+  public double getFacingAngle(){
     PigeonIMU.FusionStatus fusionStatus = new PigeonIMU.FusionStatus();
     return gyro.getFusedHeading(fusionStatus);
-  }*/
+  }
 
   public double getLeftCanEncoder(){
      return leftCanEncoder.getPosition();
@@ -138,16 +138,16 @@ public class DriveTrain extends SubsystemBase {
     return leftBackEncoder.getPosition();
   }
 
-  /*public void resetGyro(){
+  public void resetGyro(){
     gyro.setFusedHeading(0);
-  }*/
+  }
 
   public void update(){
     SmartDashboard.putNumber("Left Encoder", getLeftCanEncoder());
     SmartDashboard.putNumber("Right Encoder", getRightCanEncoder());
     SmartDashboard.putNumber("Right Back Encoder", getRightBackEncoder());
     SmartDashboard.putNumber("Left Back Encoder", getLeftBackEncoder());
-    //SmartDashboard.putNumber("Angle", getFacingAngle());
+    SmartDashboard.putNumber("Angle", getFacingAngle());
     SmartDashboard.putNumber("Joystick Y", RobotContainer.driveCont.getRawAxis(5));
     SmartDashboard.putNumber("Joystick X", RobotContainer.driveCont.getRawAxis(1));
 

@@ -21,21 +21,20 @@ public class ConveyorMotors extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   // this is setting the variable talon to the talons that are on the robot 
-  private final TalonSRX talon = new TalonSRX(RobotMap.talon);
-   
-  
-
-    // sets speed of each talon/cim
-  public void Motorspeed(final double speed) {
-    talon.set(ControlMode.PercentOutput, -speed);
-      }
+  private static final TalonSRX talon = new TalonSRX(RobotMap.talon);
 
   public ConveyorMotors(){
-    
   }
-  
 
-  
+  public static TalonSRX getTalon() {
+    return talon;
+  }
+
+   // sets speed of each talon/cim
+   public void Motorspeed(final double speed) {
+    talon.set(ControlMode.PercentOutput, -speed);
+  }
+
   //public void initDefaultCommand(){
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());

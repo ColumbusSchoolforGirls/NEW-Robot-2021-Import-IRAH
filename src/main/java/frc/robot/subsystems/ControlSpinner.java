@@ -31,7 +31,7 @@
 //    * parameter. The device will be automatically initialized with default 
 //    * parameters.
 //    */
-//   private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+//   //private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
 
   
 //   public ControlSpinner() {

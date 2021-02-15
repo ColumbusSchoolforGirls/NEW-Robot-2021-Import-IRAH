@@ -47,8 +47,8 @@ public class straightforward extends CommandBase {
   @Override
   public void initialize() {
     m_drivetrain.resetEncoders();
-    //m_drivetrain.resetGyro();
-    //angle = m_drivetrain.getFacingAngle();
+    m_drivetrain.resetGyro();
+    angle = m_drivetrain.getFacingAngle();
     SmartDashboard.putString("Hello World", "Hi");
     
   }
@@ -60,16 +60,16 @@ public class straightforward extends CommandBase {
     double rightEncoder = m_drivetrain.getRightCanEncoder();
     leftError = setpoint - leftEncoder;
     rightError = setpoint - rightEncoder;
-    //double angleError = angle - m_drivetrain.getFacingAngle();
+    double angleError = angle - m_drivetrain.getFacingAngle();
 
     double leftOutput = distPID.getOutput(leftError);
     double rightOutput = distPID.getOutput(rightError);
-    //double angleOutput = anglePID.getOutput(angleError);
+    double angleOutput = anglePID.getOutput(angleError);
 
     SmartDashboard.putNumber("Left Error", leftError);
     SmartDashboard.putNumber("Right Error",rightError);
 
-    //m_drivetrain.Wheelspeed(-leftOutput - angleOutput, -rightOutput + angleOutput);
+    m_drivetrain.Wheelspeed(-leftOutput - angleOutput, -rightOutput + angleOutput);
     
 
   }
