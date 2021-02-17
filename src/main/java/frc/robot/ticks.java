@@ -20,7 +20,7 @@ public class ticks {
     }
 
     public double calculateTicks(double distanceInches){
-        return distance*42/circumfrence;
+        return distance*451/circumfrence;
     }
 
 }
