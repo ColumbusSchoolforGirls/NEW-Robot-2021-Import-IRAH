@@ -26,19 +26,19 @@ public class barrels extends SequentialCommandGroup {
     m_drivetrain.setAuto();
 
     addCommands(
-      new straightforward(ticks.calculateTicks(150), m_drivetrain),
+      new straightforward(ticks.calculateTicks(150), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(-90, m_drivetrain),
 
-      new straightforward(ticks.calculateTicks(37.5), m_drivetrain),
+      new straightforward(ticks.calculateTicks(37.5), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(-90, m_drivetrain),
 
-      new straightforward(ticks.calculateTicks(37.5), m_drivetrain),
+      new straightforward(ticks.calculateTicks(37.5), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(-90, m_drivetrain),
 
-      new straightforward(ticks.calculateTicks(37.5), m_drivetrain),
+      new straightforward(ticks.calculateTicks(37.5), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(-70, m_drivetrain),
 
@@ -49,11 +49,11 @@ public class barrels extends SequentialCommandGroup {
       new ResetGyro(m_drivetrain),
       new Turn(70, m_drivetrain),
 
-      new straightforward(ticks.calculateTicks(37.5), m_drivetrain),
+      new straightforward(ticks.calculateTicks(37.5), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(90, m_drivetrain),
 
-      new straightforward(ticks.calculateTicks(20), m_drivetrain),
+      new straightforward(ticks.calculateTicks(20), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(90, m_drivetrain)
     );
