@@ -18,6 +18,10 @@ import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.autocommands.GTFO;
 import frc.robot.autocommands.NothingTest;
+import frc.robot.autocommands.SearchBluePathOne;
+import frc.robot.autocommands.SearchBluePathTwo;
+import frc.robot.autocommands.SearchRedPathOne;
+import frc.robot.autocommands.SearchRedPathTwo;
 import frc.robot.autocommands.Slalom;
 import frc.robot.autocommands.Testing;
 import frc.robot.autocommands.barrels;
@@ -159,6 +163,10 @@ public class RobotContainer {
     
     m_chooser.addOption("Barrels",new barrels(ticks, driveTrain));
     m_chooser.addOption("Slalom", new Slalom(ticks, driveTrain));
+    m_chooser.addOption("Search Red One", new SearchRedPathOne(driveTrain, conveyorMotors, ticks));
+    m_chooser.addOption("Search Red Two", new SearchRedPathTwo(driveTrain, conveyorMotors, ticks));
+    m_chooser.addOption("Search Blue One", new SearchBluePathOne(driveTrain, conveyorMotors, ticks));
+    m_chooser.addOption("Search Blue Two", new SearchBluePathTwo(driveTrain, conveyorMotors, ticks));
 
     
   
