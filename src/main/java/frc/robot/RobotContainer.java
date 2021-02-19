@@ -96,6 +96,8 @@ public class RobotContainer {
   private final FullSpeedAhead FullSpeedAhead = new FullSpeedAhead(driveTrain);
   private final DeployHook DeployHook = new DeployHook(hookPneumatic, false);
   
+  private final NothingTest m_nothing = new NothingTest();
+  private final Testing m_testing = new Testing(driveTrain, flap, conveyorMotors);
 
 
   //// TRIGGERING COMMANDS WITH BUTTONS
@@ -152,14 +154,13 @@ public class RobotContainer {
 
     
     
-    SmartDashboard.putData("Auto mode", m_chooser);
-    m_chooser.setDefaultOption("Nothing", new NothingTest());
-    m_chooser.addOption("GTFO", new GTFO(driveTrain));
-		m_chooser.addOption("Starting in Front of Port", new firstPlanAutoMiddle(driveTrain, conveyorMotors, flap));		
-		m_chooser.addOption("Starting in Middle, Ending Middle", new middleStartAutoMiddle(driveTrain, conveyorMotors, flap));
-    m_chooser.addOption("Starting On Left, Ending Middle", new leftStartAutoMiddle(driveTrain, conveyorMotors, flap));
+    m_chooser.setDefaultOption("Nothing", m_nothing);
+    // m_chooser.addOption("GTFO", new GTFO(driveTrain));
+		// m_chooser.addOption("Starting in Front of Port", new firstPlanAutoMiddle(driveTrain, conveyorMotors, flap));		
+		// m_chooser.addOption("Starting in Middle, Ending Middle", new middleStartAutoMiddle(driveTrain, conveyorMotors, flap));
+    // m_chooser.addOption("Starting On Left, Ending Middle", new leftStartAutoMiddle(driveTrain, conveyorMotors, flap));
     
-    m_chooser.addOption("Test",new Testing(driveTrain, flap, conveyorMotors));
+    m_chooser.addOption("Test", m_testing);
     
     m_chooser.addOption("Barrels",new barrels(ticks, driveTrain));
     m_chooser.addOption("Slalom", new Slalom(ticks, driveTrain));
@@ -167,7 +168,9 @@ public class RobotContainer {
     m_chooser.addOption("Search Red Two", new SearchRedPathTwo(driveTrain, conveyorMotors, ticks));
     m_chooser.addOption("Search Blue One", new SearchBluePathOne(driveTrain, conveyorMotors, ticks));
     m_chooser.addOption("Search Blue Two", new SearchBluePathTwo(driveTrain, conveyorMotors, ticks));
-
+    //tried moving it down cause that was what was in the documentation butttttt idk
+    SmartDashboard.putData("Auto Mode", m_chooser);
+    
     
   
 
