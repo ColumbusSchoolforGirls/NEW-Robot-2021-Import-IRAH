@@ -46,7 +46,7 @@ public class Turn extends CommandBase {
     SmartDashboard.putNumber("Angle Output", angleOutput);
     SmartDashboard.putNumber("Angle Error", angleError);
 
-    m_drivetrain.Wheelspeed(0.2*(-angleOutput), 0.2*angleOutput);
+    m_drivetrain.Wheelspeed(-angleOutput, angleOutput);
   
   }
 
