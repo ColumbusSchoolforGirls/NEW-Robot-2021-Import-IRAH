@@ -28,25 +28,25 @@ public class SearchRedPathTwo extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new straightforward(tick.calculateTicks(90), m_drivetrain),
+      new straightforward(tick.calculateTicks(90), m_drivetrain, false),
       new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
-      new straightforward(tick.calculateTicks(5), m_drivetrain),
+      new straightforward(tick.calculateTicks(5), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(-45, m_drivetrain),
 
-      new straightforward(tick.calculateTicks(90), m_drivetrain),
+      new straightforward(tick.calculateTicks(90), m_drivetrain, false),
       new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
-      new straightforward(tick.calculateTicks(5), m_drivetrain),
+      new straightforward(tick.calculateTicks(5), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(45, m_drivetrain),
 
-      new straightforward(tick.calculateTicks(140), m_drivetrain),
+      new straightforward(tick.calculateTicks(140), m_drivetrain, false),
       new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
-      new straightforward(tick.calculateTicks(5), m_drivetrain),
+      new straightforward(tick.calculateTicks(5), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(-45, m_drivetrain),
 
-      new straightforward(tick.calculateTicks(180), m_drivetrain)
+      new straightforward(tick.calculateTicks(180), m_drivetrain, false)
            
     );
   }

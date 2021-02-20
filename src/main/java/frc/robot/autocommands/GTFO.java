@@ -26,7 +26,7 @@ public class GTFO extends SequentialCommandGroup {
     m_drivetrain = drivetrain;
     addRequirements(m_drivetrain);
     addCommands(
-      new straightforward(65, m_drivetrain)
+      new straightforward(65, m_drivetrain, false)
     );
   }
 }

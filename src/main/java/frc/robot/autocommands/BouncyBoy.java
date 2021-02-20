@@ -24,31 +24,31 @@ public class BouncyBoy extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new straightforward(tick.calculateTicks(95), m_drivetrain),
+      new straightforward(tick.calculateTicks(95), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(45, m_drivetrain),
 
-      new straightforward(tick.calculateTicks(-190), m_drivetrain),
+      new straightforward(tick.calculateTicks(-190), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(-45, m_drivetrain),
 
-      new straightforward(tick.calculateTicks(190), m_drivetrain),
+      new straightforward(tick.calculateTicks(190), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(20, m_drivetrain),
 
-      new straightforward(tick.calculateTicks(-180), m_drivetrain),
+      new straightforward(tick.calculateTicks(-180), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(-70, m_drivetrain),
 
-      new straightforward(tick.calculateTicks(30), m_drivetrain),
+      new straightforward(tick.calculateTicks(30), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(70, m_drivetrain),
     
-      new straightforward(tick.calculateTicks(180), m_drivetrain),
+      new straightforward(tick.calculateTicks(180), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(45, m_drivetrain),
 
-      new straightforward(tick.calculateTicks(95), m_drivetrain)
+      new straightforward(tick.calculateTicks(95), m_drivetrain, false)
      
     );
   }

@@ -34,13 +34,13 @@ public class middleStartAutoMiddle extends SequentialCommandGroup {
     m_flap = flap;
     //add gyro reset after turn
     addCommands(
-      new straightforward(1000, m_drivetrain),
+      new straightforward(1000, m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(90, m_drivetrain), 
-      new straightforward(1000, m_drivetrain),
+      new straightforward(1000, m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(-90, m_drivetrain), 
-      new straightforward(1000, m_drivetrain),
+      new straightforward(1000, m_drivetrain, false),
       new FlapManual(m_flap, true, false),
       new ConveyorManual(1, m_conveyormotors, true)
     );

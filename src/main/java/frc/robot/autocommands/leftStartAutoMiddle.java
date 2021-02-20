@@ -35,13 +35,13 @@ public class leftStartAutoMiddle extends SequentialCommandGroup {
 
     // start on left and line up middle
     addCommands(
-      new straightforward(1000, m_drivetrain),
+      new straightforward(1000, m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(90, m_drivetrain),
-      new straightforward(1000, m_drivetrain),
+      new straightforward(1000, m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(90, m_drivetrain),
-      new straightforward(1000, m_drivetrain),
+      new straightforward(1000, m_drivetrain, false),
       new FlapManual(m_flap, true, false),
       new ConveyorManual(1, m_conveyormotors, true)
     );

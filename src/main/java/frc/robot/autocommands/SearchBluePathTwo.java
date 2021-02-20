@@ -27,21 +27,21 @@ public class SearchBluePathTwo extends SequentialCommandGroup {
     m_conveyor = conveyor;
     m_ticks = ticks;
     addCommands(
-      new straightforward(ticks.calculateTicks(180), m_drivetrain),
+      new straightforward(ticks.calculateTicks(180), m_drivetrain, false),
       new ConveyorManual(1, m_conveyor, true),
       new ResetGyro(m_drivetrain),
       new Turn(45, m_drivetrain),
 
-      new straightforward(ticks.calculateTicks(84.853), m_drivetrain),
+      new straightforward(ticks.calculateTicks(84.853), m_drivetrain, false),
       new ConveyorManual(1, m_conveyor, true),
       new ResetGyro(m_drivetrain),
       new Turn(-45, m_drivetrain),
 
-      new straightforward(ticks.calculateTicks(180), m_drivetrain),
+      new straightforward(ticks.calculateTicks(180), m_drivetrain, false),
       new ConveyorManual(1, m_conveyor, true),
       new ResetGyro(m_drivetrain),
       new Turn(135, m_drivetrain),
-      new straightforward(ticks.calculateTicks(60), m_drivetrain)
+      new straightforward(ticks.calculateTicks(60), m_drivetrain, false)
       );
   }
 }

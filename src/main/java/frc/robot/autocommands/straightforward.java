@@ -24,17 +24,19 @@ public class straightforward extends CommandBase {
   private PIDCalculator distPID;
   private PIDCalculator anglePID;
   private DriveTrain m_drivetrain;
+  private boolean scaleAuto;
 
   
 
-  public straightforward(double ticks, DriveTrain drivetrain) {
+  public straightforward(double ticks, DriveTrain drivetrain, boolean scale) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_drivetrain = drivetrain;
     addRequirements(drivetrain);
     setpoint = ticks; //Ticks should be a global constant - MAKE THAT CHANGE
     m_drivetrain.Wheelspeed(0, 0); 
     //why does this need to be static in this instance but it doesn't need to be in tankdrive command
-
+    scaleAuto = scale;
+    
     distPID = new PIDCalculator(Global.DRIVETRAIN_P, Global.DRIVETRAIN_I, Global.DRIVETRAIN_D); 
     anglePID = new PIDCalculator(Global.DRIVESTRAIGHT_ANGLE_P, Global.DRIVESTRAIGHT_ANGLE_I, Global.DRIVESTRAIGHT_ANGLE_D);
     
