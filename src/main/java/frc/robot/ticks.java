@@ -15,12 +15,13 @@ public class ticks {
     private double circumfrence = 4*Math.PI;
     private double distance;
 
-    public ticks(double d){
-        distance = d;
-    }
+    // public ticks(double d){
+    //     distance = d;
+    // }
 
-    public double calculateTicks(double distanceInches){
-        return distance*451/circumfrence;
+    public static double calculateTicks(double distanceInches){
+        //return distance*451/circumfrence;
+        return 5.0;
     }
 
 }

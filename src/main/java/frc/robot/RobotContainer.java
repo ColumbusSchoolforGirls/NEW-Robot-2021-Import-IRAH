@@ -83,7 +83,7 @@ public class RobotContainer {
   private final RelayCompressor relayCompressor = new RelayCompressor();
   private final HookPneumatic hookPneumatic = new HookPneumatic();
   private final Limelight limeLight = new Limelight();
-  private final ticks ticks = new ticks(0);
+  //private final ticks ticks = new ticks(0);
 
   public final TankDrive TankDrive = new TankDrive(driveTrain);
   public final ConveyorManual ConveyorManual = new ConveyorManual(0, conveyorMotors, false);
@@ -162,12 +162,12 @@ public class RobotContainer {
     
     m_chooser.addOption("Test", m_testing);
     
-    m_chooser.addOption("Barrels",new barrels(ticks, driveTrain));
-    m_chooser.addOption("Slalom", new Slalom(ticks, driveTrain));
-    m_chooser.addOption("Search Red One", new SearchRedPathOne(driveTrain, conveyorMotors, ticks));
-    m_chooser.addOption("Search Red Two", new SearchRedPathTwo(driveTrain, conveyorMotors, ticks));
-    m_chooser.addOption("Search Blue One", new SearchBluePathOne(driveTrain, conveyorMotors, ticks));
-    m_chooser.addOption("Search Blue Two", new SearchBluePathTwo(driveTrain, conveyorMotors, ticks));
+    m_chooser.addOption("Barrels",new barrels(driveTrain));
+    m_chooser.addOption("Slalom", new Slalom(driveTrain));
+    m_chooser.addOption("Search Red One", new SearchRedPathOne(driveTrain, conveyorMotors));
+    m_chooser.addOption("Search Red Two", new SearchRedPathTwo(driveTrain, conveyorMotors));
+    m_chooser.addOption("Search Blue One", new SearchBluePathOne(driveTrain, conveyorMotors));
+    m_chooser.addOption("Search Blue Two", new SearchBluePathTwo(driveTrain, conveyorMotors));
     //tried moving it down cause that was what was in the documentation butttttt idk
     SmartDashboard.putData("Auto Mode", m_chooser);
     
