@@ -41,10 +41,15 @@ public class DriveTrain extends SubsystemBase {
   private final CANSparkMax right_back = new CANSparkMax(RobotMap.right_back_motor, MotorType.kBrushless);
   private final CANSparkMax left_back = new CANSparkMax(RobotMap.left_back_motor, MotorType.kBrushless);
 
-  private final CANEncoder rightCanEncoder = new CANEncoder(right_front);
-  private final CANEncoder rightBackEncoder = new CANEncoder(right_back);
-  private final CANEncoder leftCanEncoder = new CANEncoder(left_front);
-  private final CANEncoder leftBackEncoder = new CANEncoder(left_back);
+  // private final CANEncoder rightCanEncoder = new CANEncoder(right_front);
+  // private final CANEncoder rightBackEncoder = new CANEncoder(right_back);
+  // private final CANEncoder leftCanEncoder = new CANEncoder(left_front);
+  // private final CANEncoder leftBackEncoder = new CANEncoder(left_back);
+
+  private CANEncoder m_rightencoder = right_front.getEncoder();
+  private CANEncoder m_leftencoder = left_front.getEncoder();
+  private CANEncoder m_rightback = right_back.getEncoder();
+  private CANEncoder m_leftback = left_back.getEncoder();
 
   
 
@@ -110,10 +115,10 @@ public class DriveTrain extends SubsystemBase {
   }
   
   public void resetEncoders(){
-    rightCanEncoder.setPosition(0);
-    rightBackEncoder.setPosition(0);
-    leftCanEncoder.setPosition(0);
-    leftBackEncoder.setPosition(0);
+    m_rightencoder.setPosition(0);
+    m_leftencoder.setPosition(0);
+    m_leftback.setPosition(0);
+    m_rightback.setPosition(0);
 
   }
   
@@ -123,19 +128,19 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public double getLeftCanEncoder(){
-     return leftCanEncoder.getPosition();
+     return m_leftencoder.getPosition();
   }
 
   public double getRightCanEncoder(){
-    return -rightCanEncoder.getPosition();
+    return -m_rightencoder.getPosition();
   }
 
   public double getRightBackEncoder(){
-    return -rightBackEncoder.getPosition();
+    return -m_rightback.getPosition();
   }
 
   public double getLeftBackEncoder(){
-    return leftBackEncoder.getPosition();
+    return m_leftback.getPosition();
   }
 
   public void resetGyro(){
@@ -143,10 +148,10 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public void update(){
-    SmartDashboard.putNumber("Left Encoder", getLeftCanEncoder());
-    SmartDashboard.putNumber("Right Encoder", getRightCanEncoder());
-    SmartDashboard.putNumber("Right Back Encoder", getRightBackEncoder());
-    SmartDashboard.putNumber("Left Back Encoder", getLeftBackEncoder());
+    SmartDashboard.putNumber("Left Encoder", m_leftencoder.getPosition());
+    SmartDashboard.putNumber("Right Encoder", m_rightencoder.getPosition());
+    SmartDashboard.putNumber("Right Back Encoder", m_rightback.getPosition());
+    SmartDashboard.putNumber("Left Back Encoder", m_leftback.getPosition());
     SmartDashboard.putNumber("Angle", getFacingAngle());
     SmartDashboard.putNumber("Joystick Y", RobotContainer.driveCont.getRawAxis(5));
     SmartDashboard.putNumber("Joystick X", RobotContainer.driveCont.getRawAxis(1));

@@ -8,6 +8,7 @@
 package frc.robot.autocommands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.ticks;
 import frc.robot.commands.ConveyorManual;
 import frc.robot.commands.FlapManual;
 import frc.robot.subsystems.ConveyorMotors;
@@ -24,6 +25,7 @@ public class Testing extends SequentialCommandGroup {
   private DriveTrain m_drivetrain;
   private Flap m_flap;
   private ConveyorMotors m_conveyormotors;
+  private ticks m_ticks;
 
   // if we're with too good teams we just leave
   public Testing(DriveTrain drivetrain, Flap flap, ConveyorMotors conveyormotors) {
@@ -34,10 +36,11 @@ public class Testing extends SequentialCommandGroup {
     m_conveyormotors = conveyormotors;
     addRequirements(m_drivetrain);
     addCommands(
-      new straightforward(65, m_drivetrain, true).withTimeout(3)
+      new straightforward(100, m_drivetrain, false)
       //new FlapManual(m_flap, false, true),
       //new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
-      //new straightforward(-10, m_drivetrain)
+      //new straightforward(, m_drivetrain);
+      //new Turn(270, m_drivetrain)
     );
   }
 }

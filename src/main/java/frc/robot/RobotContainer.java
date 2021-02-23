@@ -154,7 +154,8 @@ public class RobotContainer {
 
     
     
-    m_chooser.setDefaultOption("Nothing", m_nothing);
+    SmartDashboard.putData("Auto mode", m_chooser);
+    m_chooser.setDefaultOption("Nothing", new NothingTest());
     // m_chooser.addOption("GTFO", new GTFO(driveTrain));
 		// m_chooser.addOption("Starting in Front of Port", new firstPlanAutoMiddle(driveTrain, conveyorMotors, flap));		
 		// m_chooser.addOption("Starting in Middle, Ending Middle", new middleStartAutoMiddle(driveTrain, conveyorMotors, flap));

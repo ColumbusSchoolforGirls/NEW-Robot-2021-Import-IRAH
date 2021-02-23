@@ -25,13 +25,13 @@ public class RobotMap {
   public static int right_back_motor = 3;
   public static int left_back_motor = 4; 
 
-  public static int talon = 5;
+  public static int talon = 9;
   
 
   public static int lift_talon = 7;
   public static int hook_talon = 8;
 
-  public static int spin_talon = 9;
+  public static int spin_talon = 0;
 
   public static int flap_solenoid_a = 0;
   public static int flap_solenoid_b = 1;

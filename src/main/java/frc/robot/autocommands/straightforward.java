@@ -71,13 +71,8 @@ public class straightforward extends CommandBase {
     SmartDashboard.putNumber("Left Error", leftError);
     SmartDashboard.putNumber("Right Error",rightError);
 
-    //m_drivetrain.Wheelspeed(-leftOutput - angleOutput, -rightOutput + angleOutput);
-    if (scaleAuto == true) {
-      m_drivetrain.Wheelspeed(0.2*(-leftOutput - angleOutput), 0.2*(-rightOutput + angleOutput));
-    } else {
-      m_drivetrain.Wheelspeed(-leftOutput - angleOutput, -rightOutput + angleOutput);
-    }
-
+    m_drivetrain.Wheelspeed(.5*(-leftOutput - angleOutput), .5*(-rightOutput + angleOutput));
+    
 
   }
 
