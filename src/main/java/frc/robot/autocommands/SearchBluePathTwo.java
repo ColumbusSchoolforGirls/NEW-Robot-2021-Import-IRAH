@@ -18,14 +18,14 @@ public class SearchBluePathTwo extends SequentialCommandGroup {
   /** Creates a new SearchBluePathTwo. */
   private final DriveTrain m_drivetrain;
   private final ConveyorMotors m_conveyor;
-  private final ticks m_ticks;
+  //private final ticks m_ticks;
 
-  public SearchBluePathTwo(DriveTrain drivetrain, ConveyorMotors conveyor, ticks ticks) {
+  public SearchBluePathTwo(DriveTrain drivetrain, ConveyorMotors conveyor) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     m_drivetrain = drivetrain;
     m_conveyor = conveyor;
-    m_ticks = ticks;
+    //m_ticks = ticks;
     addCommands(
       new straightforward(ticks.calculateTicks(180), m_drivetrain, false),
       new ConveyorManual(1, m_conveyor, true),

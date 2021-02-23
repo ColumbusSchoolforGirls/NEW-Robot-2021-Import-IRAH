@@ -14,12 +14,12 @@ import frc.robot.commands.ResetGyro;
 public class barrels extends SequentialCommandGroup {
   
   private DriveTrain m_drivetrain;
-  private ticks m_ticks;
+  //private ticks m_ticks;
 
   /** Creates a new barrels. */
-  public barrels(ticks ticks, DriveTrain drivetrain) {
+  public barrels(DriveTrain drivetrain) {
     m_drivetrain = drivetrain;
-    m_ticks = ticks;
+   //m_ticks = ticks;
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
    

@@ -19,34 +19,34 @@ public class SearchRedPathTwo extends SequentialCommandGroup {
 
   private DriveTrain m_drivetrain;
   private ConveyorMotors m_conveyormotors;
-  private ticks m_ticks;
+  //private ticks m_ticks;
 
-  public SearchRedPathTwo(DriveTrain drivetrain, ConveyorMotors conveyormotors, ticks tick) {
+  public SearchRedPathTwo(DriveTrain drivetrain, ConveyorMotors conveyormotors) {
     m_drivetrain = drivetrain;
     m_conveyormotors = conveyormotors;
-    m_ticks = tick;
+    //m_ticks = tick;
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new straightforward(tick.calculateTicks(90), m_drivetrain, false),
+      new straightforward(ticks.calculateTicks(90), m_drivetrain, false),
       new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
-      new straightforward(tick.calculateTicks(5), m_drivetrain, false),
+      new straightforward(ticks.calculateTicks(5), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(-45, m_drivetrain),
 
-      new straightforward(tick.calculateTicks(90), m_drivetrain, false),
+      new straightforward(ticks.calculateTicks(90), m_drivetrain, false),
       new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
-      new straightforward(tick.calculateTicks(5), m_drivetrain, false),
+      new straightforward(ticks.calculateTicks(5), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(45, m_drivetrain),
 
-      new straightforward(tick.calculateTicks(140), m_drivetrain, false),
+      new straightforward(ticks.calculateTicks(140), m_drivetrain, false),
       new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
-      new straightforward(tick.calculateTicks(5), m_drivetrain, false),
+      new straightforward(ticks.calculateTicks(5), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(-45, m_drivetrain),
 
-      new straightforward(tick.calculateTicks(180), m_drivetrain, false)
+      new straightforward(ticks.calculateTicks(180), m_drivetrain, false)
            
     );
   }
