@@ -73,7 +73,7 @@ public class DriveTrain extends SubsystemBase {
       //right_back.setIdleMode(IdleMode.kBrake);
       //left_back.setIdleMode(IdleMode.kBrake);
 
-      gyro.setFusedHeading(0);
+      gyro.setYaw(0);
       resetEncoders();
       gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
     
@@ -144,7 +144,7 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public void resetGyro(){
-    gyro.setFusedHeading(0);
+    gyro.setYaw(0);
   }
 
   public void update(){
