@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.ticks;
 import frc.robot.commands.ConveyorManual;
 import frc.robot.commands.FlapManual;
+import frc.robot.commands.ResetGyro;
 import frc.robot.subsystems.ConveyorMotors;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Flap;
@@ -36,11 +37,12 @@ public class Testing extends SequentialCommandGroup {
     m_conveyormotors = conveyormotors;
     addRequirements(m_drivetrain);
     addCommands(
-      new straightforward(100, m_drivetrain, false)
+      //new straightforward(100, m_drivetrain, false)
       //new FlapManual(m_flap, false, true),
       //new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
       //new straightforward(, m_drivetrain);
-      //new Turn(270, m_drivetrain)
-    );
+      //new Turn(270, m_drivetrain)      //new straightforward(ticks.calculateTicks(100), m_drivetrain, false).withTimeout(2)
+      new ResetGyro(m_drivetrain)
+      );
   }
 }

@@ -30,7 +30,11 @@ public class ResetGyro extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_drivetrain.resetGyro();
+
+    // double [] ypr = new double[3];
+    // gyro.getYawPitchRoll(ypr);
+
+    // System.out.println("Yaw:" + ypr[0]);
   }
 
   // Called once the command ends or is interrupted.
@@ -42,6 +46,6 @@ public class ResetGyro extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

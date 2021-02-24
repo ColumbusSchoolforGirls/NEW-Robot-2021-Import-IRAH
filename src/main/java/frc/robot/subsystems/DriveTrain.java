@@ -57,7 +57,6 @@ public class DriveTrain extends SubsystemBase {
 
   public static AnalogInput sonar = new AnalogInput(0);
   
-  
 
   // Talon code for testing on Miles
   /*public static WPI_TalonSRX right_front = new WPI_TalonSRX(RobotMap.right_front_motor);
@@ -144,7 +143,8 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public void resetGyro(){
-    gyro.setYaw(0);
+    gyro.setFusedHeading(0);
+
   }
 
   public void update(){
