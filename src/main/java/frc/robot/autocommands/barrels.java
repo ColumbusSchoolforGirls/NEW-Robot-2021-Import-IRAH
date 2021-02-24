@@ -5,6 +5,7 @@
 package frc.robot.autocommands;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.subsystems.ConveyorMotors;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.ticks;
 import frc.robot.commands.ResetGyro;
@@ -26,9 +27,9 @@ public class barrels extends SequentialCommandGroup {
     m_drivetrain.setAuto();
 
     addCommands(
-      new straightforward(150, m_drivetrain, false),
+      new straightforward(80, m_drivetrain, false).withTimeout(3),
       new ResetGyro(m_drivetrain),
-      new Turn(-90, m_drivetrain)
+      new Turn(90, m_drivetrain)
 
     //   new straightforward(ticks.calculateTicks(37.5), m_drivetrain, false),
     //   new ResetGyro(m_drivetrain),
