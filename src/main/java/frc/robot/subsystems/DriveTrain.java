@@ -144,10 +144,6 @@ public class DriveTrain extends SubsystemBase {
 
   public void resetGyro(){
     gyro.setFusedHeading(0);
-<<<<<<< HEAD
-=======
-
->>>>>>> 2ef993d7e3d46f1376b525b1237ef73600039bf9
   }
 
   public void update(){
