@@ -42,11 +42,12 @@ public class Testing extends SequentialCommandGroup {
       //new FlapManual(m_flap, false, true),
       //new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
       //new straightforward(, m_drivetrain);
-    //   new ResetGyro(m_drivetrain),
-    //   new Turn(90, m_drivetrain),
-    //   new ResetGyro(m_drivetrain)
       new ResetGyro(m_drivetrain),
-      new Tracking(limelight, m_drivetrain)
-      );
+      new barrelCircle(71, drivetrain, true, false)
+      //new Turn(87, m_drivetrain)
+    //   new ResetGyro(m_drivetrain)
+      // new ResetGyro(m_drivetrain),
+      // new Tracking(limelight, m_drivetrain)
+       );
   }
 }

@@ -43,6 +43,7 @@ public class barrelCircle extends CommandBase {
     distPID = new PIDCalculator(Global.DRIVETRAIN_P, Global.DRIVETRAIN_I, Global.DRIVETRAIN_D); 
     anglePID = new PIDCalculator(Global.DRIVESTRAIGHT_ANGLE_P, Global.DRIVESTRAIGHT_ANGLE_I, Global.DRIVESTRAIGHT_ANGLE_D);
     
+
     
   }
 
@@ -65,26 +66,26 @@ public class barrelCircle extends CommandBase {
     double rightEncoder = m_drivetrain.getRightCanEncoder();
     leftError = setpoint - leftEncoder;
     rightError = setpoint - rightEncoder;
-    double angleError = angle - m_drivetrain.getFacingAngle();
+    //double angleError = angle - m_drivetrain.getFacingAngle();
 
     double leftOutput = distPID.getOutput(leftError);
     double rightOutput = distPID.getOutput(rightError);
-    double angleOutput = anglePID.getOutput(angleError);
+    //double angleOutput = anglePID.getOutput(angleError);
 
     SmartDashboard.putNumber("Left Error", leftError);
     SmartDashboard.putNumber("Right Error",rightError);
 
     //m_drivetrain.Wheelspeed(-leftOutput - angleOutput, -rightOutput + angleOutput);
     if (scaleAuto == true) {
-      //for right
+      //for left
       if(direction){
-        m_drivetrain.Wheelspeed(0.1*2.87*(-leftOutput - angleOutput), 0.1*(-rightOutput + angleOutput));
-      //left
+        m_drivetrain.Wheelspeed(0.3*2.87*(-leftOutput), 0.3*(-rightOutput));
+      //right
       }else{
-        m_drivetrain.Wheelspeed(0.1*(-leftOutput - angleOutput), 0.1*2.87*(-rightOutput + angleOutput));
+        m_drivetrain.Wheelspeed(0.3*(-leftOutput), 0.3*2.87*(-rightOutput));
       }
     } else {
-      m_drivetrain.Wheelspeed(-leftOutput - angleOutput, -rightOutput + angleOutput);
+      m_drivetrain.Wheelspeed(-leftOutput, -rightOutput);
       //if(direction){
         //m_drivetrain.Wheelspeed(0.1*2.87*(-leftOutput - angleOutput), 0.1*(-rightOutput + angleOutput));
       //left
