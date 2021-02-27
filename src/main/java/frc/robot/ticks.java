@@ -9,19 +9,27 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Sendable;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 /** Add your docs here. */
 public class ticks {
 
+<<<<<<< HEAD
     private double circumfrence = 6*Math.PI;
     private double distance;
+=======
+    private static double circumfrence = 6 * Math.PI;
+    private static double distance;
+>>>>>>> 2ef993d7e3d46f1376b525b1237ef73600039bf9
 
     // public ticks(double d){
-    //     distance = d;
+    // distance = d;
     // }
 
-    public static double calculateTicks(double distanceInches){
-        //return distance*451/circumfrence;
-        return 5.0;
+    public static double calculateTicks(double distanceInches) {
+        //System.out.println(calculateTicks(10));
+        return (distance*451/circumfrence);
     }
 
 }
