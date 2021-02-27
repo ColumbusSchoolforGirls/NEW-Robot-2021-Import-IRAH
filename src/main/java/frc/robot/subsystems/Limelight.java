@@ -25,11 +25,14 @@ public final class Limelight extends SubsystemBase {
     //double area = ta.getDouble(0.0);
     
     
-    public void teleopPeriodic() {
+    public void teleopPeriodic() {  
+    }
+
+    public void update() {
         SmartDashboard.putNumber("LimelightX", getX());
         SmartDashboard.putNumber("LimelightY", getY());
         //SmartDashboard.putNumber("LimelightArea", area);
-        SmartDashboard.putBoolean("LimelightV",getValidTarget());    
+        SmartDashboard.putBoolean("LimelightV",getValidTarget());  
     }
     
     

@@ -58,6 +58,6 @@ public class Tracking extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return Math.abs(m_limelight.getX()) <= Global.DRIVE_TRACK_TOLERANCE;
+    return Math.abs(m_limelight.getX()) <= Global.DRIVE_TRACK_TOLERANCE && m_limelight.getValidTarget();
   }
 }

@@ -11,9 +11,11 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.ticks;
 import frc.robot.commands.ConveyorManual;
 import frc.robot.commands.FlapManual;
+import frc.robot.commands.ResetGyro;
 import frc.robot.subsystems.ConveyorMotors;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Flap;
+import frc.robot.subsystems.Limelight;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -26,9 +28,9 @@ public class Testing extends SequentialCommandGroup {
   private Flap m_flap;
   private ConveyorMotors m_conveyormotors;
   private ticks m_ticks;
-
+  private Limelight m_limelight;
   // if we're with too good teams we just leave
-  public Testing(DriveTrain drivetrain, Flap flap, ConveyorMotors conveyormotors) {
+  public Testing(DriveTrain drivetrain, Flap flap, ConveyorMotors conveyormotors, Limelight limelight) {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     m_drivetrain = drivetrain;
@@ -36,11 +38,15 @@ public class Testing extends SequentialCommandGroup {
     m_conveyormotors = conveyormotors;
     addRequirements(m_drivetrain);
     addCommands(
-      new straightforward(100, m_drivetrain, false)
+      //new straightforward(100, m_drivetrain, false)
       //new FlapManual(m_flap, false, true),
       //new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
       //new straightforward(, m_drivetrain);
-      //new Turn(270, m_drivetrain)
-    );
+    //   new ResetGyro(m_drivetrain),
+    //   new Turn(90, m_drivetrain),
+    //   new ResetGyro(m_drivetrain)
+      new ResetGyro(m_drivetrain),
+      new Tracking(limelight, m_drivetrain)
+      );
   }
 }

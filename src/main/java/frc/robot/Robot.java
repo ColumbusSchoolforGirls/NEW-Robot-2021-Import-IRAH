@@ -36,6 +36,7 @@ import frc.robot.subsystems.ConveyorMotors;*/
 import frc.robot.subsystems.DriveTrain;
 //import frc.robot.subsystems.Flap;
 import frc.robot.subsystems.Hook;
+import frc.robot.subsystems.Limelight;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -63,6 +64,7 @@ public class Robot extends TimedRobot {
   public DriveTrain m_drivetrain = new DriveTrain();
   public Hook m_hook = new Hook();
   //public ControlSpinner m_controlspinner = new ControlSpinner();
+  public Limelight m_limelight = new Limelight();
   
 
   @Override
@@ -91,6 +93,7 @@ public class Robot extends TimedRobot {
     m_drivetrain.update();
     m_hook.update();
     //m_controlspinner.update();
+    m_limelight.update();
    
 
   }

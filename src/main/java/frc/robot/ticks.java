@@ -12,7 +12,7 @@ package frc.robot;
 /** Add your docs here. */
 public class ticks {
 
-    private double circumfrence = 4*Math.PI;
+    private double circumfrence = 6*Math.PI;
     private double distance;
 
     // public ticks(double d){
