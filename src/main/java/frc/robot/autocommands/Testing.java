@@ -15,6 +15,7 @@ import frc.robot.commands.ResetGyro;
 import frc.robot.subsystems.ConveyorMotors;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Flap;
+import frc.robot.subsystems.Limelight;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -27,9 +28,9 @@ public class Testing extends SequentialCommandGroup {
   private Flap m_flap;
   private ConveyorMotors m_conveyormotors;
   private ticks m_ticks;
-
+  private Limelight m_limelight;
   // if we're with too good teams we just leave
-  public Testing(DriveTrain drivetrain, Flap flap, ConveyorMotors conveyormotors) {
+  public Testing(DriveTrain drivetrain, Flap flap, ConveyorMotors conveyormotors, Limelight limelight) {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     m_drivetrain = drivetrain;
@@ -41,8 +42,16 @@ public class Testing extends SequentialCommandGroup {
       //new FlapManual(m_flap, false, true),
       //new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
       //new straightforward(, m_drivetrain);
+<<<<<<< HEAD
+    //   new ResetGyro(m_drivetrain),
+    //   new Turn(90, m_drivetrain),
+    //   new ResetGyro(m_drivetrain)
+      new ResetGyro(m_drivetrain),
+      new Tracking(limelight, m_drivetrain)
+=======
       //new Turn(270, m_drivetrain)      //new straightforward(ticks.calculateTicks(100), m_drivetrain, false).withTimeout(2)
       new ResetGyro(m_drivetrain)
+>>>>>>> 2ef993d7e3d46f1376b525b1237ef73600039bf9
       );
   }
 }

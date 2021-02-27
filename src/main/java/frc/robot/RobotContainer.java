@@ -33,6 +33,7 @@ import frc.robot.autocommands.straightforward;
 import frc.robot.commands.ConveyorManual;
 import frc.robot.commands.HookManual;
 import frc.robot.commands.LiftManual;
+import frc.robot.commands.ResetGyro;
 import frc.robot.commands.Shooting;
 import frc.robot.commands.TankDrive;
 import frc.robot.commands.UnwindLift;
@@ -97,7 +98,7 @@ public class RobotContainer {
   private final DeployHook DeployHook = new DeployHook(hookPneumatic, false);
   
   private final NothingTest m_nothing = new NothingTest();
-  private final Testing m_testing = new Testing(driveTrain, flap, conveyorMotors);
+  private final Testing m_testing = new Testing(driveTrain, flap, conveyorMotors, limeLight);
 
 
   //// TRIGGERING COMMANDS WITH BUTTONS
@@ -126,7 +127,7 @@ public class RobotContainer {
   
   public RobotContainer () {
     this.configureButtonBindings();
-    //auxButtonA.whileHeld(new ConveyorManual(1));
+    auxButtonA.whileHeld(new ResetGyro(driveTrain));
     //auxButtonY.whenPressed(new HookManual(1));
     //auxButtonB.whenPressed(new LiftManual(1));
 

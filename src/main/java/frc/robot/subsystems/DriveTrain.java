@@ -72,7 +72,7 @@ public class DriveTrain extends SubsystemBase {
       //right_back.setIdleMode(IdleMode.kBrake);
       //left_back.setIdleMode(IdleMode.kBrake);
 
-      gyro.setYaw(0);
+      gyro.setFusedHeading(0);
       resetEncoders();
       gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
     
@@ -85,7 +85,7 @@ public class DriveTrain extends SubsystemBase {
 
     gyro.setFusedHeading(0);
     resetEncoders();
-    gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
+    //gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
   }
 
   public void setTeleop(){
@@ -96,7 +96,7 @@ public class DriveTrain extends SubsystemBase {
 
     gyro.setFusedHeading(0);
     resetEncoders();
-    gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
+    //gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
   }
    
     // sets wheelspeeds of motors 
@@ -144,7 +144,10 @@ public class DriveTrain extends SubsystemBase {
 
   public void resetGyro(){
     gyro.setFusedHeading(0);
+<<<<<<< HEAD
+=======
 
+>>>>>>> 2ef993d7e3d46f1376b525b1237ef73600039bf9
   }
 
   public void update(){
@@ -155,7 +158,6 @@ public class DriveTrain extends SubsystemBase {
     SmartDashboard.putNumber("Angle", getFacingAngle());
     SmartDashboard.putNumber("Joystick Y", RobotContainer.driveCont.getRawAxis(5));
     SmartDashboard.putNumber("Joystick X", RobotContainer.driveCont.getRawAxis(1));
-
   }
   
   public void initDefaultCommand(){

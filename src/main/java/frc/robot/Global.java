@@ -40,13 +40,13 @@ public class Global {
     public static final int DRIVE_DISTANCE_TOLERANCE = 5;
 
     public static final int DRIVE_ANGLE_TOLERANCE = 0;
-    public static final double TURNANGLE_P = 0.0067;
-    public static final double TURNANGLE_I = 0.001;
+    public static final double TURNANGLE_P = 0.067;
+    public static final double TURNANGLE_I = 0;
     public static final double TURNANGLE_D = 0;
-    public static final double TURNANGLE_IZONE = 10;
+    public static final double TURNANGLE_IZONE = 0;
 
     //PID Values for Track
-    public static final double TRACK_P = 0;
+    public static final double TRACK_P = 0.01;
     public static final double TRACK_I = 0;
     public static final double TRACK_D = 0;
     public static final int DRIVE_TRACK_TOLERANCE = 0;
