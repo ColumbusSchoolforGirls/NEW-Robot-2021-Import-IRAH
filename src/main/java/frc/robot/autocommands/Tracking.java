@@ -46,6 +46,8 @@ public class Tracking extends CommandBase {
       SmartDashboard.putNumber("Track Error", -m_limelight.getX());
 
       m_drivetrain.Wheelspeed(-trackOutput, trackOutput); 
+    }else{
+      m_drivetrain.Wheelspeed(0,0);
     }
   }
 
@@ -58,6 +60,6 @@ public class Tracking extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return Math.abs(m_limelight.getX()) <= Global.DRIVE_TRACK_TOLERANCE && m_limelight.getValidTarget();
+    return false; //Math.abs(m_limelight.getX()) <= Global.DRIVE_TRACK_TOLERANCE && m_limelight.getValidTarget();
   }
 }
