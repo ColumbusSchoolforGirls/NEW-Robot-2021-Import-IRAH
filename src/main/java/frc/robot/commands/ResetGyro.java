@@ -31,16 +31,8 @@ public class ResetGyro extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-<<<<<<< HEAD
     m_drivetrain.resetGyro();
     //SmartDashboard.putNumber("yawValue", value)
-=======
-
-    // double [] ypr = new double[3];
-    // gyro.getYawPitchRoll(ypr);
-
-    // System.out.println("Yaw:" + ypr[0]);
->>>>>>> 813ca38cc4d364b35f420fb92ccc9355dc0a261b
   }
 
 
