@@ -40,7 +40,7 @@ public class Global {
     public static final int DRIVE_DISTANCE_TOLERANCE = 5;
 
     public static final int DRIVE_ANGLE_TOLERANCE = 0;
-    public static final double TURNANGLE_P = 0.067;
+    public static final double TURNANGLE_P = 0.0062;
     public static final double TURNANGLE_I = 0;
     public static final double TURNANGLE_D = 0;
     public static final double TURNANGLE_IZONE = 0;
