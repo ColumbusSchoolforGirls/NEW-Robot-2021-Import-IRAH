@@ -21,26 +21,29 @@ public class barrelCircle extends CommandBase {
   private double rightError;
   private double angle;
   private double setpoint;
-  private PIDCalculator distPID;
+  private PIDCalculator leftDistPID;
+  private PIDCalculator rightDistPID;
   private PIDCalculator anglePID;
   private DriveTrain m_drivetrain;
   private boolean scaleAuto;
-  //left -- false, right -- true
+  //left -- true, right -- false
   private boolean direction;
+  private double ratio = 2.87;
   
 
-  public barrelCircle(double ticks, DriveTrain drivetrain, boolean scale, boolean direct) {
+  public barrelCircle(double insideTicks,  DriveTrain drivetrain, boolean scale, boolean direct) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_drivetrain = drivetrain;
     direction = direct;
     addRequirements(drivetrain);
-    setpoint = ticks; //Ticks should be a global constant - MAKE THAT CHANGE
+    setpoint = insideTicks; //Ticks should be a global constant - MAKE THAT CHANGE
     m_drivetrain.Wheelspeed(0, 0); 
     //why does this need to be static in this instance but it doesn't need to be in tankdrive command
     scaleAuto = scale;
 
     
-    distPID = new PIDCalculator(Global.DRIVETRAIN_P, Global.DRIVETRAIN_I, Global.DRIVETRAIN_D); 
+    leftDistPID = new PIDCalculator(Global.DRIVETRAIN_P, Global.DRIVETRAIN_I, Global.DRIVETRAIN_D); 
+    rightDistPID = new PIDCalculator(Global.DRIVETRAIN_P, Global.DRIVETRAIN_I, Global.DRIVETRAIN_D);
     anglePID = new PIDCalculator(Global.DRIVESTRAIGHT_ANGLE_P, Global.DRIVESTRAIGHT_ANGLE_I, Global.DRIVESTRAIGHT_ANGLE_D);
     
 
@@ -64,12 +67,20 @@ public class barrelCircle extends CommandBase {
   public void execute() {
     double leftEncoder = m_drivetrain.getLeftCanEncoder();
     double rightEncoder = m_drivetrain.getRightCanEncoder();
-    leftError = setpoint - leftEncoder;
-    rightError = setpoint - rightEncoder;
+
+    //turn left
+    if(direction){
+     leftError = (setpoint - leftEncoder);
+      rightError = ratio*(setpoint - rightEncoder);
+    }
+    else {
+      leftError = ratio*(setpoint - leftEncoder);
+      rightError = setpoint - rightEncoder;
+    }
     //double angleError = angle - m_drivetrain.getFacingAngle();
 
-    double leftOutput = distPID.getOutput(leftError);
-    double rightOutput = distPID.getOutput(rightError);
+    double leftOutput = leftDistPID.getOutput(leftError);
+    double rightOutput = rightDistPID.getOutput(rightError);
     //double angleOutput = anglePID.getOutput(angleError);
 
     SmartDashboard.putNumber("Left Error", leftError);
@@ -79,10 +90,10 @@ public class barrelCircle extends CommandBase {
     if (scaleAuto == true) {
       //for left
       if(direction){
-        m_drivetrain.Wheelspeed(0.3*2.87*(-leftOutput), 0.3*(-rightOutput));
+        m_drivetrain.Wheelspeed(0.3*ratio*(-leftOutput), 0.3*(-rightOutput));
       //right
       }else{
-        m_drivetrain.Wheelspeed(0.3*(-leftOutput), 0.3*2.87*(-rightOutput));
+        m_drivetrain.Wheelspeed(0.3*(-leftOutput), 0.3*ratio*(-rightOutput));
       }
     } else {
       m_drivetrain.Wheelspeed(-leftOutput, -rightOutput);
