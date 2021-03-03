@@ -42,9 +42,9 @@ public class barrelCircle extends CommandBase {
     scaleAuto = scale;
 
     
-    leftDistPID = new PIDCalculator(Global.DRIVETRAIN_P, Global.DRIVETRAIN_I, Global.DRIVETRAIN_D); 
-    rightDistPID = new PIDCalculator(Global.DRIVETRAIN_P, Global.DRIVETRAIN_I, Global.DRIVETRAIN_D);
-    anglePID = new PIDCalculator(Global.DRIVESTRAIGHT_ANGLE_P, Global.DRIVESTRAIGHT_ANGLE_I, Global.DRIVESTRAIGHT_ANGLE_D);
+    // leftDistPID = new PIDCalculator(Global.DRIVETRAIN_P, Global.DRIVETRAIN_I, Global.DRIVETRAIN_D); 
+    // rightDistPID = new PIDCalculator(Global.DRIVETRAIN_P, Global.DRIVETRAIN_I, Global.DRIVETRAIN_D);
+    // anglePID = new PIDCalculator(Global.DRIVESTRAIGHT_ANGLE_P, Global.DRIVESTRAIGHT_ANGLE_I, Global.DRIVESTRAIGHT_ANGLE_D);
     
 
     
@@ -71,17 +71,18 @@ public class barrelCircle extends CommandBase {
     //turn left
     if(direction){
      leftError = (setpoint - leftEncoder);
-     rightError = -ratio*(setpoint - rightEncoder);
+     rightError = ratio*(-setpoint - rightEncoder);
     }
     //turn right
     else {
-      leftError = -ratio*(setpoint - leftEncoder);
+      leftError = ratio*(-setpoint - leftEncoder);
       rightError = setpoint - rightEncoder;
     }
     //double angleError = angle - m_drivetrain.getFacingAngle();
 
-    double leftOutput = leftDistPID.getOutput(leftError);
-    double rightOutput = rightDistPID.getOutput(rightError);
+   // if not work it should be leftPID.getOutput(leftOutput)  
+    double leftOutput = 1;
+    double rightOutput = 1;
     //double angleOutput = anglePID.getOutput(angleError);
 
     SmartDashboard.putNumber("Left Error", leftError);
@@ -91,10 +92,10 @@ public class barrelCircle extends CommandBase {
     if (scaleAuto == true) {
       //for left
       if(direction){
-        m_drivetrain.Wheelspeed(0.3*ratio*(-leftOutput), 0.3*(-rightOutput));
+        m_drivetrain.Wheelspeed(0.3*(-leftOutput), 0.3*ratio*(rightOutput));
       //right
       }else{
-        m_drivetrain.Wheelspeed(0.3*(-leftOutput), 0.3*ratio*(-rightOutput));
+        m_drivetrain.Wheelspeed(0.3*ratio*(-leftOutput), 0.3*(rightOutput));
       }
     } else {
       m_drivetrain.Wheelspeed(-leftOutput, -rightOutput);
@@ -119,6 +120,6 @@ public class barrelCircle extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return Math.abs(leftError) <= Global.DRIVE_DISTANCE_TOLERANCE;
+    return Math.abs(leftError) <= setpoint + 5;
   }
 }
