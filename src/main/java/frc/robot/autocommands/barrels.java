@@ -27,13 +27,8 @@ public class barrels extends SequentialCommandGroup {
     m_drivetrain.setAuto();
 
     addCommands(
-<<<<<<< HEAD
-      new straightforward(70, m_drivetrain,false),
-      new barrelCircle(100, m_drivetrain, true, false)
-=======
       //new straightforward(70, m_drivetrain,false),
       new barrelCircle(71, m_drivetrain, true, false)
->>>>>>> f98ed4441ec2735c9a6ac6d2c37e05dd2641c36c
     //   new straightforward(ticks.calculateTicks(37.5), m_drivetrain, false),
     //   new ResetGyro(m_drivetrain),
     //   new Turn(-90, m_drivetrain),

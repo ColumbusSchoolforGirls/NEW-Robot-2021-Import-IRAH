@@ -38,6 +38,10 @@ public class Global {
     public static final double DRIVESTRAIGHT_ANGLE_I = 0;
     public static final double DRIVESTRAIGHT_ANGLE_D = 0;
 
+    public static final double BARRELS_P = 0;
+    public static final double BARRELS_I = 0;
+    public static final double BARRELS_D = 0;
+
 
     public static final int DRIVE_DISTANCE_TOLERANCE = 5;
 
