@@ -71,10 +71,11 @@ public class barrelCircle extends CommandBase {
     //turn left
     if(direction){
      leftError = (setpoint - leftEncoder);
-      rightError = ratio*(setpoint - rightEncoder);
+     rightError = -ratio*(setpoint - rightEncoder);
     }
+    //turn right
     else {
-      leftError = ratio*(setpoint - leftEncoder);
+      leftError = -ratio*(setpoint - leftEncoder);
       rightError = setpoint - rightEncoder;
     }
     //double angleError = angle - m_drivetrain.getFacingAngle();
