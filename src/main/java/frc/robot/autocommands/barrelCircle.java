@@ -46,7 +46,7 @@ public class barrelCircle extends CommandBase {
     // rightDistPID = new PIDCalculator(Global.DRIVETRAIN_P, Global.DRIVETRAIN_I, Global.DRIVETRAIN_D);
     // anglePID = new PIDCalculator(Global.DRIVESTRAIGHT_ANGLE_P, Global.DRIVESTRAIGHT_ANGLE_I, Global.DRIVESTRAIGHT_ANGLE_D);
     
-
+    
     
   }
 
@@ -70,13 +70,13 @@ public class barrelCircle extends CommandBase {
 
     //turn left
     if(direction){
-     leftError = (setpoint - leftEncoder);
-     rightError = ratio*(-setpoint - rightEncoder);
+     leftError = (-setpoint - leftEncoder);
+     rightError = ratio*(setpoint - rightEncoder);
     }
     //turn right
     else {
-      leftError = ratio*(-setpoint - leftEncoder);
-      rightError = setpoint - rightEncoder;
+      leftError = ratio*(setpoint - leftEncoder);
+      rightError = -setpoint - rightEncoder;
     }
     //double angleError = angle - m_drivetrain.getFacingAngle();
 
@@ -87,6 +87,9 @@ public class barrelCircle extends CommandBase {
 
     SmartDashboard.putNumber("Left Error", leftError);
     SmartDashboard.putNumber("Right Error",rightError);
+    SmartDashboard.putNumber("rightMotorOutput", rightOutput);
+    SmartDashboard.putNumber("leftMotorOutput", leftOutput);
+
 
     //m_drivetrain.Wheelspeed(-leftOutput - angleOutput, -rightOutput + angleOutput);
     if (scaleAuto == true) {
