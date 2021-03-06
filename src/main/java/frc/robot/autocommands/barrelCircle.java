@@ -76,7 +76,7 @@ public class barrelCircle extends CommandBase {
     //turn left
     else {
       leftError = setpoint - Math.abs(leftEncoder);
-      rightError = setpoint - Math.abs(rightEncoder); //rightEncoder is negative when moving forward
+      rightError = ratio*setpoint - Math.abs(rightEncoder); //rightEncoder is negative when moving forward
     }
     //double angleError = angle - m_drivetrain.getFacingAngle();
 
@@ -95,7 +95,6 @@ public class barrelCircle extends CommandBase {
 
     // think about ratio and how it is applied at the top and applied here. 
     if (scaleAuto == true) {
-      //for right
       m_drivetrain.Wheelspeed(0.3*(-leftOutput), 0.3*(-rightOutput));
     } else {
       m_drivetrain.Wheelspeed(-leftOutput, -rightOutput);
