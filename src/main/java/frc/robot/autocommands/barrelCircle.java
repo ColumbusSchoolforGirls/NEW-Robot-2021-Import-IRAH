@@ -94,10 +94,10 @@ public class barrelCircle extends CommandBase {
     if (scaleAuto == true) {
       //for left
       if(direction){
-        m_drivetrain.Wheelspeed(0.3*(-leftOutput), 0.3*ratio*(rightOutput));
+        m_drivetrain.Wheelspeed(0.3*(leftOutput), 0.3*ratio*(rightOutput));
       //right
       }else{
-        m_drivetrain.Wheelspeed(0.3*ratio*(-leftOutput), 0.3*(rightOutput));
+        m_drivetrain.Wheelspeed(0.3*ratio*(leftOutput), 0.3*(rightOutput));
       }
     } else {
       m_drivetrain.Wheelspeed(-leftOutput, -rightOutput);
