@@ -42,9 +42,9 @@ public class barrelCircle extends CommandBase {
     scaleAuto = scale;
 
     
-    // leftDistPID = new PIDCalculator(Global.DRIVETRAIN_P, Global.DRIVETRAIN_I, Global.DRIVETRAIN_D); 
-    // rightDistPID = new PIDCalculator(Global.DRIVETRAIN_P, Global.DRIVETRAIN_I, Global.DRIVETRAIN_D);
-    // anglePID = new PIDCalculator(Global.DRIVESTRAIGHT_ANGLE_P, Global.DRIVESTRAIGHT_ANGLE_I, Global.DRIVESTRAIGHT_ANGLE_D);
+    leftDistPID = new PIDCalculator(Global.BARRELS_P, Global.BARRELS_I, Global.BARRELS_D);
+    rightDistPID = new PIDCalculator(Global.BARRELS_P, Global.BARRELS_I, Global.BARRELS_D);
+    anglePID = new PIDCalculator(Global.DRIVESTRAIGHT_ANGLE_P, Global.DRIVESTRAIGHT_ANGLE_I, Global.DRIVESTRAIGHT_ANGLE_D);
     
     
     
@@ -80,9 +80,8 @@ public class barrelCircle extends CommandBase {
     }
     //double angleError = angle - m_drivetrain.getFacingAngle();
 
-   // if not work it should be leftPID.getOutput(leftOutput)  
-    double leftOutput = 1;
-    double rightOutput = 1;
+    double leftOutput = leftDistPID.getOutput(leftError);
+    double rightOutput = rightDistPID.getOutput(rightError);
     //double angleOutput = anglePID.getOutput(angleError);
 
     SmartDashboard.putNumber("Left Error", leftError);
@@ -123,6 +122,6 @@ public class barrelCircle extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return Math.abs(leftError) <= setpoint + 5;
+    return Math.abs(leftError) <= Global.DRIVE_DISTANCE_TOLERANCE;
   }
 }
