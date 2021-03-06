@@ -40,7 +40,7 @@ public class Testing extends SequentialCommandGroup {
     addCommands(
       //new straightforward(80, m_drivetrain, false),
       //new ResetGyro(m_drivetrain),
-      new barrelCircle(70, m_drivetrain, true, false)
+      //new barrelCircle(70, m_drivetrain, true, false)
       //new FlapManual(m_flap, false, true),
       //new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
       //new straightforward(, m_drivetrain);
@@ -49,7 +49,9 @@ public class Testing extends SequentialCommandGroup {
     //   new ResetGyro(m_drivetrain)
       // new ResetGyro(m_drivetrain),
       // new straightforward(150, m_drivetrain, false)
-      //new Tracking(limelight, m_drivetrain)
+      new Tracking(limelight, m_drivetrain),
+      //new straightforward(2, m_drivetrain, false),
+      new ConveyorManual(1, m_conveyormotors, true).withTimeout(1)
       );
   }
 }

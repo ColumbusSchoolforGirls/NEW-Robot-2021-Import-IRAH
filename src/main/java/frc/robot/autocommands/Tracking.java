@@ -39,13 +39,16 @@ public class Tracking extends CommandBase {
   @Override
   public void execute() {
     if(m_limelight.getValidTarget()){
-      //output is error, and so it is set point - error, and our set point 0, so its just 0- tx, so -tx
-      double trackOutput = trackPID.getOutput(-m_limelight.getX());
+      while(Math.abs(m_limelight.getX())>= 10){
+        //output is error, and so it is set point - error, and our set point 0, so its just 0- tx, so -tx
+        double trackOutput = trackPID.getOutput(-m_limelight.getX());
 
-      SmartDashboard.putNumber("Track Output", trackOutput);
-      SmartDashboard.putNumber("Track Error", -m_limelight.getX());
+        SmartDashboard.putNumber("Track Output", trackOutput);
+        SmartDashboard.putNumber("Track Error", -m_limelight.getX());
 
-      m_drivetrain.Wheelspeed(-trackOutput, trackOutput); 
+        m_drivetrain.Wheelspeed(-trackOutput, trackOutput);
+      }
+      m_drivetrain.Wheelspeed(-0.2, -0.2);
     }else{
       m_drivetrain.Wheelspeed(0,0);
     }
