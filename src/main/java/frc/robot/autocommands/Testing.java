@@ -12,6 +12,7 @@ import frc.robot.ticks;
 import frc.robot.commands.ConveyorManual;
 import frc.robot.commands.FlapManual;
 import frc.robot.commands.ResetGyro;
+import frc.robot.commands.TankStraight;
 import frc.robot.subsystems.ConveyorMotors;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Flap;
@@ -38,9 +39,13 @@ public class Testing extends SequentialCommandGroup {
     m_conveyormotors = conveyormotors;
     addRequirements(m_drivetrain);
     addCommands(
-      //new straightforward(80, m_drivetrain, false),
+      //new straightforward(80, m_drivetrain, false)
       //new ResetGyro(m_drivetrain),
+<<<<<<< HEAD
       //new barrelCircle(70, m_drivetrain, true, false)
+=======
+      new barrelCircle(60, m_drivetrain, true, true)
+>>>>>>> 33675df90c751c2e0d5a233744be5ca4b6f5a066
       //new FlapManual(m_flap, false, true),
       //new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
       //new straightforward(, m_drivetrain);
@@ -49,9 +54,15 @@ public class Testing extends SequentialCommandGroup {
     //   new ResetGyro(m_drivetrain)
       // new ResetGyro(m_drivetrain),
       // new straightforward(150, m_drivetrain, false)
+<<<<<<< HEAD
       new Tracking(limelight, m_drivetrain),
       //new straightforward(2, m_drivetrain, false),
       new ConveyorManual(1, m_conveyormotors, true).withTimeout(1)
+=======
+      //new Tracking(limelight, m_drivetrain)
+      //new TankStraight(m_drivetrain)
+     
+>>>>>>> 33675df90c751c2e0d5a233744be5ca4b6f5a066
       );
   }
 }
