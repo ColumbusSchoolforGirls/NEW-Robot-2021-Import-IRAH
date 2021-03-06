@@ -70,13 +70,13 @@ public class barrelCircle extends CommandBase {
 
     //turn right
     if(turnRight){
-     leftError = -setpoint - leftEncoder; //negative bc left drives opposite direction? (they go backward)
-     rightError = ratio*(setpoint - rightEncoder);
+     leftError = ratio*setpoint - Math.abs(leftEncoder); //negative bc left drives opposite direction? (they go backward)
+     rightError = setpoint - Math.abs(rightEncoder);
     }
     //turn left
     else {
-      leftError = ratio*(setpoint - leftEncoder);
-      rightError = -setpoint - rightEncoder;
+      leftError = setpoint - Math.abs(leftEncoder);
+      rightError = setpoint - Math.abs(rightEncoder); //rightEncoder is negative when moving forward
     }
     //double angleError = angle - m_drivetrain.getFacingAngle();
 
@@ -92,14 +92,11 @@ public class barrelCircle extends CommandBase {
 
     //m_drivetrain.Wheelspeed(-leftOutput - angleOutput, -rightOutput + angleOutput);
     //removed negatives before leftOutput bc pid already gives neg
+
+    // think about ratio and how it is applied at the top and applied here. 
     if (scaleAuto == true) {
       //for right
-      if(turnRight){
-        m_drivetrain.Wheelspeed(0.1*(-leftOutput), 0.1*ratio*(rightOutput));
-      //left
-      }else{
-        m_drivetrain.Wheelspeed(0.1*ratio*(-leftOutput), 0.1*(rightOutput));
-      }
+      m_drivetrain.Wheelspeed(0.3*(-leftOutput), 0.3*(-rightOutput));
     } else {
       m_drivetrain.Wheelspeed(-leftOutput, -rightOutput);
       //if(direction){

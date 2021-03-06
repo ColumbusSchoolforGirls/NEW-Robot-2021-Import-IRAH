@@ -56,9 +56,12 @@ public class PIDCalculator {
 
         if (output > 1){
             output = 1;
+        } else if (output < -1){
+            output = -1;
         } else {
-            output = prop + integral + deriv;
+            output = prop + integral +deriv;
         }
+        
         
         return output;
     }
