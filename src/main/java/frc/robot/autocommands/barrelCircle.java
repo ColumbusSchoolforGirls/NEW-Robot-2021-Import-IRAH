@@ -27,14 +27,14 @@ public class barrelCircle extends CommandBase {
   private DriveTrain m_drivetrain;
   private boolean scaleAuto;
   //left -- true, right -- false
-  private boolean direction;
+  private boolean turnRight;
   private double ratio = 2.87;
   
 
   public barrelCircle(double insideTicks,  DriveTrain drivetrain, boolean scale, boolean direct) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_drivetrain = drivetrain;
-    direction = direct;
+    turnRight = direct;
     addRequirements(drivetrain);
     setpoint = insideTicks; //Ticks should be a global constant - MAKE THAT CHANGE
     m_drivetrain.Wheelspeed(0, 0); 
@@ -58,22 +58,22 @@ public class barrelCircle extends CommandBase {
     m_drivetrain.resetEncoders();
     m_drivetrain.resetGyro();
     angle = m_drivetrain.getFacingAngle();
-    SmartDashboard.putString("Hello World", "Hi");
     
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    //left encoder is negative value
     double leftEncoder = m_drivetrain.getLeftCanEncoder();
     double rightEncoder = m_drivetrain.getRightCanEncoder();
 
-    //turn left
-    if(direction){
-     leftError = (-setpoint - leftEncoder);
+    //turn right
+    if(turnRight){
+     leftError = -setpoint - leftEncoder; //negative bc left drives opposite direction? (they go backward)
      rightError = ratio*(setpoint - rightEncoder);
     }
-    //turn right
+    //turn left
     else {
       leftError = ratio*(setpoint - leftEncoder);
       rightError = -setpoint - rightEncoder;
@@ -91,13 +91,14 @@ public class barrelCircle extends CommandBase {
 
 
     //m_drivetrain.Wheelspeed(-leftOutput - angleOutput, -rightOutput + angleOutput);
+    //removed negatives before leftOutput bc pid already gives neg
     if (scaleAuto == true) {
-      //for left
-      if(direction){
-        m_drivetrain.Wheelspeed(0.3*(-leftOutput), 0.3*ratio*(rightOutput));
-      //right
+      //for right
+      if(turnRight){
+        m_drivetrain.Wheelspeed(0.1*(-leftOutput), 0.1*ratio*(rightOutput));
+      //left
       }else{
-        m_drivetrain.Wheelspeed(0.3*ratio*(-leftOutput), 0.3*(rightOutput));
+        m_drivetrain.Wheelspeed(0.1*ratio*(-leftOutput), 0.1*(rightOutput));
       }
     } else {
       m_drivetrain.Wheelspeed(-leftOutput, -rightOutput);
@@ -115,13 +116,19 @@ public class barrelCircle extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_drivetrain.Wheelspeed(0, 0);
+    m_drivetrain.Wheelspeed(0,0);
     //ahhhhhhhhhhhhhhhhhhhhhhhh
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return Math.abs(leftError) <= Global.DRIVE_DISTANCE_TOLERANCE;
+    if (turnRight){
+      //turning left
+      return Math.abs(rightError) <= Global.DRIVE_DISTANCE_TOLERANCE;
+    }
+    else {
+      return Math.abs(leftError) <= Global.DRIVE_DISTANCE_TOLERANCE;
+    }
   }
 }
