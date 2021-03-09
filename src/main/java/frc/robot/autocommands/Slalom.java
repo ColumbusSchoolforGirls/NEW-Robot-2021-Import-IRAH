@@ -26,51 +26,52 @@ public class Slalom extends SequentialCommandGroup {
 
     addCommands(
       //leaving start
-      new straightforward(ticks.calculateTicks(24), m_drivetrain, false),
+      //don't use calculate ticks it no work
+      new straightforward(31, m_drivetrain, false),
       new ResetGyro(m_drivetrain),
 
-      new Turn(55, m_drivetrain),
-      new straightforward(ticks.calculateTicks(62), m_drivetrain, false),
-      new ResetGyro(m_drivetrain),
-      new Turn(-55, m_drivetrain),
+      new Turn(45, m_drivetrain)
+      // new straightforward(ticks.calculateTicks(62), m_drivetrain, false),
+      // new ResetGyro(m_drivetrain),
+      // new Turn(-55, m_drivetrain),
 
-      //big forward A 
-      new straightforward(ticks.calculateTicks(120), m_drivetrain, false),
+      // //big forward A 
+      // new straightforward(ticks.calculateTicks(120), m_drivetrain, false),
 
-      new ResetGyro(m_drivetrain),
-      new Turn(-55, m_drivetrain),
-      new straightforward(ticks.calculateTicks(62), m_drivetrain, false),
-      new ResetGyro(m_drivetrain),
-      new Turn(55, m_drivetrain),
+      // new ResetGyro(m_drivetrain),
+      // new Turn(-55, m_drivetrain),
+      // new straightforward(ticks.calculateTicks(62), m_drivetrain, false),
+      // new ResetGyro(m_drivetrain),
+      // new Turn(55, m_drivetrain),
 
-      //--> /\
-      new straightforward(ticks.calculateTicks(60), m_drivetrain, false),
-      new ResetGyro(m_drivetrain),
-      new Turn(90, m_drivetrain),
+      // //--> /\
+      // new straightforward(ticks.calculateTicks(60), m_drivetrain, false),
+      // new ResetGyro(m_drivetrain),
+      // new Turn(90, m_drivetrain),
 
-      //  /\  <
-      new straightforward(ticks.calculateTicks(60), m_drivetrain, false),
-      new ResetGyro(m_drivetrain),
-      new Turn(90, m_drivetrain),
+      // //  /\  <
+      // new straightforward(ticks.calculateTicks(60), m_drivetrain, false),
+      // new ResetGyro(m_drivetrain),
+      // new Turn(90, m_drivetrain),
 
-      // <-- 
-      new straightforward(ticks.calculateTicks(60), m_drivetrain, false),
-      new ResetGyro(m_drivetrain),
+      // // <-- 
+      // new straightforward(ticks.calculateTicks(60), m_drivetrain, false),
+      // new ResetGyro(m_drivetrain),
 
-      //prepare for big forward B
-      new Turn(55, m_drivetrain),
-      new straightforward(ticks.calculateTicks(62), m_drivetrain,false),
-      new Turn(-55, m_drivetrain),
+      // //prepare for big forward B
+      // new Turn(55, m_drivetrain),
+      // new straightforward(ticks.calculateTicks(62), m_drivetrain,false),
+      // new Turn(-55, m_drivetrain),
 
-      //big forward B (return)
-      new straightforward(ticks.calculateTicks(120), m_drivetrain, false),
+      // //big forward B (return)
+      // new straightforward(ticks.calculateTicks(120), m_drivetrain, false),
 
-      new Turn(-55, m_drivetrain),
-      new straightforward(ticks.calculateTicks(62), m_drivetrain, false),
+      // new Turn(-55, m_drivetrain),
+      // new straightforward(ticks.calculateTicks(62), m_drivetrain, false),
 
-      //finish
-      new Turn(55, m_drivetrain),
-      new straightforward(ticks.calculateTicks(24), m_drivetrain,false)
+      // //finish
+      // new Turn(55, m_drivetrain),
+      // new straightforward(ticks.calculateTicks(24), m_drivetrain,false)
     );
   }
 }

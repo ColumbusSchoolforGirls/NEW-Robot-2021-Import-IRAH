@@ -30,18 +30,19 @@ public class barrelTurn extends CommandBase {
   //left -- true, right -- false
   private boolean turnRight; //true if turning right
   private double ratio = 2.87;  //scaling ratio
-  private double tolerance = 5; //degree tolerance
-  
+  private double tolerance = 2; //degree tolerance
+  private double[] arrayOfSadness = new double[3];
 
-  public barrelTurn(double finishAngle, double speed,  DriveTrain drivetrain, boolean scale, boolean direct) {
+  public barrelTurn(double finishAngle, double speed,  DriveTrain drivetrain, boolean scale, boolean turningRight) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_drivetrain = drivetrain;
-    turnRight = direct;
+    turnRight = turningRight;
     addRequirements(drivetrain);
     angleSetpoint = finishAngle;
     percentSpeed= -speed; //negative speed bc to go forward wheelspeed wants negative values???
     m_drivetrain.Wheelspeed(0, 0); 
     scaleAuto = scale;
+    
     
   }
 
@@ -67,26 +68,24 @@ public class barrelTurn extends CommandBase {
     // SmartDashboard.putNumber("rightMotorOutput", rightOutput);
     // SmartDashboard.putNumber("leftMotorOutput", leftOutput);
 
-    //m_drivetrain.Wheelspeed(-leftOutput - angleOutput, -rightOutput + angleOutput);
-    //removed negatives before leftOutput bc pid already gives neg
-
-    if (scaleAuto == true) {
-      if(turnRight){
-        m_drivetrain.Wheelspeed(percentSpeed*ratio, percentSpeed);
-      }else{
-        m_drivetrain.Wheelspeed(percentSpeed, percentSpeed*ratio);
-      }
-      
-    } else {
-      m_drivetrain.Wheelspeed(percentSpeed, percentSpeed);
-      //if(direction){
-        //m_drivetrain.Wheelspeed(0.1*2.87*(-leftOutput - angleOutput), 0.1*(-rightOutput + angleOutput));
-      //left
-      //}else{
-        //m_drivetrain.Wheelspeed(0.1*(-leftOutput - angleOutput), 0.1*2.87*(-rightOutput + angleOutput));
-     // }
+    //runs scaled motors until  the absval of current angle is within tolerance of setpoint angle
+    //(absolute value bc when turning right angles are negative)
+    //while((Math.abs(angleSetpoint - Math.abs(gyro.getFusedHeading())) > tolerance)){
+        if (scaleAuto == true) {
+          if(turnRight){
+            m_drivetrain.Wheelspeed(percentSpeed, percentSpeed*ratio);
+          }else{
+            m_drivetrain.Wheelspeed(percentSpeed*ratio, percentSpeed);
+          }
+          
+        } else {
+          //going straight wow
+          m_drivetrain.Wheelspeed(percentSpeed, percentSpeed);
+        }
+      gyro.getYawPitchRoll(arrayOfSadness);
+      SmartDashboard.putNumber("Yaw", arrayOfSadness[0]);
     }
-  }
+  //}
 
   // Called once the command ends or is interrupted.
   @Override
@@ -98,7 +97,10 @@ public class barrelTurn extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return Math.abs(angleSetpoint-gyro.getFusedHeading()) <= tolerance;
+    //stops the robot turning when the absval of current angle is within tolerance of setpoint angle
+    //(absolute value bc when turning right angles are negative)
+    gyro.getYawPitchRoll(arrayOfSadness);
+    return Math.abs(angleSetpoint- Math.abs(arrayOfSadness[0])) < tolerance;
 
   }
 }

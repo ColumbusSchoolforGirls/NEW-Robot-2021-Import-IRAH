@@ -39,6 +39,8 @@ public class Testing extends SequentialCommandGroup {
     m_conveyormotors = conveyormotors;
     addRequirements(m_drivetrain);
     addCommands(
+      //new barrelTurn(90, 0.2, m_drivetrain, true, true)
+      //new Slalom(m_drivetrain)
       //new straightforward(80, m_drivetrain, false)
       //new ResetGyro(m_drivetrain),
       //new barrelCircle(70, m_drivetrain, true, false)
@@ -46,13 +48,13 @@ public class Testing extends SequentialCommandGroup {
       //new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
       //new straightforward(, m_drivetrain);
     //   new ResetGyro(m_drivetrain),
-    //   new Turn(90, m_drivetrain),
+       new Turn(90, m_drivetrain)
     //   new ResetGyro(m_drivetrain)
       // new ResetGyro(m_drivetrain),
       // new straightforward(150, m_drivetrain, false)
-      new Tracking(limelight, m_drivetrain),
+      //new Tracking(limelight, m_drivetrain),
       //new straightforward(2, m_drivetrain, false),
-      new ConveyorManual(1, m_conveyormotors, true).withTimeout(1)
+     // new ConveyorManual(1, m_conveyormotors, true).withTimeout(1)
       );
   }
 }

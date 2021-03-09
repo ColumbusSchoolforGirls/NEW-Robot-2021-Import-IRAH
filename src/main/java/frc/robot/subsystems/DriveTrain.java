@@ -100,7 +100,10 @@ public class DriveTrain extends SubsystemBase {
   }
    
     // sets wheelspeeds of motors 
-  public void Wheelspeed(double rightspeed, double leftspeed){
+    //this is dumb why is right on the left I have done this wrong SO MANY TIMES
+    //please we must fix this at some point when we have time
+    //please
+  public void Wheelspeed(double rightspeed, double leftspeed){  
     right_front.set(rightspeed);
     left_front.set(-leftspeed);
     right_back.set(rightspeed);
