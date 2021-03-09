@@ -7,8 +7,6 @@
 
 package frc.robot.autocommands;
 
-import com.ctre.phoenix.sensors.PigeonIMU;
-
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Global;
@@ -19,33 +17,40 @@ public class barrelTurn extends CommandBase {
   /**
    * Creates a new starting_infront_port.
    */
-
-  //the angle we want to finish at
-  private double angleSetpoint;
+  private double leftError;
+  private double rightError;
+  private double angle;
+  private double setpoint;
+  private PIDCalculator leftDistPID;
+  private PIDCalculator rightDistPID;
+  private PIDCalculator anglePID;
   private DriveTrain m_drivetrain;
-  private boolean scaleAuto;  //scales motor output to percent speed instead of 100?
-  private double percentSpeed; //percent speed to scale motor output to (0-1)
-  private PigeonIMU gyro;
-  private double angle; //what is this for?
+  private boolean scaleAuto;
   //left -- true, right -- false
-  private boolean turnRight; //true if turning right
-  private double ratio = 2.87;  //scaling ratio
-  private double tolerance = 2; //degree tolerance
-  private double[] arrayOfSadness = new double[3];
+  private boolean turnRight;
+  private double ratio = 2.87;
+  
 
-  public barrelTurn(double finishAngle, double speed,  DriveTrain drivetrain, boolean scale, boolean turningRight) {
+  public barrelTurn(double insideTicks,  DriveTrain drivetrain, boolean scale, boolean direct) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_drivetrain = drivetrain;
-    turnRight = turningRight;
+    turnRight = direct;
     addRequirements(drivetrain);
-    angleSetpoint = finishAngle;
-    percentSpeed= -speed; //negative speed bc to go forward wheelspeed wants negative values???
+    setpoint = insideTicks; //Ticks should be a global constant - MAKE THAT CHANGE
     m_drivetrain.Wheelspeed(0, 0); 
+    //why does this need to be static in this instance but it doesn't need to be in tankdrive command
     scaleAuto = scale;
+
+    
+    leftDistPID = new PIDCalculator(Global.BARRELS_P, Global.BARRELS_I, Global.BARRELS_D);
+    rightDistPID = new PIDCalculator(Global.BARRELS_P, Global.BARRELS_I, Global.BARRELS_D);
+    anglePID = new PIDCalculator(Global.DRIVESTRAIGHT_ANGLE_P, Global.DRIVESTRAIGHT_ANGLE_I, Global.DRIVESTRAIGHT_ANGLE_D);
+    
     
     
   }
 
+  
 
   // Called when the command is initially scheduled.
   @Override
@@ -63,29 +68,46 @@ public class barrelTurn extends CommandBase {
     double leftEncoder = m_drivetrain.getLeftCanEncoder();
     double rightEncoder = m_drivetrain.getRightCanEncoder();
 
-    // SmartDashboard.putNumber("Left Error", leftError);
-    // SmartDashboard.putNumber("Right Error",rightError);
-    // SmartDashboard.putNumber("rightMotorOutput", rightOutput);
-    // SmartDashboard.putNumber("leftMotorOutput", leftOutput);
-
-    //runs scaled motors until  the absval of current angle is within tolerance of setpoint angle
-    //(absolute value bc when turning right angles are negative)
-    //while((Math.abs(angleSetpoint - Math.abs(gyro.getFusedHeading())) > tolerance)){
-        if (scaleAuto == true) {
-          if(turnRight){
-            m_drivetrain.Wheelspeed(percentSpeed, percentSpeed*ratio);
-          }else{
-            m_drivetrain.Wheelspeed(percentSpeed*ratio, percentSpeed);
-          }
-          
-        } else {
-          //going straight wow
-          m_drivetrain.Wheelspeed(percentSpeed, percentSpeed);
-        }
-      gyro.getYawPitchRoll(arrayOfSadness);
-      SmartDashboard.putNumber("Yaw", arrayOfSadness[0]);
+    //turn right
+    if(turnRight){
+     leftError = ratio*setpoint - Math.abs(leftEncoder); //negative bc left drives opposite direction? (they go backward)
+     rightError = setpoint - Math.abs(rightEncoder);
     }
-  //}
+    //turn left
+    else {
+      leftError = setpoint - Math.abs(leftEncoder);
+      rightError = ratio*setpoint - Math.abs(rightEncoder); //rightEncoder is negative when moving forward
+    }
+    //double angleError = angle - m_drivetrain.getFacingAngle();
+
+    double leftOutput = leftDistPID.getOutput(leftError);
+    double rightOutput = rightDistPID.getOutput(rightError);
+    //double angleOutput = anglePID.getOutput(angleError);
+
+    SmartDashboard.putNumber("Left Error", leftError);
+    SmartDashboard.putNumber("Right Error",rightError);
+    SmartDashboard.putNumber("rightMotorOutput", rightOutput);
+    SmartDashboard.putNumber("leftMotorOutput", leftOutput);
+
+
+    //m_drivetrain.Wheelspeed(-leftOutput - angleOutput, -rightOutput + angleOutput);
+    //removed negatives before leftOutput bc pid already gives neg
+
+    // think about ratio and how it is applied at the top and applied here. 
+    if (scaleAuto == true) {
+      m_drivetrain.Wheelspeed(0.3*(-leftOutput), 0.3*(-rightOutput));
+    } else {
+      m_drivetrain.Wheelspeed(-leftOutput, -rightOutput);
+      //if(direction){
+        //m_drivetrain.Wheelspeed(0.1*2.87*(-leftOutput - angleOutput), 0.1*(-rightOutput + angleOutput));
+      //left
+      //}else{
+        //m_drivetrain.Wheelspeed(0.1*(-leftOutput - angleOutput), 0.1*2.87*(-rightOutput + angleOutput));
+     // }
+    }
+
+
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -97,10 +119,12 @@ public class barrelTurn extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    //stops the robot turning when the absval of current angle is within tolerance of setpoint angle
-    //(absolute value bc when turning right angles are negative)
-    gyro.getYawPitchRoll(arrayOfSadness);
-    return Math.abs(angleSetpoint- Math.abs(arrayOfSadness[0])) < tolerance;
-
+    if (turnRight){
+      //turning left
+      return Math.abs(rightError) <= Global.DRIVE_DISTANCE_TOLERANCE;
+    }
+    else {
+      return Math.abs(leftError) <= Global.DRIVE_DISTANCE_TOLERANCE;
+    }
   }
 }
