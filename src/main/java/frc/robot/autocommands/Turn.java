@@ -40,7 +40,7 @@ public class Turn extends CommandBase {
   @Override
   public void initialize() {
     //setTimeout(m_timeout);
-    //gyro.setYaw(0);
+    gyro.setYaw(0);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
