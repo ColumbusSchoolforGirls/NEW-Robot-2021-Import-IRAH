@@ -126,6 +126,7 @@ public class DriveTrain extends SubsystemBase {
   
   public double getFacingAngle(){
     PigeonIMU.FusionStatus fusionStatus = new PigeonIMU.FusionStatus();
+    //why do we put in fusionStatus and not just null? do we do something with it? I don't think we do
     return gyro.getFusedHeading(fusionStatus);
   }
 
@@ -147,6 +148,7 @@ public class DriveTrain extends SubsystemBase {
 
   public void resetGyro(){
     gyro.setFusedHeading(0);
+    gyro.setYaw(0);
   }
 
   public void update(){

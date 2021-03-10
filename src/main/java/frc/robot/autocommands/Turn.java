@@ -40,7 +40,7 @@ public class Turn extends CommandBase {
   @Override
   public void initialize() {
     //setTimeout(m_timeout);
-    gyro.setYaw(0);
+  
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -55,6 +55,9 @@ public class Turn extends CommandBase {
     SmartDashboard.putNumber("Angle Error", angleError);
 
     //the part that actually turns the robot
+    //right side goes backward?
+    //when angleOutput positive, will turn right
+    //REMEMBER THE RIGHT IS THE FIRST ONE!!
     m_drivetrain.Wheelspeed(-angleOutput, angleOutput);
   
   }
