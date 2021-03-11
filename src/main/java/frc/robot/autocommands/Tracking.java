@@ -46,11 +46,10 @@ public class Tracking extends CommandBase {
         SmartDashboard.putNumber("Track Output", trackOutput);
         SmartDashboard.putNumber("Track Error", -m_limelight.getX());
 
-        //why is it negative on the left? -- might not work now bc switched wheelspeed to be (left, right)
-        //check that out
+        //i don't remember how it really works but left and right should be right now
         m_drivetrain.Wheelspeed(-trackOutput, trackOutput);
       }
-      m_drivetrain.Wheelspeed(-0.2, -0.2);
+      m_drivetrain.Wheelspeed(0.2, 0.2);
     }else{
       m_drivetrain.Wheelspeed(0,0);
     }

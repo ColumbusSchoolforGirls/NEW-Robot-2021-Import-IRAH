@@ -95,9 +95,9 @@ public class barrelTurn extends CommandBase {
 
     // think about ratio and how it is applied at the top and applied here. 
     if (scaleAuto == true) {
-      m_drivetrain.Wheelspeed(0.3*(-leftOutput), 0.3*(-rightOutput));
+      m_drivetrain.Wheelspeed(0.3*(leftOutput), 0.3*(rightOutput));
     } else {
-      m_drivetrain.Wheelspeed(-leftOutput, -rightOutput);
+      m_drivetrain.Wheelspeed(leftOutput, rightOutput);
       //if(direction){
         //m_drivetrain.Wheelspeed(0.1*2.87*(-leftOutput - angleOutput), 0.1*(-rightOutput + angleOutput));
       //left
