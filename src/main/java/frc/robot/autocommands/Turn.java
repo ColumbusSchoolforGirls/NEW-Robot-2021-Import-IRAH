@@ -55,9 +55,9 @@ public class Turn extends CommandBase {
     SmartDashboard.putNumber("Angle Error", angleError);
 
     //the part that actually turns the robot
-    //right side goes backward?
-    //when angleOutput positive, will turn right
-    //REMEMBER THE RIGHT IS THE FIRST ONE!!
+    //left side will run backward
+    //when angleOutput positive, SHOULD turn left now
+    //but it was turning left before when the right was on the left??
     m_drivetrain.Wheelspeed(-angleOutput, angleOutput);
   
   }

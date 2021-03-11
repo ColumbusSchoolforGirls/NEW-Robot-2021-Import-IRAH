@@ -36,6 +36,7 @@ public class FullSpeedAhead extends CommandBase {
     /*if (Math.abs(RobotContainer.driveCont.getRawAxis(1)) <= Global.DEADZONE) {
       m_drivetrain.Wheelspeed(0, 0);
     }else{*/
+      //should we be concerned about this? make sure to test it still works
       m_drivetrain.Wheelspeed(RobotContainer.driveCont.getRawAxis(5), RobotContainer.driveCont.getRawAxis(1));
     //}
   }

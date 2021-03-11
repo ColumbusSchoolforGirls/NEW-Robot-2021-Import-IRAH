@@ -49,11 +49,14 @@ public class TankDrive extends CommandBase {
       m_drivetrain.Wheelspeed(0.0005, 0.0005);
     } else if (Math.abs(RobotContainer.driveCont.getRawAxis(5)) <= Global.DEADZONE
         && Math.abs(RobotContainer.driveCont.getRawAxis(1)) > Global.DEADZONE) {
+      //this might be messed up!!!! (switched)
       m_drivetrain.Wheelspeed(0, 0.5*RobotContainer.driveCont.getRawAxis(1));
     } else if (Math.abs(RobotContainer.driveCont.getRawAxis(5)) > Global.DEADZONE
         && Math.abs(RobotContainer.driveCont.getRawAxis(1)) <= Global.DEADZONE) {
+        //this also could be messed up
         m_drivetrain.Wheelspeed(0.5*RobotContainer.driveCont.getRawAxis(5), 0);
     } else {
+      //this should still work
       m_drivetrain.Wheelspeed(0.5*RobotContainer.driveCont.getRawAxis(5), 0.5*RobotContainer.driveCont.getRawAxis(1));
     }
     
