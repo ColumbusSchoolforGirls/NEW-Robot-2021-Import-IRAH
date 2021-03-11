@@ -120,7 +120,7 @@ public class barrelCircle extends CommandBase {
   @Override
   public boolean isFinished() {
     if (turnRight){
-      //turning left
+      //turning left (is it??? might be turning right now)
       return Math.abs(rightError) <= Global.DRIVE_DISTANCE_TOLERANCE;
     }
     else {
