@@ -19,6 +19,12 @@ public class RobotMap {
   // public static int leftMotor = 1;
   // public static int rightMotor = 2;
 
+  //motors for susanjdfblaebfelwb
+  public static final int LEFT_FRONT_DRIVE_PORT = 0;
+	public static final int RIGHT_FRONT_DRIVE_PORT = 2;
+	public static final int LEFT_BACK_DRIVE_PORT = 1;
+	public static final int RIGHT_BACK_DRIVE_PORT = 3;
+
   //codes the motors and motor ports
   public static int right_front_motor = 1;
   public static int left_front_motor = 2;

@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Spark;
 //import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -36,20 +37,28 @@ public class DriveTrain extends SubsystemBase {
   // here. Call these from Commands.
 
   // sets the motors to a wheel
-  private final CANSparkMax right_front = new CANSparkMax(RobotMap.right_front_motor, MotorType.kBrushless);
-  private final CANSparkMax left_front = new CANSparkMax(RobotMap.left_front_motor, MotorType.kBrushless);
-  private final CANSparkMax right_back = new CANSparkMax(RobotMap.right_back_motor, MotorType.kBrushless);
-  private final CANSparkMax left_back = new CANSparkMax(RobotMap.left_back_motor, MotorType.kBrushless);
+  //
+  // private final CANSparkMax right_front = new CANSparkMax(RobotMap.right_front_motor, MotorType.kBrushless);
+  // private final CANSparkMax left_front = new CANSparkMax(RobotMap.left_front_motor, MotorType.kBrushless);
+  // private final CANSparkMax right_back = new CANSparkMax(RobotMap.right_back_motor, MotorType.kBrushless);
+  // private final CANSparkMax left_back = new CANSparkMax(RobotMap.left_back_motor, MotorType.kBrushless);
+
+  
+	//These are all the speed controllers for the drivetrain
+	public static Spark left_front = new Spark(RobotMap.LEFT_FRONT_DRIVE_PORT);
+	public static Spark right_front = new Spark(RobotMap.RIGHT_FRONT_DRIVE_PORT);
+	public static Spark left_back = new Spark(RobotMap.LEFT_BACK_DRIVE_PORT);
+	public static Spark right_back = new Spark(RobotMap.RIGHT_BACK_DRIVE_PORT);
 
   // private final CANEncoder rightCanEncoder = new CANEncoder(right_front);
   // private final CANEncoder rightBackEncoder = new CANEncoder(right_back);
   // private final CANEncoder leftCanEncoder = new CANEncoder(left_front);
   // private final CANEncoder leftBackEncoder = new CANEncoder(left_back);
 
-  private CANEncoder m_rightencoder = right_front.getEncoder();
-  private CANEncoder m_leftencoder = left_front.getEncoder();
-  private CANEncoder m_rightback = right_back.getEncoder();
-  private CANEncoder m_leftback = left_back.getEncoder();
+  // private CANEncoder m_rightencoder = right_front.getEncoder();
+  // private CANEncoder m_leftencoder = left_front.getEncoder();
+  // private CANEncoder m_rightback = right_back.getEncoder();
+  // private CANEncoder m_leftback = left_back.getEncoder();
 
   
 
@@ -143,7 +152,7 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public void resetGyro(){
-    gyro.setFusedHeading(0);
+    gyro.setYaw(0);
   }
 
   public void update(){
