@@ -5,15 +5,12 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+/*package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Lift;
 
 public class UnwindLift extends CommandBase {
-  /**
-   * Creates a new UnwindLift.
-   */
   private double speed;
   private Lift m_lift;
   
@@ -48,3 +45,4 @@ public class UnwindLift extends CommandBase {
     return false;
   }
 }
+*/

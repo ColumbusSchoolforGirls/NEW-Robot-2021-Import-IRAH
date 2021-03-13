@@ -28,7 +28,7 @@ public class Global {
     
     //PID Values for Going Straight First
     public static final double DRIVETRAIN_P = 0.011;
-    public static final double DRIVETRAIN_I = 0;
+    public static final double DRIVETRAIN_I = 0.00065;
     public static final double DRIVETRAIN_D = 0;
 
     //PID Values for first value of angles, used whenever we have anglePID to keep robot straight

@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+/*package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -14,9 +14,6 @@ import frc.robot.PIDCalculator;
 import frc.robot.subsystems.Hook;
 
 public class HookPID extends CommandBase {
-  /**
-   * Creates a new starting_infront_port.
-   */
   private double error;
   private double current;
   private double setpoint;
@@ -72,3 +69,4 @@ public class HookPID extends CommandBase {
     return Math.abs(error) <= Global.HOOK_TOLERANCE;
   }
 }
+*/

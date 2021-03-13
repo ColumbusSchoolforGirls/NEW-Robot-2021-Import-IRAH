@@ -35,7 +35,7 @@ import frc.robot.subsystems.ControlSpinner;
 import frc.robot.subsystems.ConveyorMotors;*/
 import frc.robot.subsystems.DriveTrain;
 //import frc.robot.subsystems.Flap;
-import frc.robot.subsystems.Hook;
+//import frc.robot.subsystems.Hook;
 import frc.robot.subsystems.Limelight;
 
 /**
@@ -64,7 +64,7 @@ public class Robot extends TimedRobot {
   //creates instaances of all the important subsystems so we can use their methods and run things later
   private RobotContainer m_robotContainer;
   public DriveTrain m_drivetrain = new DriveTrain();
-  public Hook m_hook = new Hook();
+  //public Hook m_hook = new Hook();
   //public ControlSpinner m_controlspinner = new ControlSpinner();
   public Limelight m_limelight = new Limelight();
   
@@ -95,7 +95,7 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
     m_drivetrain.update();
-    m_hook.update();
+    //m_hook.update();
     //m_controlspinner.update();
     m_limelight.update();
   }
@@ -111,6 +111,7 @@ public class Robot extends TimedRobot {
    //ig we don't use this rn, runs when robot is first disabled
   @Override
   public void disabledInit() {
+    m_drivetrain.setTeleop();
   }
 
   //I assume this runs periodically while the robot is disabled

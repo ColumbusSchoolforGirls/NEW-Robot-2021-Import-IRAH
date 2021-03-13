@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+/*package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -16,7 +16,7 @@ public class HookPneumatic extends SubsystemBase {
   /**
    * Creates a new HookPneumatic.
    */
-  private final DoubleSolenoid hookPneumatic = new DoubleSolenoid(RobotMap.hook_pneumatic_a, RobotMap.hook_pneumatic_b);
+  /*private final DoubleSolenoid hookPneumatic = new DoubleSolenoid(RobotMap.hook_pneumatic_a, RobotMap.hook_pneumatic_b);
   public HookPneumatic() {
 
   }
@@ -33,4 +33,4 @@ public class HookPneumatic extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
-}
+}*/

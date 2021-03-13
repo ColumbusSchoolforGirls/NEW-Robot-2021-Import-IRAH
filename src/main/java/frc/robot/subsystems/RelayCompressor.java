@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+/*package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.Compressor;
@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Relay.Value;
 
-public class RelayCompressor extends SubsystemBase {
+/*public class RelayCompressor extends SubsystemBase {
   Compressor comp;
   Relay relay;
   DigitalInput digitalInput;
@@ -21,7 +21,7 @@ public class RelayCompressor extends SubsystemBase {
   /**
    * Creates a new RelayCompressor.
    */
-  public RelayCompressor() {
+  /*public RelayCompressor() {
     comp = new Compressor();
     relay = new Relay(0);
     digitalInput = new DigitalInput(3);
@@ -37,4 +37,4 @@ public class RelayCompressor extends SubsystemBase {
       relay.set(Value.kOff);
     }
   }
-}
+}*/

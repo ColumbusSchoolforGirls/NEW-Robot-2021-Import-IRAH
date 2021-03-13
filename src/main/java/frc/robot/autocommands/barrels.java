@@ -27,21 +27,24 @@ public class barrels extends SequentialCommandGroup {
     m_drivetrain.setAuto();
 
     addCommands(
-      new straightforward(85, m_drivetrain,false),
       new ResetGyro(m_drivetrain),
-      new barrelTurn(-350, m_drivetrain)
-    //   new straightforward(ticks.calculateTicks(37.5), m_drivetrain, false),
-    //   new ResetGyro(m_drivetrain),
-    //   new Turn(-90, m_drivetrain),
+      new straightforward(90, m_drivetrain,false),
+      new ResetGyro(m_drivetrain),
+      new barrelTurn(-365, m_drivetrain),
 
-    //   new straightforward(ticks.calculateTicks(37.5), m_drivetrain, false),
-    //   new ResetGyro(m_drivetrain),
-    //   new Turn(-90, m_drivetrain),
+      new ResetGyro(m_drivetrain),
+      new straightforward(40, m_drivetrain, false),
+      new ResetGyro(m_drivetrain),
+      new barrelTurn(310, m_drivetrain),
 
-    //   new straightforward(ticks.calculateTicks(37.5), m_drivetrain, false),
-    //   new ResetGyro(m_drivetrain),
-    //   new Turn(-70, m_drivetrain),
+      new ResetGyro(m_drivetrain),
+      new straightforward(60, m_drivetrain, false),
+      new ResetGyro(m_drivetrain),
+      new barrelTurn(170, m_drivetrain),
+      new ResetGyro(m_drivetrain),
+      new straightforward(110, m_drivetrain, false)
 
+      
     // //big forward is segment b
     
 

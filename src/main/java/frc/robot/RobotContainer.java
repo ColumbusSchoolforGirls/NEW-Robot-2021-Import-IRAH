@@ -31,24 +31,24 @@ import frc.robot.autocommands.middleStartAutoMiddle;
 import frc.robot.autocommands.straightforward;
 //import frc.robot.commands.ControlSpinnerManual;
 import frc.robot.commands.ConveyorManual;
-import frc.robot.commands.HookManual;
-import frc.robot.commands.LiftManual;
+//import frc.robot.commands.HookManual;
+//import frc.robot.commands.LiftManual;
 import frc.robot.commands.ResetGyro;
-import frc.robot.commands.Shooting;
+//import frc.robot.commands.Shooting;
 import frc.robot.commands.TankDrive;
-import frc.robot.commands.UnwindLift;
-import frc.robot.commands.FlapManual;
+//import frc.robot.commands.UnwindLift;
+//import frc.robot.commands.FlapManual;
 import frc.robot.commands.FullSpeedAhead;
-import frc.robot.commands.DeployHook;
+//import frc.robot.commands.DeployHook;
 //import frc.robot.subsystems.ControlSpinner;
 import frc.robot.subsystems.ConveyorMotors;
 import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.Flap;
-import frc.robot.subsystems.Hook;
-import frc.robot.subsystems.HookPneumatic;
-import frc.robot.subsystems.Lift;
+//import frc.robot.subsystems.Flap;
+//import frc.robot.subsystems.Hook;
+//import frc.robot.subsystems.HookPneumatic;
+//import frc.robot.subsystems.Lift;
 import frc.robot.subsystems.Limelight;
-import frc.robot.subsystems.RelayCompressor;
+//import frc.robot.subsystems.RelayCompressor;
 
 
 /**
@@ -80,30 +80,30 @@ public class RobotContainer {
   public final DriveTrain driveTrain = new DriveTrain();
   public final ConveyorMotors conveyorMotors = new ConveyorMotors();
 
-  private final Hook hook = new Hook(); 
-  private final Lift lift = new Lift();
-  private final Flap flap = new Flap();
+  //private final Hook hook = new Hook(); 
+  //private final Lift lift = new Lift();
+  //private final Flap flap = new Flap();
   //public ControlSpinner controlSpinner = new ControlSpinner();
-  private final RelayCompressor relayCompressor = new RelayCompressor();
-  private final HookPneumatic hookPneumatic = new HookPneumatic();
+  //private final RelayCompressor relayCompressor = new RelayCompressor();
+  //private final HookPneumatic hookPneumatic = new HookPneumatic();
   private final Limelight limeLight = new Limelight();
   //private final ticks ticks = new ticks(0);
 
   public final TankDrive TankDrive = new TankDrive(driveTrain); //tankdrive controls driving in teleop
   //the commands that run aux things
   public final ConveyorManual ConveyorManual = new ConveyorManual(0, conveyorMotors, false);
-  private final HookManual hookManual = new HookManual(0, hook);
-  private final LiftManual LiftManual = new LiftManual(0, lift);
+  //private final HookManual hookManual = new HookManual(0, hook);
+  //private final LiftManual LiftManual = new LiftManual(0, lift);
   //true means closed
-  private final FlapManual FlapManual = new FlapManual(flap, true, false);
+  //private final FlapManual FlapManual = new FlapManual(flap, true, false);
   //public final ControlSpinnerManual ControlSpinnerManual = new ControlSpinnerManual(controlSpinner, 0);
-  private final UnwindLift UnwindLift = new UnwindLift(lift, 0);
+  //private final UnwindLift UnwindLift = new UnwindLift(lift, 0);
   private final FullSpeedAhead FullSpeedAhead = new FullSpeedAhead(driveTrain);
-  private final DeployHook DeployHook = new DeployHook(hookPneumatic, false);
+  //private final DeployHook DeployHook = new DeployHook(hookPneumatic, false);
   
   //auto paths for testing
   private final NothingTest m_nothing = new NothingTest();
-  private final Testing m_testing = new Testing(driveTrain, flap, conveyorMotors, limeLight);
+  private final Testing m_testing = new Testing(driveTrain, conveyorMotors, limeLight);
 
 
   //// TRIGGERING COMMANDS WITH BUTTONS
@@ -161,19 +161,19 @@ public class RobotContainer {
 
     //DO NOT INITIZIALIZE A COMMAND IF IT HAS A SOFT STOP OR SOMETHING
     //initializes Hook
-    hook.setDefaultCommand(hookManual);
+    //hook.setDefaultCommand(hookManual);
 
     //initializes Lift
-    lift.setDefaultCommand(LiftManual);
+    //lift.setDefaultCommand(LiftManual);
 
     //initializes Flap
-    flap.setDefaultCommand(FlapManual);
+    //flap.setDefaultCommand(FlapManual);
 
     //initializes control manual
     //controlSpinner.setDefaultCommand(ControlSpinnerManual);
     
     //initializes deploy hook
-    hookPneumatic.setDefaultCommand(DeployHook);
+    //hookPneumatic.setDefaultCommand(DeployHook);
 
     
     //puts the thing (m_chooser ig) that lets us choose which auto path to run
@@ -205,21 +205,21 @@ public class RobotContainer {
   //sets the buttons to run specific commands when they are held/pressed
   private void configureButtonBindings(){
     // Y on 2nd driver controller moves hook arm up
-    auxButtonY.whileHeld(new HookManual(0.6, hook));
+    //auxButtonY.whileHeld(new HookManual(0.6, hook));
     // A on 2nd driver controller moves hook arm down
-    auxButtonA.whileHeld(new HookManual(-0.55, hook));
+    //auxButtonA.whileHeld(new HookManual(-0.55, hook));
     // B on 2nd driver controller moves the wench and lifts the robot
-    auxButtonB.whileHeld(new LiftManual(1, lift));
+    //auxButtonB.whileHeld(new LiftManual(1, lift));
     // X on 2nd driver controller deploys the flap
-    auxButtonX.whileHeld(new FlapManual(flap, false, false));
+    //auxButtonX.whileHeld(new FlapManual(flap, false, false));
     // Right Bumper on 2nd driver controller moves the control spinner wheel
     //auxRightBumper.whileHeld(new ControlSpinnerManual(controlSpinner, 1));
     // Left Bumper on 2nd driver controller unwinds the wench
-    auxLeftBumper.whileHeld(new UnwindLift(lift, 1));
+    //auxLeftBumper.whileHeld(new UnwindLift(lift, 1));
     // Right Trigger on 1st driver controller makes robot go vroom vroom
     rightTrigger.whileHeld(new FullSpeedAhead(driveTrain));
     // Right Trigger on 2nd driver controller deploys the hook pneumatic
-    auxRightTrigger.whileHeld(new DeployHook(hookPneumatic, true));
+    //auxRightTrigger.whileHeld(new DeployHook(hookPneumatic, true));
   }
   
   //connects the chooser for autopaths on the dashboard to the actual code

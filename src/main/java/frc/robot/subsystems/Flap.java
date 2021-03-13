@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+/*package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -17,7 +17,7 @@ public class Flap extends SubsystemBase {
    * Creates a new Flap.
    */
   // upper flap
-  private final DoubleSolenoid flap = new DoubleSolenoid(RobotMap.flap_solenoid_a, RobotMap.flap_solenoid_b);
+  /*private final DoubleSolenoid flap = new DoubleSolenoid(RobotMap.flap_solenoid_a, RobotMap.flap_solenoid_b);
   // bottom piston
   private final DoubleSolenoid piston = new DoubleSolenoid(RobotMap.piston_solenoid_a, RobotMap.piston_solenoid_b);
 
@@ -41,4 +41,4 @@ public class Flap extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
-}
+}*/

@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+/*package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -18,7 +18,7 @@ public class Lift extends SubsystemBase {
   /**
    * Creates a new Lift.
    */
-  private static final TalonSRX lift_talon = new TalonSRX(RobotMap.lift_talon);
+ /* private static final TalonSRX lift_talon = new TalonSRX(RobotMap.lift_talon);
 
  
 
@@ -28,4 +28,4 @@ public class Lift extends SubsystemBase {
     // This method will be called once per scheduler run
   }
    
-}
+}*/

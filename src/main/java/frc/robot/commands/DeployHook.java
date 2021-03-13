@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+/*package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.HookPneumatic;
@@ -14,7 +14,7 @@ public class DeployHook extends CommandBase {
   /**
    * Creates a new DeployHook.
    */
-  private HookPneumatic m_hookPneumatic;
+  /*private HookPneumatic m_hookPneumatic;
   private boolean open;
   public DeployHook(HookPneumatic hookPneumatic, boolean open) {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -45,4 +45,4 @@ public class DeployHook extends CommandBase {
   public boolean isFinished() {
     return false;
   }
-}
+}*/

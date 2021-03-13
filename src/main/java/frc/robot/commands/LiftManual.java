@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+/*package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Lift;
@@ -17,7 +17,7 @@ public class LiftManual extends CommandBase {
   /**
    * Creates a new LiftManual.
    */
-  public LiftManual(double speed, Lift lift) {
+  /*public LiftManual(double speed, Lift lift) {
     //Use addRequirements() here to declare subsystem dependencies.
     this.speed = speed;
     m_lift = lift;
@@ -50,4 +50,4 @@ public class LiftManual extends CommandBase {
   public boolean isFinished() {
     return false;
   }
-}
+}*/

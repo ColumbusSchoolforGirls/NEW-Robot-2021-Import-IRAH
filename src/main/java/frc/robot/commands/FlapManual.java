@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+/*package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Flap;
@@ -14,7 +14,7 @@ public class FlapManual extends CommandBase {
   /**
    * Creates a new FlapManual.
    */
-  private Flap m_flap;
+  /*private Flap m_flap;
   private boolean isOpen;
   private boolean auto = false;
 
@@ -56,4 +56,4 @@ public class FlapManual extends CommandBase {
   public boolean isFinished() {
     return auto;
   }
-}
+}*/

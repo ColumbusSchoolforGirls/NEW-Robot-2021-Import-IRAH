@@ -19,7 +19,7 @@ public class barrelTurn extends CommandBase {
    */
   private double angle; 
   private DriveTrain m_drivetrain;
-  private double ratio = 2.15;
+  private double ratio = 2.4;
   //left -- true, right -- false
 
   
@@ -52,9 +52,9 @@ public class barrelTurn extends CommandBase {
     // for < 0, -0.3, -0.1
     // for > 0, -0.1, -0.3
     if (angle < 0){
-      m_drivetrain.Wheelspeed(-0.1*ratio, -0.1);
+      m_drivetrain.Wheelspeed(-0.2*ratio, -0.2);
     } else if (angle > 0){
-      m_drivetrain.Wheelspeed(-0.1, -0.1*ratio);
+      m_drivetrain.Wheelspeed(-0.2, -0.2*ratio);
     } else {
       m_drivetrain.Wheelspeed(0, 0);
     }

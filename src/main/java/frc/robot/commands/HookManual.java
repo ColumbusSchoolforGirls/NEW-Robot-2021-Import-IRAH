@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+/*package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 //import frc.robot.RobotContainer;
@@ -23,7 +23,7 @@ public class HookManual extends CommandBase {
   /**
    * Creates a new HookManual.
    */
-  public HookManual(double speed, Hook hook) {
+  /*public HookManual(double speed, Hook hook) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_hook = hook;
     addRequirements(hook);
@@ -49,7 +49,7 @@ public class HookManual extends CommandBase {
     m_hook.HookSpeed(0);
   }
   SmartDashboard.putNumber("Hook Number", RobotContainer.auxCont.getRawAxis(5));*/
-    m_hook.HookSpeed(speed);
+  /*  m_hook.HookSpeed(speed);
     
   }
 
@@ -66,4 +66,4 @@ public class HookManual extends CommandBase {
   public boolean isFinished() {
     return false;
   }
-}
+}*/

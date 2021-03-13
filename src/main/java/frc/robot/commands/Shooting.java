@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+/*package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
@@ -17,9 +17,6 @@ import frc.robot.subsystems.Flap;
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
 public class Shooting extends SequentialCommandGroup {
-  /**
-   * Creates a new Shooting.
-   */
   private ConveyorMotors m_conveyormotors;
   private Flap m_flap;
   public Shooting(ConveyorMotors conveyormotors, Flap flap) {
@@ -39,7 +36,7 @@ public class Shooting extends SequentialCommandGroup {
       //this does nothing?
       //new ConveyorManual(1, m_conveyormotors).withTimeout(1),
 
-      new ParallelCommandGroup(
+      /*new ParallelCommandGroup(
         //new ConveyorManual(1, m_conveyormotors),
         new FlapManual(m_flap, true, false)
       )
@@ -48,3 +45,4 @@ public class Shooting extends SequentialCommandGroup {
     
   }
 }
+*/

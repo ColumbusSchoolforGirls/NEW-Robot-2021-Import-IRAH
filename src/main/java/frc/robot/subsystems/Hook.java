@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+/*package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -20,7 +20,7 @@ public class Hook extends SubsystemBase {
   /**
    * Creates a new Hook.
    */
-  private final TalonSRX Hook_talon = new TalonSRX(RobotMap.hook_talon);
+  /*private final TalonSRX Hook_talon = new TalonSRX(RobotMap.hook_talon);
   
   public Hook(){
     Hook_talon.setSelectedSensorPosition(0);
@@ -48,4 +48,4 @@ public class Hook extends SubsystemBase {
     SmartDashboard.putNumber("Hook Encoder", getEncoder());
     SmartDashboard.putNumber("Hook Current", getCurrent());
   }
-}
+}*/
