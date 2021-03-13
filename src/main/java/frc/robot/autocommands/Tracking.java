@@ -40,15 +40,16 @@ public class Tracking extends CommandBase {
   public void execute() {
     if(m_limelight.getValidTarget()){
       while(Math.abs(m_limelight.getX())>= 10){
-        //output is error, and so it is set point - error, and our set point 0, so its just 0- tx, so -tx
+        //output wants error to goal, and so it is set point-error (how far from goal), and our set point 0, so its just 0-tx, so -tx
         double trackOutput = trackPID.getOutput(-m_limelight.getX());
 
         SmartDashboard.putNumber("Track Output", trackOutput);
         SmartDashboard.putNumber("Track Error", -m_limelight.getX());
 
+        //i don't remember how it really works but left and right should be right now
         m_drivetrain.Wheelspeed(-trackOutput, trackOutput);
       }
-      m_drivetrain.Wheelspeed(-0.2, -0.2);
+      m_drivetrain.Wheelspeed(0.2, 0.2);
     }else{
       m_drivetrain.Wheelspeed(0,0);
     }

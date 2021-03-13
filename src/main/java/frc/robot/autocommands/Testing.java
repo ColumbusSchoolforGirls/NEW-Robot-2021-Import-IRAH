@@ -39,20 +39,28 @@ public class Testing extends SequentialCommandGroup {
     m_conveyormotors = conveyormotors;
     addRequirements(m_drivetrain);
     addCommands(
-      //new straightforward(80, m_drivetrain, false)
+      //new barrelTurn(90, 0.2, m_drivetrain, true, true)
+      //new Slalom(m_drivetrain)
+    new straightforward(50, m_drivetrain, false)
       //new ResetGyro(m_drivetrain),
       //new barrelCircle(70, m_drivetrain, true, false)
       //new FlapManual(m_flap, false, true),
       //new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
       //new straightforward(, m_drivetrain);
-    //   new ResetGyro(m_drivetrain),
-    //   new Turn(90, m_drivetrain),
-    //   new ResetGyro(m_drivetrain)
+       //new ResetGyro(m_drivetrain),
+       //new Turn(90, m_drivetrain)
+      //new ResetGyro(m_drivetrain)
       // new ResetGyro(m_drivetrain),
       // new straightforward(150, m_drivetrain, false)
+<<<<<<< HEAD
       new Tracking(limelight, m_drivetrain),
       //new straightforward(2, m_drivetrain, false),
       new ConveyorManual(1, m_conveyormotors, true).withTimeout(1)
+=======
+      //new Tracking(limelight, m_drivetrain)
+      //new straightforward(2, m_drivetrain, false),
+     // new ConveyorManual(1, m_conveyormotors, true).withTimeout(1)
+>>>>>>> b48318c5b5bfdca58784b1f3ec4ab773f494f17f
       );
   }
 }

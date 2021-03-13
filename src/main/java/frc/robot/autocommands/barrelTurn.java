@@ -13,7 +13,7 @@ import frc.robot.Global;
 import frc.robot.PIDCalculator;
 import frc.robot.subsystems.DriveTrain;
 
-public class barrelCircle extends CommandBase {
+public class barrelTurn extends CommandBase {
   /**
    * Creates a new starting_infront_port.
    */
@@ -31,7 +31,7 @@ public class barrelCircle extends CommandBase {
   private double ratio = 2.87;
   
 
-  public barrelCircle(double insideTicks,  DriveTrain drivetrain, boolean scale, boolean direct) {
+  public barrelTurn(double insideTicks,  DriveTrain drivetrain, boolean scale, boolean direct) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_drivetrain = drivetrain;
     turnRight = direct;
@@ -120,8 +120,7 @@ public class barrelCircle extends CommandBase {
   @Override
   public boolean isFinished() {
     if (turnRight){
-      //turning left (is it??? might be turning right now)
-      //changed it so it SHOULD turn the right way now i hope
+      //turning left
       return Math.abs(rightError) <= Global.DRIVE_DISTANCE_TOLERANCE;
     }
     else {

@@ -71,8 +71,10 @@ public class straightforward extends CommandBase {
     SmartDashboard.putNumber("Left Error", leftError);
     SmartDashboard.putNumber("Right Error",rightError);
 
-    m_drivetrain.Wheelspeed((-leftOutput - angleOutput), (-rightOutput + angleOutput));
-
+    //i mean it works? but why is it negative leftOutput? -- why are left and right different
+    //future Lina is still confused about why both arent just like (x-y)
+    m_drivetrain.Wheelspeed((leftOutput - angleOutput), (rightOutput + angleOutput));
+    //m_drivetrain.Wheelspeed(leftOutput, rightOutput);
     
 
   }

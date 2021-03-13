@@ -26,6 +26,7 @@ public class RobotMap {
 	public static final int RIGHT_BACK_DRIVE_PORT = 3;
 
   //codes the motors and motor ports
+  //this might be what made it work even though it was backward? (ports reversed? how did we set them?)
   public static int right_front_motor = 1;
   public static int left_front_motor = 2;
   public static int right_back_motor = 3;
