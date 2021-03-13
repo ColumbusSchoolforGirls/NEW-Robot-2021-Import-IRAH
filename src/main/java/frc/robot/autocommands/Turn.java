@@ -64,7 +64,7 @@ public class Turn extends CommandBase {
     //good question but for some reason 
     //having the FIRST parameter as positive and the second negative turns right
     //fun fact having them both positive drives the robot straight backwards so thats why
-    m_drivetrain.Wheelspeed(angleOutput, angleOutput);
+    m_drivetrain.Wheelspeed(angleOutput, -angleOutput);
   
   }
 

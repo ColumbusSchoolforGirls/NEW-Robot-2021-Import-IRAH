@@ -17,37 +17,21 @@ public class barrelTurn extends CommandBase {
   /**
    * Creates a new starting_infront_port.
    */
-  private double leftError;
-  private double rightError;
-  private double angle;
-  private double setpoint;
-  private PIDCalculator leftDistPID;
-  private PIDCalculator rightDistPID;
-  private PIDCalculator anglePID;
+  private double angle; 
   private DriveTrain m_drivetrain;
-  private boolean scaleAuto;
+  private double ratio = 2.15;
   //left -- true, right -- false
-  private boolean turnRight;
-  private double ratio = 2.87;
+
   
 
-  public barrelTurn(double insideTicks,  DriveTrain drivetrain, boolean scale, boolean direct) {
+  public barrelTurn(double angle,  DriveTrain drivetrain) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_drivetrain = drivetrain;
-    turnRight = direct;
+    this.angle = angle;
     addRequirements(drivetrain);
-    setpoint = insideTicks; //Ticks should be a global constant - MAKE THAT CHANGE
-    m_drivetrain.Wheelspeed(0, 0); 
+ //Ticks should be a global constant - MAKE THAT CHANGE
+     
     //why does this need to be static in this instance but it doesn't need to be in tankdrive command
-    scaleAuto = scale;
-
-    
-    leftDistPID = new PIDCalculator(Global.BARRELS_P, Global.BARRELS_I, Global.BARRELS_D);
-    rightDistPID = new PIDCalculator(Global.BARRELS_P, Global.BARRELS_I, Global.BARRELS_D);
-    anglePID = new PIDCalculator(Global.DRIVESTRAIGHT_ANGLE_P, Global.DRIVESTRAIGHT_ANGLE_I, Global.DRIVESTRAIGHT_ANGLE_D);
-    
-    
-    
   }
 
   
@@ -57,56 +41,23 @@ public class barrelTurn extends CommandBase {
   public void initialize() {
     m_drivetrain.resetEncoders();
     m_drivetrain.resetGyro();
-    angle = m_drivetrain.getFacingAngle();
     
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //left encoder is negative value
-    double leftEncoder = m_drivetrain.getLeftCanEncoder();
-    double rightEncoder = m_drivetrain.getRightCanEncoder();
-
-    //turn right
-    if(turnRight){
-     leftError = ratio*setpoint - Math.abs(leftEncoder); //negative bc left drives opposite direction? (they go backward)
-     rightError = setpoint - Math.abs(rightEncoder);
-    }
-    //turn left
-    else {
-      leftError = setpoint - Math.abs(leftEncoder);
-      rightError = ratio*setpoint - Math.abs(rightEncoder); //rightEncoder is negative when moving forward
-    }
-    //double angleError = angle - m_drivetrain.getFacingAngle();
-
-    double leftOutput = leftDistPID.getOutput(leftError);
-    double rightOutput = rightDistPID.getOutput(rightError);
-    //double angleOutput = anglePID.getOutput(angleError);
-
-    SmartDashboard.putNumber("Left Error", leftError);
-    SmartDashboard.putNumber("Right Error",rightError);
-    SmartDashboard.putNumber("rightMotorOutput", rightOutput);
-    SmartDashboard.putNumber("leftMotorOutput", leftOutput);
-
-
-    //m_drivetrain.Wheelspeed(-leftOutput - angleOutput, -rightOutput + angleOutput);
-    //removed negatives before leftOutput bc pid already gives neg
-
-    // think about ratio and how it is applied at the top and applied here. 
-    if (scaleAuto == true) {
-      m_drivetrain.Wheelspeed(0.3*(leftOutput), 0.3*(rightOutput));
+    // if angle negative, turn right
+    // if angle positive, turn left
+    // for < 0, -0.3, -0.1
+    // for > 0, -0.1, -0.3
+    if (angle < 0){
+      m_drivetrain.Wheelspeed(-0.1*ratio, -0.1);
+    } else if (angle > 0){
+      m_drivetrain.Wheelspeed(-0.1, -0.1*ratio);
     } else {
-      m_drivetrain.Wheelspeed(leftOutput, rightOutput);
-      //if(direction){
-        //m_drivetrain.Wheelspeed(0.1*2.87*(-leftOutput - angleOutput), 0.1*(-rightOutput + angleOutput));
-      //left
-      //}else{
-        //m_drivetrain.Wheelspeed(0.1*(-leftOutput - angleOutput), 0.1*2.87*(-rightOutput + angleOutput));
-     // }
+      m_drivetrain.Wheelspeed(0, 0);
     }
-
-
   }
 
   // Called once the command ends or is interrupted.
@@ -119,12 +70,6 @@ public class barrelTurn extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (turnRight){
-      //turning left
-      return Math.abs(rightError) <= Global.DRIVE_DISTANCE_TOLERANCE;
-    }
-    else {
-      return Math.abs(leftError) <= Global.DRIVE_DISTANCE_TOLERANCE;
-    }
+    return Math.abs(m_drivetrain.getFacingAngle()) >= Math.abs(angle) ;
   }
 }

@@ -32,7 +32,7 @@ public class Global {
     public static final double DRIVETRAIN_D = 0;
 
     //PID Values for first value of angles, used whenever we have anglePID to keep robot straight
-    public static final double DRIVESTRAIGHT_ANGLE_P = 0.01;
+    public static final double DRIVESTRAIGHT_ANGLE_P = 0.02;
     public static final double DRIVESTRAIGHT_ANGLE_I = 0;
     public static final double DRIVESTRAIGHT_ANGLE_D = 0;
 
@@ -43,7 +43,7 @@ public class Global {
 
     //how far we can be from setpoint before we stop going towards it
     //"close enough"
-    public static final int DRIVE_DISTANCE_TOLERANCE = 0;
+    public static final int DRIVE_DISTANCE_TOLERANCE = 5;
 
     //same thing as drive distance but for angle degrees not driving distance
     public static final int DRIVE_ANGLE_TOLERANCE = 5;

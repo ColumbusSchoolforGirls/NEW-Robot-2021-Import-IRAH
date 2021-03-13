@@ -99,10 +99,10 @@ public class DriveTrain extends SubsystemBase {
     // sets wheelspeeds of motors 
     //should put in 2 positives to go forward
   public void Wheelspeed(double leftspeed, double rightspeed){  
-    right_front.set(-rightspeed);
-    left_front.set(leftspeed);
-    right_back.set(-rightspeed);
-    left_back.set(leftspeed);
+    right_front.set(rightspeed);
+    left_front.set(-leftspeed);
+    right_back.set(rightspeed);
+    left_back.set(-leftspeed);
     
     //Talon code for testing on Miles
     /*right_front.set(ControlMode.PercentOutput, rightspeed);

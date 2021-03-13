@@ -49,13 +49,13 @@ public class TankDrive extends CommandBase {
       m_drivetrain.Wheelspeed(0.0005, 0.0005);
     } else if (Math.abs(RobotContainer.driveCont.getRawAxis(1)) <= Global.DEADZONE
         && Math.abs(RobotContainer.driveCont.getRawAxis(5)) > Global.DEADZONE) {
-      m_drivetrain.Wheelspeed(0, -0.5*RobotContainer.driveCont.getRawAxis(5));
+      m_drivetrain.Wheelspeed(0, 0.5*RobotContainer.driveCont.getRawAxis(5));
     } else if (Math.abs(RobotContainer.driveCont.getRawAxis(1)) > Global.DEADZONE
         && Math.abs(RobotContainer.driveCont.getRawAxis(5)) <= Global.DEADZONE) {
-        m_drivetrain.Wheelspeed(-0.5*RobotContainer.driveCont.getRawAxis(1), 0);
+        m_drivetrain.Wheelspeed(0.5*RobotContainer.driveCont.getRawAxis(1), 0);
     } else {
       //this should still work, has to negative for some reason?
-      m_drivetrain.Wheelspeed(-0.5*RobotContainer.driveCont.getRawAxis(1), -0.5*RobotContainer.driveCont.getRawAxis(5));
+      m_drivetrain.Wheelspeed(0.5*RobotContainer.driveCont.getRawAxis(1), 0.5*RobotContainer.driveCont.getRawAxis(5));
     }
     
   }
