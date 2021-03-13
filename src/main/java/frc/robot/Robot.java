@@ -53,13 +53,15 @@ public class Robot extends TimedRobot {
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
+  //can we delete this stuff ^
 
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
    */
-  Command m_autonomousCommand;
+  Command m_autonomousCommand;  //just makes a new command object? to represnt whichever autopath we choose to run?
 
+  //creates instaances of all the important subsystems so we can use their methods and run things later
   private RobotContainer m_robotContainer;
   public DriveTrain m_drivetrain = new DriveTrain();
   public Hook m_hook = new Hook();
@@ -68,6 +70,7 @@ public class Robot extends TimedRobot {
   
 
   @Override
+  //run once when the robot is turned on
   public void robotInit() {
     m_robotContainer = new RobotContainer();
     CameraServer.getInstance().startAutomaticCapture();
@@ -88,14 +91,13 @@ public class Robot extends TimedRobot {
    * LiveWindow and SmartDashboard integrated updating.
    */
   @Override
+  //updates the values (specified in each subsystem) on smartdashboard (numbers and things)
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
     m_drivetrain.update();
     m_hook.update();
     //m_controlspinner.update();
     m_limelight.update();
-   
-
   }
 
 
@@ -105,38 +107,53 @@ public class Robot extends TimedRobot {
    * You can use it to reset any subsystem information you want to clear when
    * the robot is disabled.
    */
+
+   //ig we don't use this rn, runs when robot is first disabled
   @Override
   public void disabledInit() {
   }
 
+  //I assume this runs periodically while the robot is disabled
   @Override
   public void disabledPeriodic() {
    // CommandScheduler.getInstance().disable();
    }
 
+
   /**
-   * This autonomous (along with the chooser code above) shows how to select
+   * This autonomous \/ (along with the chooser code above) shows how to select
    * between different autonomous modes using the dashboard. The sendable
-   * chooser code works with the Java SmartDashboard. If you prefer the
-   * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-   * getString code to get the auto name from the text box below the Gyro
+   * chooser code works with the Java SmartDashboard. (This next bit doesn't really apply to us)
+   * If you prefer the LabVIEW Dashboard, remove all of the chooser code 
+   * and uncomment the getString code to get the auto name from the 
+   * text box below the Gyro
    *
-   * <p>You can add additional auto modes by adding additional commands to the
-   * chooser code above (like the commented example) or additional comparisons
+   * You can add additional auto modes by adding additional commands to the
+   * chooser code in ROBOTCONTAINER (like the commented example) or additional comparisons
    * to the switch structure below with additional strings & commands.
    */
-  @Override
-  public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
+  @Override
+  //sets m_autocom thing to dashboard selection then schedules it
+  public void autonomousInit() {
+    //just calls getAutonomousCommand from robo container
+    //sets m_autonomousCommand to whichever path is selected on dashboard
+
+    //I added this here but might be wrong, should just set drivetrain to brake mode
+    m_drivetrain.setAuto();
+    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
      * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
      * = new MyAutoCommand(); break; case "Default Auto": default:
      * autonomousCommand = new ExampleCommand(); break; }
+     * 
+     * I think this is just how to set the command when nothing is chosen on dahsboard?
+     * but we should always default to selecting nothing (see robo container)
      */
 
-    // schedule the autonomous command (example)
+    //schedule the autonomous command chosen on dashboard
+    //like... adding it to the run queue (as long as it's actually set to something)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
     }
@@ -149,7 +166,6 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     
-
   }
 
   @Override
@@ -161,14 +177,18 @@ public class Robot extends TimedRobot {
     //if (m_autonomousCommand != null) {
       //m_autonomousCommand.cancel();
      
-      
+    //apparently we did want that? 
+
+    //should set into coast mode
+    m_drivetrain.setTeleop();
     }
   
 
   /**
-   * This function is called periodically during operator control.
+   * This function is called periodically during teleop
    */
   @Override
+  //makes it listen to the controllers in teleop?
   public void teleopPeriodic() {
     CommandScheduler.getInstance().run();
     //CommandScheduler.schedule(TankDrive(Robot.Container.TankDrive));

@@ -15,16 +15,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /** Add your docs here. */
 public class ticks {
 
+    //circumfrence of the wheels (number should be diameter of wheel)
     private static double circumfrence = 6 * Math.PI;
-    private static double distance;
+    private static double distance; //the distance you want to go
 
     // public ticks(double d){
     // distance = d;
     // }
 
+    //should return the number of ticks needed to go specified distance (in inches)
     public static double calculateTicks(double distanceInches) {
         //System.out.println(calculateTicks(10));
-        return (distance*451/circumfrence);
+
+        //451 ticks per wheel rotation?
+        return (distance*(451/circumfrence));
     }
 
 }
