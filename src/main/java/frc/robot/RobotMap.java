@@ -20,12 +20,12 @@ public class RobotMap {
   // public static int rightMotor = 2;
 
   //codes the motors and motor ports
-  //this might be what made it work even though it was backward? (ports reversed? how did we set them?)
   public static int right_front_motor = 1;
   public static int left_front_motor = 2;
   public static int right_back_motor = 3;
   public static int left_back_motor = 4; 
 
+  //this one is the conveyor motor?
   public static int talon = 9;
   
 
@@ -45,6 +45,7 @@ public class RobotMap {
 
   public static int hook_pneumatic_a = 4;
   public static int hook_pneumatic_b = 5;
+  
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;

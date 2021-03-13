@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj2.command.button.Button;
 
 public class JoystickAnalogButton extends Button {
-    GenericHID m_joystick;
+  GenericHID m_joystick;
   int m_axisNumber;
   private double THRESHOLD = 0.5;
 
