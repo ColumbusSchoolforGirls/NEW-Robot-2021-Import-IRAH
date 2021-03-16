@@ -49,7 +49,7 @@ public class straightforward extends CommandBase {
   @Override
   public void initialize() {
     m_drivetrain.resetEncoders();
-    m_drivetrain.resetGyro();
+    //m_drivetrain.resetGyro();
     angle = m_drivetrain.getFacingAngle();
     SmartDashboard.putString("Hello World", "Hi");
     

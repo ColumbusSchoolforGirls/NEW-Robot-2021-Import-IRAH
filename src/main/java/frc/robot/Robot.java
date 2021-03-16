@@ -111,7 +111,7 @@ public class Robot extends TimedRobot {
    //ig we don't use this rn, runs when robot is first disabled
   @Override
   public void disabledInit() {
-    m_drivetrain.setTeleop();
+    
   }
 
   //I assume this runs periodically while the robot is disabled

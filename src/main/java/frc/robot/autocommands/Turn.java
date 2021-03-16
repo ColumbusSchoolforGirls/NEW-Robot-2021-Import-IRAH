@@ -43,6 +43,8 @@ public class Turn extends CommandBase {
   public void initialize() {
     //setTimeout(m_timeout);
     //shouldn't do anything at first
+    //jk resets the gyro
+    m_drivetrain.resetGyro();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -78,8 +80,6 @@ public class Turn extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    //return Math.abs(angleError) <= Global.DRIVE_ANGLE_TOLERANCE || isTimedOut();
-    //HE NEVER ENDS???? something wrong with angleError??
-    return Math.abs(angleError) <= Global.DRIVE_ANGLE_TOLERANCE;
+    return Math.abs(m_drivetrain.getFacingAngle()) >= Math.abs(angle);
   }
 }  

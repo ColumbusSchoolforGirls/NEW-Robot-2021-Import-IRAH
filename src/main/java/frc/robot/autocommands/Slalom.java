@@ -27,13 +27,20 @@ public class Slalom extends SequentialCommandGroup {
     addCommands(
       //leaving start
       //don't use calculate ticks it no work
-      new straightforward(31, m_drivetrain, false),
+      //new ResetGyro(m_drivetrain),
+      new straightforward(25, m_drivetrain, false),
+      //new ResetGyro(m_drivetrain),
+      new Turn(45, m_drivetrain),
+      //new ResetGyro(m_drivetrain),
+      new straightforward(50, m_drivetrain, false),
+      //new ResetGyro(m_drivetrain),
+      new Turn(-45, m_drivetrain),
+      new straightforward(85, m_drivetrain, false),
+      //new ResetGyro(m_drivetrain),
+      new Turn(-45, m_drivetrain),
+      new straightforward(25, m_drivetrain, false),
       new ResetGyro(m_drivetrain),
-      new Turn(45, m_drivetrain).withTimeout(1),
-      new ResetGyro(m_drivetrain),
-      new straightforward(30, m_drivetrain, false),
-      new ResetGyro(m_drivetrain),
-      new Turn(-45, m_drivetrain)
+      new barrelTurn(300, m_drivetrain)
 
       // //big forward A 
       // new straightforward(ticks.calculateTicks(120), m_drivetrain, false),
