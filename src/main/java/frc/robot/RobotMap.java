@@ -26,10 +26,14 @@ public class RobotMap {
 	public static final int RIGHT_BACK_DRIVE_PORT = 3;
 
   //codes the motors and motor ports
-  public static int right_front_motor = 1;
-  public static int left_front_motor = 2;
-  public static int right_back_motor = 3;
-  public static int left_back_motor = 4; 
+  // public static int right_front_motor = 1;
+  // public static int left_front_motor = 2;
+  // public static int right_back_motor = 3;
+  // public static int left_back_motor = 4; 
+  public static int right_front_motor = 5;
+  public static int left_front_motor = 5;
+  public static int right_back_motor = 5;
+  public static int left_back_motor = 5; 
 
   //this one is the conveyor motor?
   public static int talon = 9;

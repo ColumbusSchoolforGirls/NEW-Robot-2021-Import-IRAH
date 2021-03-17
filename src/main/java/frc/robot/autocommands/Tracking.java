@@ -38,6 +38,10 @@ public class Tracking extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    System.out.println("hey I working");
+    m_drivetrain.Wheelspeed(0.5,0.5);
+    System.out.println("AHAFHDFAHHFD BEEP BOOOP BOOP BEEP"); 
+
     if(m_limelight.getValidTarget()){
       while(Math.abs(m_limelight.getX())>= 10){
         //output wants error to goal, and so it is set point-error (how far from goal), and our set point 0, so its just 0-tx, so -tx
@@ -48,6 +52,7 @@ public class Tracking extends CommandBase {
 
         //i don't remember how it really works but left and right should be right now
         m_drivetrain.Wheelspeed(-trackOutput, trackOutput);
+        
       }
       m_drivetrain.Wheelspeed(0.2, 0.2);
     }else{
