@@ -19,15 +19,17 @@ public class barrelTurn extends CommandBase {
    */
   private double angle; 
   private DriveTrain m_drivetrain;
-  private double ratio = 2.4;
+  private double ratio;
   //left -- true, right -- false
 
   
 
-  public barrelTurn(double angle,  DriveTrain drivetrain) {
+  public barrelTurn(double angle,  DriveTrain drivetrain, double ratio) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_drivetrain = drivetrain;
+    this.ratio = ratio;
     this.angle = angle;
+
     addRequirements(drivetrain);
  //Ticks should be a global constant - MAKE THAT CHANGE
      

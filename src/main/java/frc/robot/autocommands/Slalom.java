@@ -4,6 +4,7 @@
 
 package frc.robot.autocommands;
 
+import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.ticks;
 import frc.robot.commands.ResetGyro;
@@ -28,19 +29,28 @@ public class Slalom extends SequentialCommandGroup {
       //leaving start
       //don't use calculate ticks it no work
       //new ResetGyro(m_drivetrain),
-      new straightforward(25, m_drivetrain, false),
+      new straightforward(35, m_drivetrain, false),
       //new ResetGyro(m_drivetrain),
-      new Turn(45, m_drivetrain),
+      new Turn(60, m_drivetrain),
       //new ResetGyro(m_drivetrain),
-      new straightforward(50, m_drivetrain, false),
+      new straightforward(55, m_drivetrain, false),
       //new ResetGyro(m_drivetrain),
-      new Turn(-45, m_drivetrain),
-      new straightforward(85, m_drivetrain, false),
+      new Turn(-60, m_drivetrain),
+      new straightforward(90, m_drivetrain, false),
       //new ResetGyro(m_drivetrain),
-      new Turn(-45, m_drivetrain),
-      new straightforward(25, m_drivetrain, false),
-      new ResetGyro(m_drivetrain),
-      new barrelTurn(300, m_drivetrain)
+      new Turn(-60, m_drivetrain),
+      new straightforward(35, m_drivetrain, false),
+      //new ResetGyro(m_drivetrain),
+      new barrelTurn(260, m_drivetrain, 2.87),
+      new edu.wpi.first.wpilibj2.command.WaitCommand(1),
+     // new ResetGyro(m_drivetrain),
+      new straightforward(60, m_drivetrain, false),
+      //new ResetGyro(m_drivetrain),
+      new Turn(-55, m_drivetrain),
+      new straightforward(90, m_drivetrain, false),
+      //new ResetGyro(m_drivetrain),
+      new Turn(-70,m_drivetrain),
+      new straightforward(40, m_drivetrain, false)
 
       // //big forward A 
       // new straightforward(ticks.calculateTicks(120), m_drivetrain, false),

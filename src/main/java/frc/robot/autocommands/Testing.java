@@ -43,7 +43,7 @@ public class Testing extends SequentialCommandGroup {
       //new Slalom(m_drivetrain)
       //new straightforward(80, m_drivetrain, false)
       //new ResetGyro(m_drivetrain),
-      new barrelTurn(-350, m_drivetrain)
+      //new barrelTurn(-350, m_drivetrain)
       //new FlapManual(m_flap, false, true),
       //new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
       //new straightforward(, m_drivetrain);

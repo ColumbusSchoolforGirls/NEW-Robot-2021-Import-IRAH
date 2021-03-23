@@ -30,17 +30,17 @@ public class barrels extends SequentialCommandGroup {
       new ResetGyro(m_drivetrain),
       new straightforward(90, m_drivetrain,false),
       new ResetGyro(m_drivetrain),
-      new barrelTurn(-365, m_drivetrain),
+      new barrelTurn(-365, m_drivetrain, 2.4),
 
       new ResetGyro(m_drivetrain),
       new straightforward(40, m_drivetrain, false),
       new ResetGyro(m_drivetrain),
-      new barrelTurn(310, m_drivetrain),
+      new barrelTurn(310, m_drivetrain, 2.4),
 
       new ResetGyro(m_drivetrain),
       new straightforward(60, m_drivetrain, false),
       new ResetGyro(m_drivetrain),
-      new barrelTurn(170, m_drivetrain),
+      new barrelTurn(170, m_drivetrain, 2.4),
       new ResetGyro(m_drivetrain),
       new straightforward(110, m_drivetrain, false)
 
