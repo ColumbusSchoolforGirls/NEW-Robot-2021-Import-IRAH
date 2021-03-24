@@ -46,7 +46,7 @@ public class Global {
     public static final int DRIVE_DISTANCE_TOLERANCE = 5;
 
     //same thing as drive distance but for angle degrees not driving distance
-    public static final int DRIVE_ANGLE_TOLERANCE = 5;
+    public static final int DRIVE_ANGLE_TOLERANCE = 3;
 
     //PID values for turn
     public static final double TURNANGLE_P = 0.0062;

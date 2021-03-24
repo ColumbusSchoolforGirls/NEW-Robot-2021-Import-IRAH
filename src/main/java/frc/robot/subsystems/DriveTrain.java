@@ -66,8 +66,8 @@ public class DriveTrain extends SubsystemBase {
 
       //when a new drivetrain is created the gyro fused heading is set to 0, encoders are reset
       //and... whatever enterCalibrationMode does
-      gyro.setFusedHeading(0);
       resetEncoders();
+      resetGyro();
       gyro.enterCalibrationMode(CalibrationMode.BootTareGyroAccel);
     
     }
