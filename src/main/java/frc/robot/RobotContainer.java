@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+//import org.graalvm.compiler.lir.profiling.MoveProfilingPhase_OptionDescriptors;
+
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -16,6 +18,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.autocommands.BouncyBoy;
 import frc.robot.autocommands.GTFO;
 import frc.robot.autocommands.NothingTest;
 import frc.robot.autocommands.SearchBluePathOne;
@@ -195,7 +198,7 @@ public class RobotContainer {
     m_chooser.addOption("Search Red Two", new SearchRedPathTwo(driveTrain, conveyorMotors));
     m_chooser.addOption("Search Blue One", new SearchBluePathOne(driveTrain, conveyorMotors));
     m_chooser.addOption("Search Blue Two", new SearchBluePathTwo(driveTrain, conveyorMotors));
-
+    m_chooser.addOption("Bounce", new BouncyBoy(driveTrain));
     //tried moving it down cause that was what was in the documentation butttttt idk
     //that's why it's down here and up there? (I feel like we only need it down here maybe?)
     SmartDashboard.putData("Auto Mode", m_chooser);

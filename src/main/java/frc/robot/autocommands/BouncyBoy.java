@@ -23,32 +23,54 @@ public class BouncyBoy extends SequentialCommandGroup {
     //m_ticks = tick;
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
+
+    /***
+     * HEY HEY FUTURE US HEY HEY HEY HEY
+     * so... he was working ok but now he's skipping the boop forward (where it hits the cone)
+     * and also sometimes he just freaks out and spins around idk what that's about
+     * all the batteries suck...
+     * and even when it was working, the backwards after the 20 degree turn just doesn't go
+     * so yea... idk
+    */
+
     addCommands(
-      new straightforward(ticks.calculateTicks(95), m_drivetrain, false),
+      new straightforward(40, m_drivetrain, false),
       new ResetGyro(m_drivetrain),
-      new Turn(45, m_drivetrain),
-
-      new straightforward(ticks.calculateTicks(-190), m_drivetrain, false),
+      new Turn(90, m_drivetrain),
       new ResetGyro(m_drivetrain),
-      new Turn(-45, m_drivetrain),
 
-      new straightforward(ticks.calculateTicks(190), m_drivetrain, false),
+      //first boop
+      new straightforward(20, m_drivetrain, false),
       new ResetGyro(m_drivetrain),
-      new Turn(20, m_drivetrain),
+      new Turn(20, m_drivetrain).withTimeout(0.5),
+      new ResetGyro(m_drivetrain),
 
-      new straightforward(ticks.calculateTicks(-180), m_drivetrain, false),
+      new straightforward(-80, m_drivetrain, false),
       new ResetGyro(m_drivetrain),
       new Turn(-70, m_drivetrain),
-
-      new straightforward(ticks.calculateTicks(30), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
+
+      new straightforward(70, m_drivetrain, false),
+      //new ResetGyro(m_drivetrain),
+      new Turn(20, m_drivetrain),
+      new ResetGyro(m_drivetrain),
+
+      new straightforward(-70, m_drivetrain, false),
+      //new ResetGyro(m_drivetrain),
+      new Turn(-70, m_drivetrain),
+      new ResetGyro(m_drivetrain),
+
+      new straightforward(20, m_drivetrain, false),
+      //new ResetGyro(m_drivetrain),
       new Turn(70, m_drivetrain),
-    
-      new straightforward(ticks.calculateTicks(180), m_drivetrain, false),
       new ResetGyro(m_drivetrain),
+    
+      new straightforward(75, m_drivetrain, false),
+      //new ResetGyro(m_drivetrain),
       new Turn(45, m_drivetrain),
+      new ResetGyro(m_drivetrain),
 
-      new straightforward(ticks.calculateTicks(95), m_drivetrain, false)
+      new straightforward(50, m_drivetrain, false)
      
     );
   }
