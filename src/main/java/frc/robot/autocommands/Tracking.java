@@ -47,12 +47,14 @@ public class Tracking extends CommandBase {
         SmartDashboard.putNumber("Track Error", -m_limelight.getX());
 
         //i don't remember how it really works but left and right should be right now
-        m_drivetrain.Wheelspeed(-trackOutput, trackOutput);
+        m_drivetrain.Wheelspeed(trackOutput, -trackOutput);
       }
-      m_drivetrain.Wheelspeed(0.2, 0.2);
-    }else{
-      m_drivetrain.Wheelspeed(0,0);
+      //m_drivetrain.Wheelspeed(-0.2, -0.2);
     }
+    m_drivetrain.Wheelspeed(-0.2, -0.2);
+    // else{
+    //   m_drivetrain.Wheelspeed(0,0);
+    // }
   }
 
   // Called once the command ends or is interrupted.
@@ -64,6 +66,6 @@ public class Tracking extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false; //Math.abs(m_limelight.getX()) <= Global.DRIVE_TRACK_TOLERANCE && m_limelight.getValidTarget();
+    return !m_limelight.getValidTarget();
   }
 }

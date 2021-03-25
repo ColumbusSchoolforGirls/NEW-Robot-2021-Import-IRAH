@@ -194,9 +194,9 @@ public class RobotContainer {
     
     m_chooser.addOption("Barrels",new barrels(driveTrain));
     m_chooser.addOption("Slalom", new Slalom(driveTrain));
-    m_chooser.addOption("Search Red One", new SearchRedPathOne(driveTrain, conveyorMotors));
+    m_chooser.addOption("Search Red One", new SearchRedPathOne(driveTrain, conveyorMotors, limeLight));
     m_chooser.addOption("Search Red Two", new SearchRedPathTwo(driveTrain, conveyorMotors));
-    m_chooser.addOption("Search Blue One", new SearchBluePathOne(driveTrain, conveyorMotors));
+    m_chooser.addOption("Search Blue One", new SearchBluePathOne(driveTrain, conveyorMotors, limeLight));
     m_chooser.addOption("Search Blue Two", new SearchBluePathTwo(driveTrain, conveyorMotors));
     m_chooser.addOption("Bounce", new BouncyBoy(driveTrain));
     //tried moving it down cause that was what was in the documentation butttttt idk
