@@ -4,6 +4,7 @@
 
 package frc.robot.autocommands;
 
+import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.ticks;
@@ -34,14 +35,33 @@ public class SearchBluePathOne extends SequentialCommandGroup {
     //m_ticks = ticks;
     addCommands(
       new ResetGyro(m_drivetrain),
-      new straightforward(75, m_drivetrain, false),
+      //idk where this starts but comment in later
+      //starts w/ robot in center pointedd at first ball
+      new straightforward(50, m_drivetrain, false),
+      new Tracking(m_limelight, m_drivetrain),
+      new ResetGyro(m_drivetrain),
+      new ParallelCommandGroup(
+        new straightforward(10, m_drivetrain, false),
+        new ConveyorManual(0.5, m_conveyormotors, true).withTimeout(1)
+      ),
+      new edu.wpi.first.wpilibj2.command.WaitCommand(0.5),
+      new Turn(55, m_drivetrain),
+      new straightforward(40, m_drivetrain, false),
       new Tracking(m_limelight, m_drivetrain),
       new ParallelCommandGroup(
         new straightforward(10, m_drivetrain, false),
         new ConveyorManual(0.5, m_conveyormotors, true).withTimeout(1)
       ),
-      new Turn(85, m_drivetrain)
-      //new straightforward(ticks, drivetrain, scale)
+      new ResetGyro(m_drivetrain),
+      new Turn(-70, m_drivetrain),
+      new straightforward(30, m_drivetrain, false),
+      new Tracking(m_limelight, m_drivetrain),
+      new ParallelCommandGroup(
+        new straightforward(10, m_drivetrain, false),
+        new ConveyorManual(0.65, m_conveyormotors, true).withTimeout(1.5)
+      ),
+      new straightforward(100, m_drivetrain, false).withTimeout(0.5)
+    
       // new straightforward(ticks.calculateTicks(180), m_drivetrain, false),
       // new ConveyorManual(1, m_conveyor, true),
       // new ResetGyro(m_drivetrain),
