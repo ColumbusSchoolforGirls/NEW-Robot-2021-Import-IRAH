@@ -49,9 +49,8 @@ public class straightforward extends CommandBase {
   @Override
   public void initialize() {
     m_drivetrain.resetEncoders();
-    m_drivetrain.resetGyro();
+    //m_drivetrain.resetGyro();
     angle = m_drivetrain.getFacingAngle();
-    SmartDashboard.putString("Hello World", "Hi");
     
   }
 
@@ -89,6 +88,6 @@ public class straightforward extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return Math.abs(leftError) <= Global.DRIVE_DISTANCE_TOLERANCE;
+    return Math.abs(rightError) <= Global.DRIVE_DISTANCE_TOLERANCE;
   }
 }

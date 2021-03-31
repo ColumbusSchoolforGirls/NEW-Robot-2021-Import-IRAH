@@ -52,7 +52,7 @@ public class Testing extends SequentialCommandGroup {
       //new ResetGyro(m_drivetrain)
       // new ResetGyro(m_drivetrain),
       // new straightforward(150, m_drivetrain, false)
-      //new Tracking(limelight, m_drivetrain)
+      new Tracking(limelight, m_drivetrain)
       //new straightforward(2, m_drivetrain, false),
      // new ConveyorManual(1, m_conveyormotors, true).withTimeout(1)
       );
