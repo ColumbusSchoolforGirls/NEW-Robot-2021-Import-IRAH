@@ -97,7 +97,7 @@ public class DriveTrain extends SubsystemBase {
   }
    
     // sets wheelspeeds of motors 
-    //should put in 2 positives to go forward
+//
   public void Wheelspeed(double leftspeed, double rightspeed){  
     right_front.set(rightspeed);
     left_front.set(-leftspeed);
@@ -156,6 +156,7 @@ public class DriveTrain extends SubsystemBase {
     SmartDashboard.putNumber("Angle", getFacingAngle());
     SmartDashboard.putNumber("Joystick Y", RobotContainer.driveCont.getRawAxis(5));
     SmartDashboard.putNumber("Joystick X", RobotContainer.driveCont.getRawAxis(1));
+    SmartDashboard.putNumber("Trigger", RobotContainer.driveCont.getRawAxis(3));
   }
   
   public void initDefaultCommand(){

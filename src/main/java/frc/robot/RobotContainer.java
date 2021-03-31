@@ -39,6 +39,7 @@ import frc.robot.commands.ConveyorManual;
 import frc.robot.commands.ResetGyro;
 //import frc.robot.commands.Shooting;
 import frc.robot.commands.TankDrive;
+import frc.robot.commands.Zoom;
 //import frc.robot.commands.UnwindLift;
 //import frc.robot.commands.FlapManual;
 import frc.robot.commands.FullSpeedAhead;
@@ -127,6 +128,7 @@ public class RobotContainer {
   // button.whenReleased(new ExampleCommand());
 
   //joystick used for the... joysticks... on the controller
+  //each of these is one of the controllers
   public static Joystick driveCont = new Joystick(Global.JoystickDrive);
   public static Joystick auxCont = new Joystick(Global.JoystickAux);
 
@@ -139,8 +141,8 @@ public class RobotContainer {
   public static Button auxRightBumper = new JoystickButton(auxCont, Global.RIGHT_BUMPER);
   public static Button auxLeftBumper = new JoystickButton(auxCont, Global.LEFT_BUMPER);
   //ig the analogbutton is for the triggers?
-  public static JoystickAnalogButton rightTrigger = new JoystickAnalogButton(driveCont, 3, .5);
-  public static JoystickAnalogButton auxRightTrigger = new JoystickAnalogButton(auxCont, 3,.5);
+  public static JoystickAnalogButton rightTrigger = new JoystickAnalogButton(driveCont, 3, 0.5);
+  public static JoystickAnalogButton auxRightTrigger = new JoystickAnalogButton(auxCont, 3,0.5);
 
   public RobotContainer () {
     this.configureButtonBindings(); //connects the buttons to the commands so they know when to run
@@ -220,7 +222,12 @@ public class RobotContainer {
     // Left Bumper on 2nd driver controller unwinds the wench
     //auxLeftBumper.whileHeld(new UnwindLift(lift, 1));
     // Right Trigger on 1st driver controller makes robot go vroom vroom
-    rightTrigger.whileHeld(new FullSpeedAhead(driveTrain));
+
+    //rightTrigger.whileHeld(new FullSpeedAhead(driveTrain));
+    //rightTrigger.whileHeld(new Zoom(driveTrain));
+
+
+
     // Right Trigger on 2nd driver controller deploys the hook pneumatic
     //auxRightTrigger.whileHeld(new DeployHook(hookPneumatic, true));
   }
