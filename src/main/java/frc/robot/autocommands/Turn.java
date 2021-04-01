@@ -26,13 +26,15 @@ public class Turn extends CommandBase {
   private PIDCalculator anglePID; //PID calculator for angle things
   private DriveTrain m_drivetrain; //just our boy the drivetrain he tries his best
   private PigeonIMU gyro; //I heckin hate you gyro, he supposed to measure the angle but he wack I think
+  private double speed;
 
-  public Turn(double angle, DriveTrain drivetrain) {
+  public Turn(double angle, DriveTrain drivetrain, double speed) {
     // Use addRequirements() here to declare subsystem dependencies.
     // m_drivetrain HAS TO go above it (can't add requirements to something that doesn't exist yet)
     m_drivetrain = drivetrain;
     addRequirements(drivetrain);
     this.angle = angle;
+    this.speed = speed;
 
     //sets anglePID to a PID calculator with turnangle constants from global?
     anglePID = new PIDCalculator(Global.TURNANGLE_P, Global.TURNANGLE_I, Global.TURNANGLE_D, Global.TURNANGLE_IZONE);
@@ -66,7 +68,7 @@ public class Turn extends CommandBase {
     //good question but for some reason 
     //having the FIRST parameter as positive and the second negative turns right
     //fun fact having them both positive drives the robot straight backwards so thats why
-    m_drivetrain.Wheelspeed(angleOutput, -angleOutput);
+    m_drivetrain.Wheelspeed(speed*angleOutput, speed*(-angleOutput));
   
   }
 

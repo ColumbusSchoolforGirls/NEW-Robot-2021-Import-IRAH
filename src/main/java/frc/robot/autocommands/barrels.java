@@ -4,6 +4,7 @@
 
 package frc.robot.autocommands;
 
+import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.ConveyorMotors;
 import frc.robot.subsystems.DriveTrain;
@@ -28,21 +29,23 @@ public class barrels extends SequentialCommandGroup {
 
     addCommands(
       new ResetGyro(m_drivetrain),
-      new straightforward(90, m_drivetrain,false),
+      new straightforward(80, m_drivetrain,false),
       new ResetGyro(m_drivetrain),
-      new barrelTurn(-365, m_drivetrain, 2.4),
+      new barrelTurn(-340, m_drivetrain, 2.4),
+      new edu.wpi.first.wpilibj2.command.WaitCommand(0.25),
 
       new ResetGyro(m_drivetrain),
-      new straightforward(40, m_drivetrain, false),
+      new straightforward(55, m_drivetrain, false),
       new ResetGyro(m_drivetrain),
-      new barrelTurn(310, m_drivetrain, 2.4),
+      new barrelTurn(305, m_drivetrain, 2.4),
+      new edu.wpi.first.wpilibj2.command.WaitCommand(0.25),
 
       new ResetGyro(m_drivetrain),
-      new straightforward(60, m_drivetrain, false),
+      new straightforward(50, m_drivetrain, false),
       new ResetGyro(m_drivetrain),
-      new barrelTurn(170, m_drivetrain, 2.4),
+      new barrelTurn(214, m_drivetrain, 2.4),
       new ResetGyro(m_drivetrain),
-      new straightforward(110, m_drivetrain, false)
+      new straightforward(200, m_drivetrain, false).withTimeout(1.5)
 
       
     // //big forward is segment b

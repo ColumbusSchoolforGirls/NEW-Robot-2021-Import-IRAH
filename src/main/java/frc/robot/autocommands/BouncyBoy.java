@@ -35,47 +35,50 @@ public class BouncyBoy extends SequentialCommandGroup {
     */
 
     addCommands(
+      //starts in back of box
       new ResetGyro(m_drivetrain),
-      new straightforward(45, m_drivetrain, false),
+      new straightforward(35, m_drivetrain, false),
       //new ResetGyro(m_drivetrain),
-      new Turn(90, m_drivetrain),
+      new Turn(90, m_drivetrain, 0.8),
       new ResetGyro(m_drivetrain),
 
       //first boop
-      new straightforward(50, m_drivetrain, false).withTimeout(0.7),
+      new straightforward(55, m_drivetrain, false).withTimeout(0.67),
       new WaitCommand(0.25),
       new straightforward(-20, m_drivetrain, false).withTimeout(0.77),
-      new Turn(30, m_drivetrain).withTimeout(1),
+      new Turn(30, m_drivetrain, 1).withTimeout(1),
       new ResetGyro(m_drivetrain),
 
       // driving back and turning around the first cone
       new straightforward(-75, m_drivetrain, false),
       new ResetGyro(m_drivetrain),
-      new Turn(-57, m_drivetrain),
+      new Turn(-57, m_drivetrain, 1),
       new ResetGyro(m_drivetrain),
       new straightforward(40, m_drivetrain, false),
-      new Turn(30, m_drivetrain),
+      new Turn(30, m_drivetrain, 1),
 
       // second boop
       new ResetGyro(m_drivetrain),
-      new straightforward(75, m_drivetrain, false).withTimeout(0.75),
+      new straightforward(87, m_drivetrain, false).withTimeout(0.73),
       new WaitCommand(0.5),
-      new straightforward(-65, m_drivetrain, false),
+      new straightforward(-70, m_drivetrain, false),
 
       // turning around the two cones 
-      new Turn(-80, m_drivetrain),
-      new WaitCommand(0.25),
+      new Turn(-80, m_drivetrain, 0.8),
+      //new WaitCommand(0.25),
       new ResetGyro(m_drivetrain),
-      new straightforward(55, m_drivetrain, false),
+      new straightforward(60, m_drivetrain, false),
       new ResetGyro(m_drivetrain),
-      new Turn(90, m_drivetrain).withTimeout(1),
+      new Turn(87, m_drivetrain, 0.8).withTimeout(1),
+      //new WaitCommand(0.25),
 
     // third boop
     new ResetGyro(m_drivetrain),
-    new straightforward(90, m_drivetrain, false).withTimeout(.9),
+    new straightforward(125, m_drivetrain, false).withTimeout(0.8),
     new WaitCommand(0.5),
-    new straightforward(-20, m_drivetrain, false),
-    new Turn(45, m_drivetrain)
+    new straightforward(-45, m_drivetrain, false),
+    new Turn(70, m_drivetrain, 1),
+    new straightforward(-25, m_drivetrain,false)
 
       
     );

@@ -40,19 +40,19 @@ public class SearchRedPathOne extends SequentialCommandGroup {
       ),
       //take this out when we have pnumatics
       new ConveyorManual(-0.5, m_conveyormotors, true).withTimeout(0.5),
-      new Turn(-30, m_drivetrain).withTimeout(2),
+      new Turn(-30, m_drivetrain, 1).withTimeout(2),
       new Tracking(m_limelight, m_drivetrain),
       new ParallelCommandGroup(
         new straightforward(10, m_drivetrain, false),
         new ConveyorManual(0.5, m_conveyormotors, true).withTimeout(1)
       ),
-      new Turn(45, m_drivetrain).withTimeout(2),
+      new Turn(45, m_drivetrain, 1).withTimeout(2),
       new Tracking(m_limelight, m_drivetrain),
       new ParallelCommandGroup(
         new straightforward(10, m_drivetrain, false),
         new ConveyorManual(0.5, m_conveyormotors, true).withTimeout(1)
       ),
-      new Turn(-10, m_drivetrain),
+      new Turn(-10, m_drivetrain, 0.8),
       new straightforward(85, m_drivetrain, false)
       //new ParallelCommandGroup(
       //   new straightforward(15, m_drivetrain, false),

@@ -40,21 +40,21 @@ public class SearchRedPathTwo extends SequentialCommandGroup {
         new straightforward(10, m_drivetrain, false),
         new ConveyorManual(0.65, m_conveyormotors, true).withTimeout(0.75)
       ),
-      new Turn(-35, m_drivetrain).withTimeout(0.4),
+      new Turn(-35, m_drivetrain, 1).withTimeout(0.4),
       new straightforward(30, m_drivetrain, false),
       new Tracking(m_limelight, m_drivetrain),
       new ParallelCommandGroup(
         new straightforward(15, m_drivetrain, false),
         new ConveyorManual(0.65, m_conveyormotors, true).withTimeout(1)
       ),
-      new Turn(40, m_drivetrain).withTimeout(0.4),
+      new Turn(40, m_drivetrain, 1).withTimeout(0.4),
       new straightforward(25, m_drivetrain, false),
       new Tracking(m_limelight, m_drivetrain),
       new ParallelCommandGroup(
         new straightforward(10, m_drivetrain, false),
         new ConveyorManual(0.65, m_conveyormotors, true).withTimeout(1)
       ),
-      new Turn(-20, m_drivetrain).withTimeout(2),
+      new Turn(-20, m_drivetrain, 1).withTimeout(2),
       new straightforward(100, m_drivetrain, false).withTimeout(1.3)
       // new straightforward(ticks.calculateTicks(90), m_drivetrain, false),
       // new ConveyorManual(1, m_conveyormotors, true).withTimeout(5),
