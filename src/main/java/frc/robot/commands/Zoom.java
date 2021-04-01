@@ -7,18 +7,19 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Global;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveTrain;
 
-public class FullSpeedAhead extends CommandBase {
+public class Zoom extends CommandBase {
   /**
    * Creates a new FullSpeedAhead.
    */
   private DriveTrain m_drivetrain;
 
-  public FullSpeedAhead(DriveTrain drivetrain) {
+  public Zoom(DriveTrain drivetrain) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_drivetrain = drivetrain;
     addRequirements(m_drivetrain);
@@ -36,8 +37,12 @@ public class FullSpeedAhead extends CommandBase {
     /*if (Math.abs(RobotContainer.driveCont.getRawAxis(1)) <= Global.DEADZONE) {
       m_drivetrain.Wheelspeed(0, 0);
     }else{*/
-      m_drivetrain.Wheelspeed(0.85*RobotContainer.driveCont.getRawAxis(1),0.85* RobotContainer.driveCont.getRawAxis(5));
+      m_drivetrain.Wheelspeed(RobotContainer.driveCont.getRawAxis(3)*RobotContainer.driveCont.getRawAxis(1),RobotContainer.driveCont.getRawAxis(3)* RobotContainer.driveCont.getRawAxis(5));
     //}
+    
+      //System.out.print(RobotContainer.driveCont.getRawAxis(3));
+      
+
   }
 
   // Called once the command ends or is interrupted.

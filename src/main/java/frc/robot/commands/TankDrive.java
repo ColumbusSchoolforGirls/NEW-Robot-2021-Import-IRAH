@@ -38,8 +38,43 @@ public class TankDrive extends CommandBase {
     //m_drivetrain.Wheelspeed(0.0005, 0.0005);
     m_drivetrain.setTeleop();
 
+  
   }
 
+// Called repeatedly when this Command is scheduled to run
+
+//AHAHAHAHAHA
+//This make it go forward good, but if you try to go backwards its opposits
+//since you are just subtracting its fine when both values are same sign for forward
+//but making go backward they cancell out
+//fix it later maybe
+//yup
+//luv u <3
+@Override
+public void execute() {
+  // sets wheelspeed when joysticks are moved forward/backward/up/down
+  if (Math.abs(RobotContainer.driveCont.getRawAxis(5)) <= Global.DEADZONE
+      && Math.abs(RobotContainer.driveCont.getRawAxis(1)) <= Global.DEADZONE) {
+    //m_drivetrain.Wheelspeed(0.0005, 0.0005);
+    m_drivetrain.Wheelspeed(0, 0);
+  } else if (Math.abs(RobotContainer.driveCont.getRawAxis(1)) <= Global.DEADZONE
+      && Math.abs(RobotContainer.driveCont.getRawAxis(5)) > Global.DEADZONE) {
+    m_drivetrain.Wheelspeed(-0.01, 0.5*RobotContainer.driveCont.getRawAxis(5)
+    - (RobotContainer.driveCont.getRawAxis(3)/2));
+  } else if (Math.abs(RobotContainer.driveCont.getRawAxis(1)) > Global.DEADZONE
+      && Math.abs(RobotContainer.driveCont.getRawAxis(5)) <= Global.DEADZONE) {
+      m_drivetrain.Wheelspeed(0.5*RobotContainer.driveCont.getRawAxis(1)
+      -(RobotContainer.driveCont.getRawAxis(3)/2),-0.01);
+
+  } else {
+    //this should still work, has to negative for some reason?
+    m_drivetrain.Wheelspeed(0.5*RobotContainer.driveCont.getRawAxis(1) - (RobotContainer.driveCont.getRawAxis(3)/2),
+     0.5*RobotContainer.driveCont.getRawAxis(5) - (RobotContainer.driveCont.getRawAxis(3)/2));
+  }
+
+}
+
+/* THIS IS FOR BRAKING IN THE FUTURE
   // Called repeatedly when this Command is scheduled to run
   @Override
   public void execute() {
@@ -49,17 +84,22 @@ public class TankDrive extends CommandBase {
       m_drivetrain.Wheelspeed(0.0005, 0.0005);
     } else if (Math.abs(RobotContainer.driveCont.getRawAxis(1)) <= Global.DEADZONE
         && Math.abs(RobotContainer.driveCont.getRawAxis(5)) > Global.DEADZONE) {
-      m_drivetrain.Wheelspeed(0, 0.5*RobotContainer.driveCont.getRawAxis(5));
+      m_drivetrain.Wheelspeed(0, 0.5*RobotContainer.driveCont.getRawAxis(5)
+      + (RobotContainer.driveCont.getRawAxis(3)/2));
     } else if (Math.abs(RobotContainer.driveCont.getRawAxis(1)) > Global.DEADZONE
         && Math.abs(RobotContainer.driveCont.getRawAxis(5)) <= Global.DEADZONE) {
-        m_drivetrain.Wheelspeed(0.5*RobotContainer.driveCont.getRawAxis(1), 0);
+        m_drivetrain.Wheelspeed(0.5*RobotContainer.driveCont.getRawAxis(1)
+        +(RobotContainer.driveCont.getRawAxis(3)/2),
+         0);
     } else {
       //this should still work, has to negative for some reason?
-      m_drivetrain.Wheelspeed(0.5*RobotContainer.driveCont.getRawAxis(1), 0.5*RobotContainer.driveCont.getRawAxis(5));
+      m_drivetrain.Wheelspeed(0.5*RobotContainer.driveCont.getRawAxis(1)+ (RobotContainer.driveCont.getRawAxis(3)/2),
+       0.5*RobotContainer.driveCont.getRawAxis(5) + (RobotContainer.driveCont.getRawAxis(3)/2));
     }
-    
-  }
 
+  } */
+
+  
   // Make this return true when this Command no longer needs to run execute()
   @Override
   public boolean isFinished() {
