@@ -7,6 +7,8 @@
 
 package frc.robot.autocommands;
 
+import edu.wpi.first.wpilibj.command.WaitCommand;
+import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.ticks;
 import frc.robot.commands.ConveyorManual;
@@ -37,7 +39,9 @@ public class Testing extends SequentialCommandGroup {
     m_drivetrain = drivetrain;
     //m_flap = flap;
     m_conveyormotors = conveyormotors;
+    m_limelight = limelight;
     addRequirements(m_drivetrain);
+    addRequirements(m_limelight);
     addCommands(
       //new barrelTurn(90, 0.2, m_drivetrain, true, true)
       //new Slalom(m_drivetrain)
@@ -50,9 +54,17 @@ public class Testing extends SequentialCommandGroup {
       //new ResetGyro(m_drivetrain),
       //new Turn(90, m_drivetrain)
       //new ResetGyro(m_drivetrain)
+      // new searchTurn(m_limelight, m_drivetrain),
       // new ResetGyro(m_drivetrain),
       // new straightforward(150, m_drivetrain, false)
-      new Tracking(limelight, m_drivetrain)
+      new ParallelRaceGroup(
+        new Tracking(limelight, m_drivetrain),
+        new ConveyorManual(0.5, m_conveyormotors, true)
+      )
+      
+      // new Turn(-96, m_drivetrain,1),
+      // new edu.wpi.first.wpilibj2.command.WaitCommand(1),
+      // new Turn(m_drivetrain.getFinalAngle(), m_drivetrain, 1)
       //new straightforward(2, m_drivetrain, false),
      // new ConveyorManual(1, m_conveyormotors, true).withTimeout(1)
       );

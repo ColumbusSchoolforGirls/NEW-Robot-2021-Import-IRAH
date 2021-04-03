@@ -53,7 +53,7 @@ public class SearchRedPathOne extends SequentialCommandGroup {
         new ConveyorManual(0.5, m_conveyormotors, true).withTimeout(1)
       ),
       new Turn(-10, m_drivetrain, 0.8),
-      new straightforward(85, m_drivetrain, false)
+      new straightforward(200, m_drivetrain, false).withTimeout(1)
       //new ParallelCommandGroup(
       //   new straightforward(15, m_drivetrain, false),
       //   new ConveyorManual(1, m_conveyormotors, true).withTimeout(1)

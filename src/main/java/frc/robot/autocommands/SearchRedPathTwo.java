@@ -35,6 +35,7 @@ public class SearchRedPathTwo extends SequentialCommandGroup {
       //this one starts centered on the left edge of the box
       //just barely over start line
       new ResetGyro(m_drivetrain),
+      new straightforward(20, m_drivetrain, false),
       new Tracking(m_limelight, m_drivetrain),
       new ParallelCommandGroup(
         new straightforward(10, m_drivetrain, false),

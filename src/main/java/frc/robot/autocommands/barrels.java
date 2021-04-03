@@ -25,7 +25,7 @@ public class barrels extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
    
-    m_drivetrain.setAuto();
+    //m_drivetrain.setAuto();
 
     addCommands(
       new ResetGyro(m_drivetrain),

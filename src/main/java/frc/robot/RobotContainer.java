@@ -31,6 +31,7 @@ import frc.robot.autocommands.barrels;
 import frc.robot.autocommands.firstPlanAutoMiddle;
 import frc.robot.autocommands.leftStartAutoMiddle;
 import frc.robot.autocommands.middleStartAutoMiddle;
+import frc.robot.autocommands.search;
 import frc.robot.autocommands.straightforward;
 //import frc.robot.commands.ControlSpinnerManual;
 import frc.robot.commands.ConveyorManual;
@@ -159,7 +160,7 @@ public class RobotContainer {
     //maybe I'm just confuzzled
 
     //initializes TankDrive
-    driveTrain.setDefaultCommand(TankDrive);
+    //driveTrain.setDefaultCommand(TankDrive);
     
     //initializes Conveyor Motors
     conveyorMotors.setDefaultCommand(ConveyorManual);
@@ -201,6 +202,7 @@ public class RobotContainer {
     m_chooser.addOption("Search Blue One", new SearchBluePathOne(driveTrain, conveyorMotors, limeLight));
     m_chooser.addOption("Search Blue Two", new SearchBluePathTwo(driveTrain, conveyorMotors, limeLight));
     m_chooser.addOption("Bounce", new BouncyBoy(driveTrain));
+    m_chooser.addOption("Search for realziez", new search(driveTrain, conveyorMotors, limeLight));
     //tried moving it down cause that was what was in the documentation butttttt idk
     //that's why it's down here and up there? (I feel like we only need it down here maybe?)
     SmartDashboard.putData("Auto Mode", m_chooser);

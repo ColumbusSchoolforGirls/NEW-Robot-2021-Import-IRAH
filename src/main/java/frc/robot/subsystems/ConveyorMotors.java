@@ -24,6 +24,7 @@ public class ConveyorMotors extends SubsystemBase {
   private static final TalonSRX talon = new TalonSRX(RobotMap.talon);
 
   public ConveyorMotors(){
+    talon.configClosedloopRamp(100);
   }
 
   public static TalonSRX getTalon() {

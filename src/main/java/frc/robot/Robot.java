@@ -63,7 +63,6 @@ public class Robot extends TimedRobot {
 
   //creates instaances of all the important subsystems so we can use their methods and run things later
   private RobotContainer m_robotContainer;
-  public DriveTrain m_drivetrain = new DriveTrain();
   //public Hook m_hook = new Hook();
   //public ControlSpinner m_controlspinner = new ControlSpinner();
   public Limelight m_limelight = new Limelight();
@@ -94,7 +93,7 @@ public class Robot extends TimedRobot {
   //updates the values (specified in each subsystem) on smartdashboard (numbers and things)
   public void robotPeriodic() {
     CommandScheduler.getInstance().run();
-    m_drivetrain.update();
+    m_robotContainer.driveTrain.update();
     //m_hook.update();
     //m_controlspinner.update();
     m_limelight.update();
@@ -141,7 +140,8 @@ public class Robot extends TimedRobot {
     //sets m_autonomousCommand to whichever path is selected on dashboard
 
     //I added this here but might be wrong, should just set drivetrain to brake mode
-    m_drivetrain.setAuto();
+    m_robotContainer.driveTrain.setAuto();
+
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -181,7 +181,7 @@ public class Robot extends TimedRobot {
     //apparently we did want that? 
 
     //should set into coast mode
-    m_drivetrain.setTeleop();
+    m_robotContainer.driveTrain.setTeleop();
     }
   
 

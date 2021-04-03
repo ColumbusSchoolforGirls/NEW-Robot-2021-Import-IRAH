@@ -50,8 +50,10 @@ public class Tracking extends CommandBase {
         m_drivetrain.Wheelspeed(trackOutput, -trackOutput);
       }
       //m_drivetrain.Wheelspeed(-0.2, -0.2);
+    }else {
+      m_drivetrain.Wheelspeed(-0.2, -0.2);
     }
-    m_drivetrain.Wheelspeed(-0.2, -0.2);
+    m_drivetrain.Wheelspeed(-0.4, -0.4);
     // else{
     //   m_drivetrain.Wheelspeed(0,0);
     // }

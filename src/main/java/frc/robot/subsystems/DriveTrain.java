@@ -144,7 +144,18 @@ public class DriveTrain extends SubsystemBase {
   //sets fused heading and yaw to 0
   public void resetGyro(){
     gyro.setFusedHeading(0);
-    gyro.setYaw(0);
+    //gyro.setYaw(0);
+  }
+
+  public double getFinalAngle(){
+    double angleAt = getFacingAngle();
+    double finalAngle;
+    if (angleAt < 0){
+      finalAngle = Math.abs(angleAt)%360;
+    }else{
+      finalAngle = -(angleAt%360);
+    }
+    return finalAngle;
   }
 
   //updates smartdashboard values, does this periodically
