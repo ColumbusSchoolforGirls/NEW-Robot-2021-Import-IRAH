@@ -12,7 +12,7 @@ public final class Limelight extends SubsystemBase {
     NetworkTableEntry tx = table.getEntry("tx");
     NetworkTableEntry ty = table.getEntry("ty");
     NetworkTableEntry tv = table.getEntry("tv");
-    //NetworkTableEntry ta = table.getEntry("ta");
+    NetworkTableEntry ta = table.getEntry("ta");
     
     //returns x value of target in camera
     public double getX(){
@@ -22,6 +22,10 @@ public final class Limelight extends SubsystemBase {
     //returns y value of target in camera
     public double getY(){
         return ty.getDouble(0.0);
+    }
+    //returns area of target
+    public double getA(){
+        return ta.getDouble(0.0);
     }
 
     //returns true if there is a target in camera view

@@ -7,6 +7,7 @@
 
 package frc.robot.autocommands;
 
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 //import frc.robot.Global;
@@ -21,6 +22,8 @@ public class searchTurn extends CommandBase {
   private DriveTrain m_drivetrain;
   private double ratio;
   private Limelight m_limelight;
+  private double initialAngle;
+  
   //left -- true, right -- false
 
   
@@ -29,6 +32,7 @@ public class searchTurn extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     m_drivetrain = drivetrain;
     m_limelight = limelight;
+
     //this.angle = angle;
 
     addRequirements(drivetrain);
@@ -45,6 +49,7 @@ public class searchTurn extends CommandBase {
   public void initialize() {
     m_drivetrain.resetEncoders();
     //m_drivetrain.resetGyro();
+    initialAngle = m_drivetrain.getFacingAngle();
     
   }
 
@@ -52,6 +57,7 @@ public class searchTurn extends CommandBase {
   @Override
   public void execute() {
     m_drivetrain.Wheelspeed(0.3, -0.3);
+    SmartDashboard.putBoolean("Turn WORKINGAAAA", true);
     // if angle negative, turn right
     // if angle positive, turn left
     // for < 0, -0.3, -0.1
@@ -75,7 +81,9 @@ public class searchTurn extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return m_limelight.getValidTarget();
+    SmartDashboard.putBoolean("Turn WORKINGAAAA", false);
+    return (m_limelight.getValidTarget() || m_drivetrain.getFacingAngle() >= initialAngle + 360);
+    
     //return Math.abs(m_drivetrain.getFacingAngle()) >= Math.abs(angle) ;
   }
 }

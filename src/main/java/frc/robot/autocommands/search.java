@@ -4,7 +4,7 @@
 
 package frc.robot.autocommands;
 
-import edu.wpi.first.wpilibj.command.WaitCommand;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
@@ -24,48 +24,49 @@ public class search extends SequentialCommandGroup {
   private final DriveTrain m_drivetrain;  
   private final ConveyorMotors m_conveyormotors;
   private final Limelight m_limelight;
+  
   public search(DriveTrain drivetrain, ConveyorMotors conveyormotors, Limelight limelight) {
     m_drivetrain = drivetrain;
     m_conveyormotors = conveyormotors;
     m_limelight = limelight;
+  
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
 
     addCommands(
       //grab first ball
-      new ParallelRaceGroup(
-        new Tracking(limelight, m_drivetrain),
-        new ConveyorManual(0.5, m_conveyormotors, true)
-      ),
-      new searchTurn(m_limelight, m_drivetrain),
-      //grab second ball
+      //new straightforward(10, m_drivetrain, false),
       //new Tracking(m_limelight, m_drivetrain),
-      new ParallelCommandGroup(
-        new straightforward(10, m_drivetrain, false),
-        new ConveyorManual(0.5, m_conveyormotors, true).withTimeout(1)
+      //new edu.wpi.first.wpilibj2.command.WaitCommand(0.25),
+      new ParallelRaceGroup(
+        //new straightforward(10, m_drivetrain, false),
+        new Tracking(m_limelight, m_drivetrain),
+        new ConveyorManual(0.35, m_conveyormotors, true)
       ),
-      //look for and grab third
+      new ParallelRaceGroup(
+        new straightforward(30, m_drivetrain, false).withTimeout(2),
+        new ConveyorManual(0.5, m_conveyormotors, true).withTimeout(2)
+      ),
       new searchTurn(m_limelight, m_drivetrain),
+      new WaitCommand(0.5),
       new Tracking(m_limelight, m_drivetrain),
-      new ParallelCommandGroup(
-        new straightforward(10, m_drivetrain, false),
-        new ConveyorManual(0.5, m_conveyormotors, true).withTimeout(1)
+      new ParallelRaceGroup(
+        new straightforward(30, m_drivetrain, false),
+        new ConveyorManual(0.5, m_conveyormotors, true).withTimeout(3)
       ),
-      // new searchTurn(m_limelight, m_drivetrain),
-      // new Tracking(m_limelight, m_drivetrain),
-      // new ParallelCommandGroup(
-      //   new straightforward(10, m_drivetrain, false),
-      //   new ConveyorManual(0.5, m_conveyormotors, true).withTimeout(1)
-      // ),
+       new searchTurn(m_limelight, m_drivetrain),
+       new WaitCommand(0.5),
+      // //grab second ball
+      new Tracking(m_limelight, m_drivetrain),
+      new ParallelRaceGroup(
+        new straightforward(30, m_drivetrain, false),
+        new ConveyorManual(0.35, m_conveyormotors, true).withTimeout(3)
+      ),
+           // //look for and grab third
+     
       new Turn(m_drivetrain.getFinalAngle(), m_drivetrain, 1)
      
-      // new searchTurn(m_limelight, m_drivetrain, 2.3),
-      // new Tracking(m_limelight, m_drivetrain),
-      // new ParallelCommandGroup(
-      //   new straightforward(10, m_drivetrain, false),
-      //   new ConveyorManual(0.5, m_conveyormotors, true).withTimeout(1)
-      // )
-      // new Turn(the angle thing, m_drivetrain, 1)
+
     );
   }
 }
