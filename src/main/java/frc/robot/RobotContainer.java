@@ -160,7 +160,8 @@ public class RobotContainer {
     //maybe I'm just confuzzled
 
     //initializes TankDrive
-    //driveTrain.setDefaultCommand(TankDrive);
+    // when teleop uncomment this
+    driveTrain.setDefaultCommand(TankDrive);
     
     //initializes Conveyor Motors
     conveyorMotors.setDefaultCommand(ConveyorManual);

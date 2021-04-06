@@ -57,7 +57,6 @@ public class searchTurn extends CommandBase {
   @Override
   public void execute() {
     m_drivetrain.Wheelspeed(0.3, -0.3);
-    SmartDashboard.putBoolean("Turn WORKINGAAAA", true);
     // if angle negative, turn right
     // if angle positive, turn left
     // for < 0, -0.3, -0.1
@@ -81,7 +80,6 @@ public class searchTurn extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    SmartDashboard.putBoolean("Turn WORKINGAAAA", false);
     return (m_limelight.getValidTarget() || m_drivetrain.getFacingAngle() >= initialAngle + 360);
     
     //return Math.abs(m_drivetrain.getFacingAngle()) >= Math.abs(angle) ;

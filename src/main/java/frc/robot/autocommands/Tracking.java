@@ -39,7 +39,7 @@ public class Tracking extends CommandBase {
   @Override
   public void execute() {
     if(m_limelight.getValidTarget()){
-      while(Math.abs(m_limelight.getX())>= 10){
+      while(Math.abs(m_limelight.getX())>= 9){
         //output wants error to goal, and so it is set point-error (how far from goal), and our set point 0, so its just 0-tx, so -tx
         double trackOutput = trackPID.getOutput(-m_limelight.getX());
 

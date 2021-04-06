@@ -39,32 +39,39 @@ public class search extends SequentialCommandGroup {
       //new Tracking(m_limelight, m_drivetrain),
       //new edu.wpi.first.wpilibj2.command.WaitCommand(0.25),
       new ParallelRaceGroup(
-        //new straightforward(10, m_drivetrain, false),
         new Tracking(m_limelight, m_drivetrain),
-        new ConveyorManual(0.35, m_conveyormotors, true)
+        new ConveyorManual(0.5, m_conveyormotors, true)
       ),
+
       new ParallelRaceGroup(
         new straightforward(30, m_drivetrain, false).withTimeout(2),
         new ConveyorManual(0.5, m_conveyormotors, true).withTimeout(2)
       ),
+
       new searchTurn(m_limelight, m_drivetrain),
       new WaitCommand(0.5),
       new Tracking(m_limelight, m_drivetrain),
       new ParallelRaceGroup(
         new straightforward(30, m_drivetrain, false),
-        new ConveyorManual(0.5, m_conveyormotors, true).withTimeout(3)
+        new ConveyorManual(0.75, m_conveyormotors, true).withTimeout(3)
       ),
-       new searchTurn(m_limelight, m_drivetrain),
-       new WaitCommand(0.5),
-      // //grab second ball
-      new Tracking(m_limelight, m_drivetrain),
-      new ParallelRaceGroup(
-        new straightforward(30, m_drivetrain, false),
-        new ConveyorManual(0.35, m_conveyormotors, true).withTimeout(3)
-      ),
-           // //look for and grab third
+
+      //new WaitCommand(1),
+
+      //new searchTurn(m_limelight, m_drivetrain),
+       //new WaitCommand(0.5),
+      // // //grab second ball
+      //new Tracking(m_limelight, m_drivetrain),
+      // new ParallelRaceGroup(
+      //    new straightforward(10, m_drivetrain, false),
+      //    new ConveyorManual(0.6, m_conveyormotors, true).withTimeout(3)
+      //   ),
+      //  
+      // //look for and grab third
      
-      new Turn(m_drivetrain.getFinalAngle(), m_drivetrain, 1)
+      new Turn(m_drivetrain.getFinalAngle(), m_drivetrain, 0.75),
+      new straightforward(200, m_drivetrain, false).withTimeout(1.5)
+      
      
 
     );

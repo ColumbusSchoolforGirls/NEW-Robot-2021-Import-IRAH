@@ -165,10 +165,10 @@ public class DriveTrain extends SubsystemBase {
     SmartDashboard.putNumber("Right Back Encoder", m_rightback.getPosition());
     SmartDashboard.putNumber("Left Back Encoder", m_leftback.getPosition());
     SmartDashboard.putNumber("Angle", getFacingAngle());
-    //SmartDashboard.putNumber("Right Joystick Y", RobotContainer.driveCont.getRawAxis(5));
-    // SmartDashboard.putNumber("Left Joystick Y", RobotContainer.driveCont.getRawAxis(1));
-    SmartDashboard.putNumber("Right Joystick Y", RobotContainer.auxCont.getRawAxis(5));
-    SmartDashboard.putNumber("Left Joystick Y", RobotContainer.auxCont.getRawAxis(1));
+    SmartDashboard.putNumber("Right Joystick Y", RobotContainer.driveCont.getRawAxis(5));
+    SmartDashboard.putNumber("Left Joystick Y", RobotContainer.driveCont.getRawAxis(1));
+    ///SmartDashboard.putNumber("Right Joystick Y", RobotContainer.auxCont.getRawAxis(5));
+    //SmartDashboard.putNumber("Left Joystick Y", RobotContainer.auxCont.getRawAxis(1));
     SmartDashboard.putNumber("Trigger", RobotContainer.driveCont.getRawAxis(3));
   }
   
